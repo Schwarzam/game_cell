@@ -12,8 +12,19 @@ if(WIN32)
     set(SFML_STATIC_LIBRARIES TRUE)
     find_package(SFML COMPONENTS audio graphics window system REQUIRED)
 
-    include_directories(${SMFL_folder}/include)
-    target_link_libraries(game_cell sfml-audio sfml-graphics sfml-window sfml-system ${LINK_LIBS})
 
+    include_directories(${SMFL_folder}/include)
+    target_link_libraries(game_cell sfml-audio sfml-graphics sfml-window sfml-system)
+
+endif()
+
+if(UNIX AND NOT APPLE)
+    set(STEAMLIB ${CMAKE_SOURCE_DIR}/steam/redistributable_bin/linux64/libsteam_api.so)
+    find_package(SFML REQUIRED system window graphics network audio)
+
+    if(SFML_FOUND)
+        include_directories(${SFML_INCLUDE_DIR})
+        target_link_libraries(game_cell -lsfml-graphics -lsfml-window -lsfml-system ${STEAMLIB})
+    endif()
 endif()
 
