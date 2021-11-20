@@ -3,8 +3,10 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-int main() {
+#include "src/GameManager.h"
+#include "src/Game.h"
 
+int main() {
     if ( SteamAPI_RestartAppIfNecessary( 1826930 ) ) // Substitua k_uAppIdInvalid com o AppID do seu aplicativo
         {
         return 1;
@@ -20,29 +22,8 @@ int main() {
     ISteamFriends * psteamfriends = SteamFriends();
     std::cout << psteamfriends->GetPersonaName() << std::endl;
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-
-            if (event.type == sf::Event::KeyPressed)
-                SteamFriends()->ActivateGameOverlay( "friends" );
-
-            SteamAPI_RunCallbacks();
-        }
-
-        window.clear(sf::Color::Black);
-        window.display();
-    }
+    Game game;
+    game.runWithMinimumTimeSteps();
 
     return 0;
-
 }

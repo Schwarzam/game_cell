@@ -32,3 +32,17 @@
 [2021-11-20 12:02:16] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
 [2021-11-20 12:02:16] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
 [2021-11-20 12:02:18] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+
+
+[2021-11-20 16:07:25] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-20 16:07:25] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-20 16:07:32] Loaded store 'userlocal' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf' successfully
+[2021-11-20 16:07:34] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-20 16:07:45] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-20 16:07:45] Loaded store 'userlocal' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf' successfully
+[2021-11-20 16:07:45] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-20 16:07:56] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-20 16:07:56] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-11-20 16:07:56] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-20 16:07:57] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-11-20 16:07:58] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'

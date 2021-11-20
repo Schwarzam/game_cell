@@ -3,7 +3,12 @@ set(PROJECT_NAME thecell)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
-add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h)
+add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Game.cpp src/Game.h src/utils/fps.h)
+
+file(COPY ${CMAKE_SOURCE_DIR}/assets
+        DESTINATION ${CMAKE_BINARY_DIR}/)
+
+set(STEAM_CONTENT ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content)
 
 if(WIN32)
     file(COPY ${CMAKE_SOURCE_DIR}/steam/redistributable_bin/win64/steam_api64.dll
@@ -21,6 +26,7 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} sfml-audio sfml-graphics sfml-window sfml-system ${STEAMLIB})
 
     file(COPY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
+    file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
 endif()
 
 if(UNIX AND NOT APPLE)

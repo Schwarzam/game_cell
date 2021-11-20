@@ -15,7 +15,7 @@ std::shared_ptr<sf::Texture> Assets::Acquire(const std::string &name) {
     }
     else{
         auto pTex = std::make_shared<sf::Texture>();
-        Collision::CreateTextureAndBitmask(*pTex, "media/" + name + ".png");
+        Collision::CreateTextureAndBitmask(*pTex, "assets/" + name + ".png");
         textures.insert({name, pTex});
         return pTex;
     }

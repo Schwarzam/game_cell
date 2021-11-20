@@ -89,3 +89,85 @@
 [2021-11-20 12:16:13] [0,0] ConnectionDisconnected('I/O Operation Failed') : 'Session Replaced' (205.185.194.213:27026, WebSocket)
 [2021-11-20 12:16:13] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
 [2021-11-20 12:28:23] CClientJobGetClientUpdateHosts: cached version not expired
+
+
+[2021-11-20 16:07:25] Log session started
+[2021-11-20 16:07:25] [0,0] SetSteamID( [U:1:0] )
+[2021-11-20 16:07:25] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.0.174)
+[2021-11-20 16:07:25] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-20 16:07:25] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.0.174)
+[2021-11-20 16:07:25] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-20 16:07:25] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.0.174)
+[2021-11-20 16:07:25] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-20 16:07:26] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:104::cdb9:c2d2]:80 ([2602:801:f005:104::cdb9:c2d2]:80)) - SUCCESS
+[2021-11-20 16:07:26] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:104::cdb9:c2d2]:80 ([2602:801:f005:104::cdb9:c2d2]:80)) - server indicated we are using ipv6, external address = '2804:14d:32a3:8a04:d848:4e86:4b60:8dcd'
+[2021-11-20 16:07:26] IPv6 UDP connectivity test (ipv6check-udp.steamcontent.com / [2602:801:f005:100::cdb9:c204]:27019) - SUCCESS
+[2021-11-20 16:07:32] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-20 16:07:32] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-20 16:07:32] [0,0] Server says 50% of connections should be websockets, we rolled 48 - using WebSockets as default.
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27026) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27025) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27022) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27024) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27025) results: 67.0714ms + load 66.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27026) results: 74.3876ms + load 66.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:443) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27026) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27024) results: 59.9298ms + load 71.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27023) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27022) results: 52.6290ms + load 63.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27023) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:443) results: 54.4567ms + load 66.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-iad1.cm.steampowered.com:27022) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27026) results: 46.8554ms + load 66.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27025) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27023) results: 40.0276ms + load 63.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-eze1.cm.steampowered.com:443) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27023) results: 33.2160ms + load 67.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm2-eze1.cm.steampowered.com:27034) starting...
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27025) results: 49.3479ms + load 64.0000
+[2021-11-20 16:07:32] [0,0] PingWebSocketCM() stopping after 400.00ms timeout and using good enough host (cm2-gru1.cm.steampowered.com:27023)
+[2021-11-20 16:07:33] [0,0] PingWebSocketCM() (cm2-iad1.cm.steampowered.com:27022) results: 172.6389ms + load 28.0000
+[2021-11-20 16:07:33] [0,0] PingWebSocketCM() (cm1-eze1.cm.steampowered.com:443) results: 301.2314ms + load 50.0000
+[2021-11-20 16:07:33] [0,0] PingWebSocketCM() (cm2-eze1.cm.steampowered.com:27034) results: 293.5834ms + load 49.0000
+[2021-11-20 16:07:33] [1,3] Connect() starting connection (eNetQOSLevelHigh, cm2-gru1.cm.steampowered.com:27023, WebSocket)
+[2021-11-20 16:07:33] [1,3] ConnectionCompleted() (205.185.194.213:27023, WebSocket) local address (192.168.0.174:59320)
+[2021-11-20 16:07:33] [1,3] RecvMsgClientLogOnResponse() : [I:0:0] 'Invalid Password'
+[2021-11-20 16:07:33] [1,3] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-20 16:07:34] [0,0] ConnectionDisconnected('I/O Operation Failed') : 'Invalid Password' (205.185.194.213:27023, WebSocket)
+[2021-11-20 16:07:34] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2021-11-20 16:07:45] [0,0] SetSteamID( [U:1:0] )
+[2021-11-20 16:07:45] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-20 16:07:45] [0,0] Server says 50% of connections should be websockets, we rolled 52 - using UDP as default.
+[2021-11-20 16:07:45] [1,2] Connect() starting connection (eNetQOSLevelHigh, 205.185.194.213:27020, UDP)
+[2021-11-20 16:07:45] [1,2] ConnectionCompleted() (205.185.194.213:27019, UDP) local address (0.0.0.0:50140)
+[2021-11-20 16:07:46] [1,2] RecvMsgClientLogOnResponse() : [I:0:0] 'Account logon denied, need two-factor code'
+[2021-11-20 16:07:46] [1,2] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-20 16:07:46] [0,0] ConnectionDisconnected('Disconnected By Remote Host') : 'Account logon denied, need two-factor code' (205.185.194.213:27019, UDP)
+[2021-11-20 16:07:46] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2021-11-20 16:07:54] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-20 16:07:54] [0,0] Server says 50% of connections should be websockets, we rolled 16 - using WebSockets as default.
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm2-iad1.cm.steampowered.com:27022) results: 172.6389ms + load 28.0000 (21 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm2-gru1.cm.steampowered.com:27026) results: 74.3876ms + load 66.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm2-gru1.cm.steampowered.com:27025) results: 67.0714ms + load 66.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm2-gru1.cm.steampowered.com:27024) results: 59.9298ms + load 71.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm2-gru1.cm.steampowered.com:443) results: 54.4567ms + load 66.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm1-gru1.cm.steampowered.com:27022) results: 52.6290ms + load 63.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm1-gru1.cm.steampowered.com:27025) results: 49.3479ms + load 64.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm1-gru1.cm.steampowered.com:27026) results: 46.8554ms + load 66.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm1-gru1.cm.steampowered.com:27023) results: 40.0276ms + load 63.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] Existing WebSocket ping data (cm2-gru1.cm.steampowered.com:27023) results: 33.2160ms + load 67.0000 (22 seconds ago)
+[2021-11-20 16:07:54] [0,0] PingWebSocketCM() (cm3-iad1.cm.steampowered.com:27023) starting...
+[2021-11-20 16:07:54] [0,0] PingWebSocketCM() (cm3-iad1.cm.steampowered.com:27026) starting...
+[2021-11-20 16:07:54] [0,0] PingWebSocketCM() (cm6-lax1.cm.steampowered.com:27029) starting...
+[2021-11-20 16:07:55] [0,0] PingWebSocketCM() (cm3-iad1.cm.steampowered.com:27023) results: 178.4344ms + load 31.0000
+[2021-11-20 16:07:55] [0,0] PingWebSocketCM() (cm3-iad1.cm.steampowered.com:27026) results: 171.5965ms + load 30.0000
+[2021-11-20 16:07:55] [0,0] PingWebSocketCM() (cm6-lax1.cm.steampowered.com:27029) results: 238.8973ms + load 23.0000
+[2021-11-20 16:07:55] [1,7] Connect() starting connection (eNetQOSLevelHigh, cm2-gru1.cm.steampowered.com:27023, WebSocket)
+[2021-11-20 16:07:55] [1,7] ConnectionCompleted() (205.185.194.213:27023, WebSocket) local address (192.168.0.174:59329)
+[2021-11-20 16:07:56] [1,7] RecvMsgClientLogOnResponse() : [U:1:93642108] 'OK'
+[2021-11-20 16:07:56] CClientJobGetClientUpdateHosts: cached version not expired
+[2021-11-20 16:11:19] [3,7] RecvMsgClientLoggedOff('Session Replaced')
+[2021-11-20 16:11:19] [3,7] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-20 16:11:19] [0,0] ConnectionDisconnected('I/O Operation Failed') : 'Session Replaced' (205.185.194.213:27023, WebSocket)
+[2021-11-20 16:11:19] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
