@@ -1,0 +1,9 @@
+
+
+[2021-11-20 10:24:15] Inilializing System Manager
+[2021-11-20 10:24:15] Suspend inhibited
+[2021-11-20 10:24:18] Suspend inhibit released
+
+
+[2021-11-20 10:24:42] Inilializing System Manager
+[2021-11-20 10:24:42] Suspend inhibited

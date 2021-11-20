@@ -1,0 +1,40 @@
+
+
+[2021-11-20 10:28:23] Setting parental settings for 93642108, account flags are 142840c5
+[2021-11-20 10:28:23] Settings dump:
+[2021-11-20 10:28:23] 	Account ID: 93642108
+[2021-11-20 10:28:23] 	Enabled: false
+[2021-11-20 10:28:23] 	Base list: 0 (Allow all games)
+[2021-11-20 10:28:23] 	No custom list
+[2021-11-20 10:28:23] 	Enabled features (1800):
+[2021-11-20 10:28:23] 		Library
+[2021-11-20 10:28:23] 		Test
+[2021-11-20 10:28:23] Disabling parental settings for 93642108, account flags are 142840c5
+[2021-11-20 10:28:23] Validating parental settings
+[2021-11-20 10:28:23] Settings dump:
+[2021-11-20 10:28:23] 	Account ID: 93642108
+[2021-11-20 10:28:23] 	Enabled: false
+[2021-11-20 10:28:23] 	Base list: 0 (Allow all games)
+[2021-11-20 10:28:23] 	No custom list
+[2021-11-20 10:28:23] 	Enabled features (1800):
+[2021-11-20 10:28:23] 		Library
+[2021-11-20 10:28:23] 		Test
+[2021-11-20 12:02:15] Setting parental settings for 93642108, account flags are 142840c5
+[2021-11-20 12:02:15] Settings dump:
+[2021-11-20 12:02:15] 	Account ID: 93642108
+[2021-11-20 12:02:15] 	Enabled: false
+[2021-11-20 12:02:15] 	Base list: 0 (Allow all games)
+[2021-11-20 12:02:15] 	No custom list
+[2021-11-20 12:02:15] 	Enabled features (1800):
+[2021-11-20 12:02:15] 		Library
+[2021-11-20 12:02:15] 		Test
+[2021-11-20 12:02:15] Disabling parental settings for 93642108, account flags are 142840c5
+[2021-11-20 12:02:15] Validating parental settings
+[2021-11-20 12:02:15] Settings dump:
+[2021-11-20 12:02:15] 	Account ID: 93642108
+[2021-11-20 12:02:15] 	Enabled: false
+[2021-11-20 12:02:15] 	Base list: 0 (Allow all games)
+[2021-11-20 12:02:15] 	No custom list
+[2021-11-20 12:02:15] 	Enabled features (1800):
+[2021-11-20 12:02:15] 		Library
+[2021-11-20 12:02:15] 		Test
