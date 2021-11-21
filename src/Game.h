@@ -5,8 +5,8 @@
 #ifndef THECELL_GAME_H
 #define THECELL_GAME_H
 
-
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include "GameManager.h"
 #include "utils/fps.h"
 
@@ -20,7 +20,7 @@ public:
 
 private:
     void processEvents();//< Process events
-    void update(); //< do some updates
+    static void update(); //< do some updates
     void render();//< draw all the stuff
 
     sf::RenderWindow _window; //< the window use to display the game

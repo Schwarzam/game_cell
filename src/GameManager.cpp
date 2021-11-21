@@ -7,12 +7,19 @@
 
 #include <cmath>
 #include "Collision.h"
+#include "Player.h"
 
 
 std::vector<std::pair<float, Entity*>> GameManager::entities;
 
 Entity *GameManager::startEntity(const std::string& name) {
     auto *ent = new Entity(name);
+    entities.emplace_back(std::pair(0.0, ent));
+    return ent;
+}
+
+Entity *GameManager::startMyPlayer(const std::string &name, sf::RenderWindow *window) {
+    auto *ent = new Player(name, window);
     entities.emplace_back(std::pair(0.0, ent));
     return ent;
 }

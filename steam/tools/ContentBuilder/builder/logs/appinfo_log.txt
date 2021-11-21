@@ -44,3 +44,26 @@
 [2021-11-20 12:02:16] Change number 13196780->13196801, apps: 0/11, packages: 0/1
 [2021-11-20 12:02:16] Requesting 1 apps, 0 packages (meta data, 1024 prev attempts)
 [2021-11-20 12:02:16] UpdatesJob: finished OK, apps updated 0 (0 KB), packages updated 0 (0 KB)
+
+
+[2021-11-20 16:07:56] RequestAppInfoUpdate: AppIDs 7
+[2021-11-20 16:07:56] Packages changed: 
+[2021-11-20 16:07:56] Apps changed: 55382=13197737,230410=13196951,830451=13196884,1826930=13196803,
+[2021-11-20 16:07:56] Change number 13196801->13197978, apps: 4/724, packages: 0/273
+[2021-11-20 16:07:56] Requesting 21 apps, 0 packages (meta data, 1024 prev attempts)
+[2021-11-20 16:07:57] Requested 16 app access tokens, 0 received, 16 denied
+[2021-11-20 16:07:57] Requesting 4 apps, 0 packages (full data, 1024 prev attempts)
+[2021-11-20 16:07:57] UpdatesJob: finished OK, apps updated 4 (10 KB), packages updated 0 (0 KB)
+[2021-11-20 16:08:12] Starting async write C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder/appcache/appinfo.vdf (3606998 bytes)
+
+
+[2021-11-21 11:17:23] RequestAppInfoUpdate: AppIDs 7
+[2021-11-21 11:17:24] Packages changed: 
+[2021-11-21 11:17:24] Apps changed: 2028850=13201789,457140=13201475,343050=13201433,322330=13201422,470220=13201336,391540=13201334,728470=13201132,361420=13201117,409710=13200857,409720=13200835,636750=13200771,945360=13200575,30=13200349,700580=13200334,443030=13200270,534380=13199735,
+[2021-11-21 11:17:24] Change number 13197978->13201974, apps: 19/2034, packages: 0/239
+[2021-11-21 11:17:24] Requesting 35 apps, 0 packages (meta data, 1024 prev attempts)
+[2021-11-21 11:17:24] Requested 16 app access tokens, 0 received, 16 denied
+[2021-11-21 11:17:25] Downloaded 8 apps via HTTP, 106 KB (31 KB compressed)
+[2021-11-21 11:17:25] Requesting 9 apps, 0 packages (full data, 1024 prev attempts)
+[2021-11-21 11:17:25] UpdatesJob: finished OK, apps updated 17 (142 KB), packages updated 0 (0 KB)
+[2021-11-21 11:17:40] Starting async write C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder/appcache/appinfo.vdf (3606998 bytes)

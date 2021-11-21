@@ -8,13 +8,16 @@
 
 #include <vector>
 #include <SFML/System/Thread.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include "Entity.h"
 
 class GameManager {
 public:
     GameManager() = default;
 
+    static Entity *startMyPlayer(const std::string& name, sf::RenderWindow *window);
     static Entity *startEntity(const std::string& name);
+
 //    static void sortRender();
     static void gameEvents();
 //

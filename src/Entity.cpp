@@ -5,14 +5,14 @@
 #include "Entity.h"
 
 sf::Vector2f Entity::getPosition() {
-    return sf::Vector2f(1, 1);
+    return _sprite.getPosition();
 }
 
 Entity::Entity(const std::string& name) {
     _ptexture = Assets::Acquire(name);
 
     _sprite.setTexture(*_ptexture);
-    _sprite.setOrigin(_ptexture->getSize().x/2, _ptexture->getSize().y);
+    _sprite.setOrigin((float)_ptexture->getSize().x/2, (float)_ptexture->getSize().y/2);
 
     _sprite.setScale(0.1, 0.1);
 }
