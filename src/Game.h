@@ -9,6 +9,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include "GameManager.h"
 #include "utils/fps.h"
+#include "map/Map.h"
 
 class Game : public GameManager {
 public:
@@ -17,6 +18,9 @@ public:
     Game& operator=(const Game&) = delete;
 
     void runWithMinimumTimeSteps(int minimum_frame_per_seconds=30);
+
+public:
+    Map map;
 
 private:
     void processEvents();//< Process events

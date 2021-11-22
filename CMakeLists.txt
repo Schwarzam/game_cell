@@ -3,12 +3,13 @@ set(PROJECT_NAME thecell)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
-add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Game.cpp src/Game.h src/utils/fps.h src/Player.cpp src/Player.h)
+add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Game.cpp src/Game.h src/utils/fps.h src/Player.cpp src/Player.h src/map/Map.cpp src/map/Map.h)
 
-file(COPY ${CMAKE_SOURCE_DIR}/assets
-        DESTINATION ${CMAKE_BINARY_DIR}/)
+file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR}/)
 
-set(STEAM_CONTENT ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content)
+#set(STEAM_CONTENT ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content)
+add_subdirectory(libs/json-develop/json-develop)
+set(LINK_LIBS nlohmann_json::nlohmann_json)
 
 if(WIN32)
     if (CMAKE_BUILD_TYPE MATCHES Release)
@@ -27,7 +28,7 @@ if(WIN32)
     find_package(SFML COMPONENTS audio graphics window system REQUIRED)
 
     include_directories(${SMFL_folder}/include)
-    target_link_libraries(${PROJECT_NAME} sfml-audio sfml-graphics sfml-window sfml-system ${STEAMLIB})
+    target_link_libraries(${PROJECT_NAME} sfml-audio sfml-graphics sfml-window sfml-system ${STEAMLIB} ${LINK_LIBS})
 
     file(REMOVE ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/${PROJECT_NAME}.exe)
     file(COPY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
@@ -40,7 +41,7 @@ if(UNIX AND NOT APPLE)
 
     if(SFML_FOUND)
         include_directories(${SFML_INCLUDE_DIR})
-        target_link_libraries(${PROJECT_NAME} -lsfml-graphics -lsfml-window -lsfml-system ${STEAMLIB})
+        target_link_libraries(${PROJECT_NAME} -lsfml-graphics -lsfml-window -lsfml-system ${STEAMLIB} ${LINK_LIBS})
     endif()
 endif()
 

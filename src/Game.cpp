@@ -8,7 +8,9 @@
 
 #include "../steam/steam_api.h"
 
-Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize)
+
+Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
+                map(Map("teste"))
 {
     view.setSize((float)_window.getSize().x, (float)_window.getSize().y);
 
@@ -54,6 +56,7 @@ void Game::render()
     //Clear screen
     _window.clear(sf::Color(155, 155, 155));
 
+    _window.draw(map);
     for (auto& entity : entities){
         _window.draw(*entity.second);
     }
