@@ -5,9 +5,8 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
 #include "Player.h"
-#include "Game.h"
 #include <cmath>
-#include <iostream>
+#include "map/Map.h"
 
 Player::Player(const std::string &name, sf::RenderWindow *window) : Entity(name), _window(window) {
 }
@@ -28,9 +27,13 @@ void Player::ProcessKeyboardInputs() {
         movement.x += velocity;
     }
 
+
     float deltaTime = MovementClock.restart().asSeconds();
-    sf::Vector2f pos = getPosition() + movement * deltaTime;
-    _sprite.move(movement * deltaTime);
+    movement = movement * deltaTime;
+
+    if (Map::validadePos(_sprite, movement)){
+        _sprite.move(movement);
+    }
 }
 
 void Player::processEvents() {

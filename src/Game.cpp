@@ -10,7 +10,7 @@
 
 
 Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
-                map(Map("teste"))
+                map(Map("1"))
 {
     view.setSize((float)_window.getSize().x, (float)_window.getSize().y);
 

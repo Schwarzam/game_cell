@@ -13,14 +13,22 @@ class Map : public sf::Drawable {
 public:
     explicit Map(std::string name);
 
-    loadNextMap();
+    static bool validadePos(sf::Sprite&, sf::Vector2f);
+
+    void loadNextMap();
 
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     std::shared_ptr<sf::Texture> _ptexture;
     sf::Sprite _sprite;
+
+    std::string mapfolder;
+    static nlohmann::json map_metadata;
+    static std::vector<sf::Rect<float>> walls;
 };
+
+
 
 
 #endif //THECELL_MAP_H
