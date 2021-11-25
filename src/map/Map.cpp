@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Map.h"
 #include "../Assets.h"
+#include "../Collision.h"
 
 nlohmann::json Map::map_metadata;
 std::vector<sf::Rect<float>> Map::walls;
@@ -26,8 +27,7 @@ Map::Map(std::string folder) {
         if (map_metadata["layers"][i]["name"] == "walls"){
             for (int dr = 0; dr < map_metadata["layers"][i]["data"].size(); dr++){
                 if (map_metadata["layers"][i]["data"][dr].get<int>() != 0){
-                    std::cout << (dr / mapHeight.x) * utilSize.x << " " << (dr % mapHeight.y) * utilSize.y << std::endl;
-                    walls.emplace_back(sf::Rect<float>((dr % mapHeight.y) * utilSize.y, (dr / mapHeight.x) * utilSize.x, utilSize.x, utilSize.y));
+                    walls.emplace_back(sf::Rect<float>((float)(dr % mapHeight.y) * utilSize.y, (dr / mapHeight.x) * utilSize.x, utilSize.x, utilSize.y));
                 }
             }
         }
@@ -39,31 +39,58 @@ void Map::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(_sprite, states);
 }
 
-bool Map::validadePos(sf::Sprite &sprite, sf::Vector2f movement) {
-    sf::Sprite spriteCopy = sprite;
-    spriteCopy.move(movement);
+void Map::move(Player *player, sf::Vector2f movement) {
+    sf::Sprite spriteCopy = player->getSprite();
+    sf::Rect<float> playerBounds = player->getRect();
+    sf::Rect<float> nextPos;
 
-    for (auto & rect : walls){
-        if (rect.intersects(sprite.getGlobalBounds())){
-            if (sprite.getGlobalBounds().left < rect.left
-            && sprite.getGlobalBounds().left + sprite.getGlobalBounds().width < rect.left + rect.width
-            && sprite.getGlobalBounds().top < rect.top + rect.height
-            && sprite.getGlobalBounds().top + rect.height > rect.top
-            ){
-                sprite.setPosition(rect.left - sprite.getGlobalBounds().width/2, sprite.getGlobalBounds().top + sprite.getGlobalBounds().height/2);
-            }
-            if (sprite.getGlobalBounds().left > rect.left
-            && sprite.getGlobalBounds().left + sprite.getGlobalBounds().width > rect.left + rect.width
-            && sprite.getGlobalBounds().top < rect.top + rect.height
-            && sprite.getGlobalBounds().top + rect.height > rect.top
-            ){
-                sprite.setPosition(rect.left + rect.width + sprite.getGlobalBounds().width/2, sprite.getGlobalBounds().top + sprite.getGlobalBounds().height/2);
+    for (auto & wallBounds : walls){
+        nextPos = playerBounds;
+        nextPos.left += movement.x;
+        nextPos.top += movement.y;
+
+        if (wallBounds.intersects(nextPos)){
+
+            //Bottom collision
+            if (playerBounds.top < wallBounds.top
+            && playerBounds.top + playerBounds.height < wallBounds.top + wallBounds.height
+            && playerBounds.left < wallBounds.left + wallBounds.width
+            && playerBounds.left + playerBounds.width > wallBounds.left
+            )
+            {
+                movement.y = 0.f;
             }
 
-            return false;
+            //Top collision
+            else if (playerBounds.top > wallBounds.top
+            && playerBounds.top + playerBounds.height > wallBounds.top + wallBounds.height
+            && playerBounds.left < wallBounds.left + wallBounds.width
+            && playerBounds.left + playerBounds.width > wallBounds.left
+            )
+            {
+                movement.y = 0.f;
+            }
+
+            //Right collision
+            if (playerBounds.left < wallBounds.left
+            && playerBounds.left + playerBounds.width < wallBounds.left + wallBounds.width
+            && playerBounds.top < wallBounds.top + wallBounds.height
+            && playerBounds.top + playerBounds.height > wallBounds.top
+            )
+            {
+                movement.x = 0.f;
+            }
+
+            //Left collision
+            else if (playerBounds.left > wallBounds.left
+            && playerBounds.left + playerBounds.width > wallBounds.left + wallBounds.width
+            && playerBounds.top < wallBounds.top + wallBounds.height
+            && playerBounds.top + playerBounds.height > wallBounds.top
+            )
+            {
+                movement.x = 0.f;
+            }
         }
-
-
     }
-    return true;
+    player->move(movement);
 }

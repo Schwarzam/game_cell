@@ -47,8 +47,7 @@ void Game::update()
     for (auto& entity : entities){
         entity.second->processEvents();
     }
-    //_player.processEvents();
-    //_player.update(deltaTime);
+
 }
 
 void Game::render()
@@ -59,6 +58,10 @@ void Game::render()
     _window.draw(map);
     for (auto& entity : entities){
         _window.draw(*entity.second);
+
+//        sf::CircleShape shape(5);
+//        shape.setPosition(entity.second->getPosition());
+//        _window.draw(shape);
     }
 
     //Count FPS

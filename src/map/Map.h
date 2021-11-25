@@ -8,12 +8,13 @@
 #include <nlohmann/json.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include "../Player.h"
 
 class Map : public sf::Drawable {
 public:
     explicit Map(std::string name);
 
-    static bool validadePos(sf::Sprite&, sf::Vector2f);
+    static void move(Player *player, sf::Vector2f movement);
 
     void loadNextMap();
 

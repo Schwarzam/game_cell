@@ -70,7 +70,7 @@ namespace Collision {
     /// roughly circular objects will be much more accurate
     //////
     bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
-
+    bool CircleTest(const sf::Sprite& Object1, const sf::Rect<float>& Object2);
     //////
     /// Test for bounding box collision using the Separating Axis Theorem
     /// Supports scaling and rotation

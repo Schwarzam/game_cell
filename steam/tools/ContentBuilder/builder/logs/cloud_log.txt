@@ -96,3 +96,46 @@
 [2021-11-21 11:17:25] [AppID 7] Successfully synced to ChangeNumber 17502146348310729576
 [2021-11-21 11:17:25] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
 [2021-11-21 11:17:25] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder/userdata/93642108/7/remotecache.vdf'
+
+
+[2021-11-24 20:30:17] [AppID 7] Starting sync (init,)
+[2021-11-24 20:30:17] [AppID 7] AutoCloud checking local state for user 93642108
+[2021-11-24 20:30:17] [AppID 7] (ValidateCache) File 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\7\remote\serverbrowser_hist.vdf' timestamp or SHA mismatch with cache - setting local changes
+[2021-11-24 20:30:17] [AppID 7] (ValidateCache) File 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\7\remote\sharedconfig.vdf' timestamp or SHA mismatch with cache - setting local changes
+[2021-11-24 20:30:17] [U:1:93642108] [AppID 7] Init cache request complete
+[2021-11-24 20:30:25] [AppID 7] Starting sync (init,)
+[2021-11-24 20:30:25] [AppID 7] AutoCloud checking local state for user 93642108
+[2021-11-24 20:30:26] [U:1:93642108] [AppID 7] Init cache request complete
+[2021-11-24 20:30:27] [Roaming Config] PerformSyncCloud - evaluating sync state
+[2021-11-24 20:30:27] [AppID 7] Starting sync (eval,)
+[2021-11-24 20:30:27] [AppID 7] AutoCloud checking local state for user 93642108
+[2021-11-24 20:30:27] [AppID 7] Need to sync from local change number '0' to global change number '16989897195824769471', but not attempting now
+[2021-11-24 20:30:27] [AppID 7] serverbrowser_hist.vdf has local changes but mismatch - creating a conflict. Local/Remote SHA: 54f27ce51f184b685a353dc04fc762eaabf9ea58 / 0728e4ec78017dcbf47e7fc398cff4eedc57c3b5, Timestamps: 1637551137 / 1637779624, persist state: 0 / 0
+[2021-11-24 20:30:27] [AppID 7] Sync conflict for file serverbrowser_hist.vdf
+[2021-11-24 20:30:27] [AppID 7] Eval complete
+[2021-11-24 20:30:27] [Roaming Config] OnRemoteStorageStateEvaluated - result OK
+[2021-11-24 20:30:27] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder/userdata/93642108/7/remotecache.vdf'
+[2021-11-24 20:30:27] [Roaming Config] PerformSyncCloud - conflict detected, accepting remote files
+[2021-11-24 20:30:27] [AppID 7] Starting sync (down,resolve,)
+[2021-11-24 20:30:28] [AppID 7] Attempting to sync from local change number '0' to global change number '16989897195824769471'
+[2021-11-24 20:30:28] [AppID 7] serverbrowser_hist.vdf already marked as conflicting. Local/Remote SHA: 54f27ce51f184b685a353dc04fc762eaabf9ea58 / 0728e4ec78017dcbf47e7fc398cff4eedc57c3b5, Local/Remote persist state: 0 / 0
+[2021-11-24 20:30:28] [AppID 7] Resolving file serverbrowser_hist.vdf from state 4, bUseLocal = false
+[2021-11-24 20:30:28] [AppID 7] Resolving file sharedconfig.vdf from state 3, bUseLocal = false
+[2021-11-24 20:30:28] [AppID 7] Need to download file serverbrowser_hist.vdf
+[2021-11-24 20:30:28] [AppID 7] Need to download file sharedconfig.vdf
+[2021-11-24 20:30:28] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-saopaulo.storage.googleapis.com' beginning. . .
+[2021-11-24 20:30:28] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-saopaulo.storage.googleapis.com' beginning. . .
+[2021-11-24 20:30:28] [AppID 7] HTTP download for file 'serverbrowser_hist.vdf' from host 'steamcloud-saopaulo.storage.googleapis.com' - Success.
+[2021-11-24 20:30:28] [AppID 7] HTTP download for file 'sharedconfig.vdf' from host 'steamcloud-saopaulo.storage.googleapis.com' - Success.
+[2021-11-24 20:30:28] [AppID 7] Download OK for file sharedconfig.vdf
+[2021-11-24 20:30:28] [AppID 7] Download OK for file serverbrowser_hist.vdf
+[2021-11-24 20:30:28] [AppID 7] Download complete, result OK
+[2021-11-24 20:30:28] [Roaming Config] OnRemoteStorageConflictResolution - result OK
+[2021-11-24 20:30:28] [AppID 7] Successfully synced to ChangeNumber 16989897195824769471
+[2021-11-24 20:30:28] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder/userdata/93642108/7/remotecache.vdf'
+[2021-11-24 20:30:30] [AppID 7] Starting sync (down,)
+[2021-11-24 20:30:30] [AppID 7] Currently already synced to global change number '16989897195824769471', should be nothing to download
+[2021-11-24 20:30:30] [AppID 7] Download complete in build list
+[2021-11-24 20:30:30] [AppID 7] Successfully synced to ChangeNumber 0
+[2021-11-24 20:30:30] [Roaming Config] OnRemoteStorageSyncedClient() - result OK
+[2021-11-24 20:30:30] [AppID 7] YldWriteCacheDirectoryToFile - saved to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder/userdata/93642108/7/remotecache.vdf'

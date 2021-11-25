@@ -123,6 +123,12 @@ namespace Collision
         return sf::Vector2f (AABB.left+AABB.width/2.f, AABB.top+AABB.height/2.f);
     }
 
+    sf::Vector2f GetSpriteCenter (const sf::Rect<float>& Object)
+    {
+        sf::FloatRect AABB = Object;
+        return sf::Vector2f (AABB.left+AABB.width/2.f, AABB.top+AABB.height/2.f);
+    }
+
     sf::Vector2f GetSpriteSize (const sf::Sprite& Object)
     {
         sf::IntRect OriginalSize = Object.getTextureRect();
@@ -130,7 +136,23 @@ namespace Collision
         return sf::Vector2f (OriginalSize.width*Scale.x, OriginalSize.height*Scale.y);
     }
 
+    sf::Vector2f GetSpriteSize (const sf::Rect<float>& Object)
+    {
+        return sf::Vector2f (Object.width, Object.height);
+    }
+
     bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
+        sf::Vector2f Obj1Size = GetSpriteSize(Object1);
+        sf::Vector2f Obj2Size = GetSpriteSize(Object2);
+        float Radius1 = (Obj1Size.x + Obj1Size.y) / 4;
+        float Radius2 = (Obj2Size.x + Obj2Size.y) / 4;
+
+        sf::Vector2f Distance = GetSpriteCenter(Object1)-GetSpriteCenter(Object2);
+
+        return (Distance.x * Distance.x + Distance.y * Distance.y <= (Radius1 + Radius2) * (Radius1 + Radius2));
+    }
+
+    bool CircleTest(const sf::Sprite& Object1, const sf::Rect<float>& Object2) {
         sf::Vector2f Obj1Size = GetSpriteSize(Object1);
         sf::Vector2f Obj2Size = GetSpriteSize(Object2);
         float Radius1 = (Obj1Size.x + Obj1Size.y) / 4;

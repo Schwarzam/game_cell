@@ -6,6 +6,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include "Player.h"
 #include <cmath>
+#include <iostream>
 #include "map/Map.h"
 
 Player::Player(const std::string &name, sf::RenderWindow *window) : Entity(name), _window(window) {
@@ -27,13 +28,10 @@ void Player::ProcessKeyboardInputs() {
         movement.x += velocity;
     }
 
-
     float deltaTime = MovementClock.restart().asSeconds();
     movement = movement * deltaTime;
 
-    if (Map::validadePos(_sprite, movement)){
-        _sprite.move(movement);
-    }
+    Map::move(this, movement);
 }
 
 void Player::processEvents() {
@@ -53,7 +51,6 @@ void Player::ProcessMouseInputs() {
 
     float rotation = (std::atan2((float)mousePosition.y - getPosition().y,
                                  (float)mousePosition.x - getPosition().x)) * 180 / PI;
-
 
     _sprite.setRotation(rotation + 90);
 }

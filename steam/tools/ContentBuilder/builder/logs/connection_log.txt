@@ -171,3 +171,41 @@
 [2021-11-20 16:11:19] [3,7] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
 [2021-11-20 16:11:19] [0,0] ConnectionDisconnected('I/O Operation Failed') : 'Session Replaced' (205.185.194.213:27023, WebSocket)
 [2021-11-20 16:11:19] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+
+
+[2021-11-24 20:30:08] Log session started
+[2021-11-24 20:30:08] [0,0] SetSteamID( [U:1:0] )
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (172.26.32.1)
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (172.26.32.1)
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (172.26.32.1)
+[2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-24 20:30:08] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:105::cdb9:c2c2]:80 ([2602:801:f005:105::cdb9:c2c2]:80)) - SUCCESS
+[2021-11-24 20:30:08] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:105::cdb9:c2c2]:80 ([2602:801:f005:105::cdb9:c2c2]:80)) - server indicated we are using ipv6, external address = '2804:431:c7d9:68b9:d060:4bb3:6143:f86e'
+[2021-11-24 20:30:08] IPv6 UDP connectivity test (ipv6check-udp.steamcontent.com / [2602:801:f005:100::cdb9:c204]:27019) - SUCCESS
+[2021-11-24 20:30:17] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-24 20:30:17] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-24 20:30:17] [0,0] Server says 50% of connections should be websockets, we rolled 97 - using UDP as default.
+[2021-11-24 20:30:17] [1,2] Connect() starting connection (eNetQOSLevelHigh, 205.185.194.213:27019, UDP)
+[2021-11-24 20:30:17] [1,2] ConnectionCompleted() (205.185.194.197:27018, UDP) local address (0.0.0.0:62901)
+[2021-11-24 20:30:18] [1,2] RecvMsgClientLogOnResponse() : [I:0:0] 'Account logon denied, need two-factor code'
+[2021-11-24 20:30:18] [1,2] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-24 20:30:18] [0,0] ConnectionDisconnected('Disconnected By Remote Host') : 'Account logon denied, need two-factor code' (205.185.194.197:27018, UDP)
+[2021-11-24 20:30:18] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2021-11-24 20:30:25] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-24 20:30:25] [0,0] Server says 50% of connections should be websockets, we rolled 90 - using UDP as default.
+[2021-11-24 20:30:25] [1,10] Connect() starting connection (eNetQOSLevelHigh, 205.185.194.213:27019, UDP)
+[2021-11-24 20:30:26] [1,10] ConnectionCompleted() (155.133.255.164:27020, UDP) local address (0.0.0.0:62901)
+[2021-11-24 20:30:27] [1,10] RecvMsgClientLogOnResponse() : [U:1:93642108] 'OK'
+[2021-11-24 20:30:27] CClientJobGetClientUpdateHosts: cached copy new expiration: Fri Nov 26 04:51:08 2021
+[2021-11-24 20:31:54] [3,10] RecvMsgClientLoggedOff('Session Replaced')
+[2021-11-24 20:31:54] [3,10] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-24 20:31:54] [0,0] ConnectionDisconnected('Disconnected By Remote Host') : 'Session Replaced' (155.133.255.164:27020, UDP)
+[2021-11-24 20:31:54] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect

@@ -18,7 +18,12 @@ public:
 
     virtual void processEvents();
     void setPosition(sf::Vector2f pos);
+    void setPosition(float x, float y);
+    virtual void move(sf::Vector2f tomove);
 
+    const sf::Sprite& getSprite() const;
+    const sf::Rect<float>& getRect() const;
+    const sf::Vector2f& getSpriteSize() const;
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
     std::shared_ptr<sf::Texture> _ptexture;
@@ -28,6 +33,8 @@ protected:
     float velocity = 5;
 
     sf::Sprite _sprite;
+    sf::Vector2f _spriteSize;
+    sf::Rect<float> playerRect;
 };
 
 

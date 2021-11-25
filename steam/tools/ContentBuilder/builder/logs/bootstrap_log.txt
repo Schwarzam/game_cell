@@ -98,3 +98,53 @@
 [2021-11-20 16:07:24] Verificando a instalação...
 [2021-11-20 16:07:24] Performing checksum verification of executable files
 [2021-11-20 16:07:25] Verification complete
+
+
+[2021-11-24 20:30:03] Startup - updater built Nov 19 2021 13:02:38
+[2021-11-24 20:30:03] Using the following download hosts for Public, Realm steamglobal
+[2021-11-24 20:30:03] 1. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2021-11-24 20:30:03] 2. https://cdn.akamai.steamstatic.com, /client/, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2021-11-24 20:30:03] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2021-11-24 20:30:03] Checking for update on startup
+[2021-11-24 20:30:03] Verificando se há atualizações...
+[2021-11-24 20:30:03] Downloading manifest: https://cdn.cloudflare.steamstatic.com/client/steam_cmd_win32
+[2021-11-24 20:30:04] Downloaded new manifest: /client/steam_cmd_win32 version 1637624355, installed version 1637358658, existing pending version 0
+[2021-11-24 20:30:04] Package file steamcmd_bins_win32.zip.vz.f5929b00d7f7b9ef546bb1d6ce96aa454b03c8ae_6132263 missing or incorrect size
+[2021-11-24 20:30:04] Package file steamcmd_steamservice_win32.zip.vz.969cc3ab322dd768ca7be13e94da837390ae7da6_1677826 missing or incorrect size
+[2021-11-24 20:30:04] Package file steamcmd_steamerrorreporter_win32.zip.ee90048ceaf832ed9427e1d0722c47947cbc9a9f missing or incorrect size
+[2021-11-24 20:30:04] Package file steamcmd_win32.zip.vz.66040521e7b685a6c774eee8c0cab90b65c42be3_1681470 missing or incorrect size
+[2021-11-24 20:30:04] Add pending download: https://cdn.cloudflare.steamstatic.com/client/steamcmd_bins_win32.zip.vz.f5929b00d7f7b9ef546bb1d6ce96aa454b03c8ae_6132263
+[2021-11-24 20:30:04] Add pending download: https://cdn.cloudflare.steamstatic.com/client/steamcmd_steamservice_win32.zip.vz.969cc3ab322dd768ca7be13e94da837390ae7da6_1677826
+[2021-11-24 20:30:04] Add pending download: https://cdn.cloudflare.steamstatic.com/client/steamcmd_steamerrorreporter_win32.zip.ee90048ceaf832ed9427e1d0722c47947cbc9a9f
+[2021-11-24 20:30:04] Add pending download: https://cdn.cloudflare.steamstatic.com/client/steamcmd_win32.zip.vz.66040521e7b685a6c774eee8c0cab90b65c42be3_1681470
+[2021-11-24 20:30:04] Baixando atualização (318 de 9,447 KB)...
+[2021-11-24 20:30:04] Baixando atualização (3,197 de 9,447 KB)...
+[2021-11-24 20:30:04] Baixando atualização (9,447 de 9,447 KB)...
+[2021-11-24 20:30:04] Download concluído.
+[2021-11-24 20:30:04] Saving metrics to disk (C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2021-11-24 20:30:04] uninstalled manifest found in C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\package\steam_cmd_win32 (1).
+[2021-11-24 20:30:04] Found pending update
+[2021-11-24 20:30:04] Instalando a atualização...
+[2021-11-24 20:30:04] Extraindo o pacote...
+[2021-11-24 20:30:06] Instalando a atualização...
+[2021-11-24 20:30:06] Committing NTFS transaction (0 non-transactional backup files)
+[2021-11-24 20:30:06] Executando limpeza...
+[2021-11-24 20:30:06] Atualização concluída, iniciando o Steamcmd...
+[2021-11-24 20:30:06] Shutdown
+
+
+[2021-11-24 20:30:06] Startup - updater built Nov 22 2021 14:06:24
+[2021-11-24 20:30:07] Loading cached metrics from disk (C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)
+[2021-11-24 20:30:07] Using the following download hosts for Public, Realm steamglobal
+[2021-11-24 20:30:07] 1. https://cdn.cloudflare.steamstatic.com, /client/, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2021-11-24 20:30:07] 2. https://cdn.akamai.steamstatic.com, /client/, Realm 'steamglobal', weight was 100, source = 'update_hosts_cached.vdf'
+[2021-11-24 20:30:07] 3. http://media.steampowered.com, /client/, Realm 'steamglobal', weight was 1, source = 'baked in'
+[2021-11-24 20:30:07] Checking for update on startup
+[2021-11-24 20:30:07] Verificando se há atualizações...
+[2021-11-24 20:30:07] Downloading manifest: https://cdn.cloudflare.steamstatic.com/client/steam_cmd_win32
+[2021-11-24 20:30:07] Download skipped: /client/steam_cmd_win32 version 1637624355, installed version 1637624355, existing pending version 0
+[2021-11-24 20:30:07] Nothing to do
+[2021-11-24 20:30:07] Verificando a instalação...
+[2021-11-24 20:30:07] Performing checksum verification of executable files
+[2021-11-24 20:30:08] Verification complete
+[2021-11-24 20:30:28] Clearing cached metrics (C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\package\steam_cmd_metrics.bin)

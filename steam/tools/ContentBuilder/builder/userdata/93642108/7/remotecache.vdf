@@ -1,14 +1,14 @@
 "7"
 {
-	"ChangeNumber"		"-944597725398822040"
+	"ChangeNumber"		"-1456846877884782145"
 	"serverbrowser_hist.vdf"
 	{
 		"root"		"0"
 		"size"		"289577"
-		"localtime"		"1637500943"
-		"time"		"1637500942"
-		"remotetime"		"1637500942"
-		"sha"		"fbafa3fc263b063c41c9d2176a6029e14b0f281d"
+		"localtime"		"1637790424"
+		"time"		"1637779624"
+		"remotetime"		"1637779624"
+		"sha"		"0728e4ec78017dcbf47e7fc398cff4eedc57c3b5"
 		"syncstate"		"1"
 		"persiststate"		"0"
 		"platformstosync2"		"-1"
@@ -17,7 +17,7 @@
 	{
 		"root"		"0"
 		"size"		"231"
-		"localtime"		"1637323358"
+		"localtime"		"1637334158"
 		"time"		"1637323358"
 		"remotetime"		"1637323358"
 		"sha"		"0fd493312e417dd8ef02f7d3741ac63f8f2ad5c3"
