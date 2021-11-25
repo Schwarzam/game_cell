@@ -12,10 +12,11 @@
 Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
                 map(Map("1"))
 {
-    view.setSize((float)_window.getSize().x, (float)_window.getSize().y);
+
 
     Entity *p1 = startMyPlayer("cleiton", &_window);
     p1->setPosition(sf::Vector2f(300, 300));
+
 }
 
 void Game::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
@@ -83,16 +84,16 @@ void Game::processEvents() {
             if (event.key.code == sf::Keyboard::Escape)
                 _window.close();
             if (event.key.code == sf::Keyboard::O){
-                _window.setView(view);
+                //_window.setView(view);
             }
             if (event.key.code == sf::Keyboard::L) {
-                _window.setView(view);
+                //_window.setView(view);
             }
         }
 
         else if (event.type == sf::Event::Resized) //keyboard input
         {
-            _window.setView(view);
+            //_window.setView(view);
         }
     }
 }

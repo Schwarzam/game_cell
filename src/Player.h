@@ -21,6 +21,7 @@ private:
     sf::Clock MovementClock;
     sf::RenderWindow *_window;
 
+    sf::View view;
 };
 
 

@@ -30,7 +30,7 @@ private:
 
 protected:
     sf::Vector2f movement;
-    float velocity = 5;
+    float velocity = 300;
 
     sf::Sprite _sprite;
     sf::Vector2f _spriteSize;

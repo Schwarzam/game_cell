@@ -28,7 +28,7 @@ private:
     void render();//< draw all the stuff
 
     sf::RenderWindow _window; //< the window use to display the game
-    sf::View view;
+
 
     FPS fps;
 };

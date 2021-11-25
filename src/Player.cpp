@@ -10,11 +10,11 @@
 #include "map/Map.h"
 
 Player::Player(const std::string &name, sf::RenderWindow *window) : Entity(name), _window(window) {
+    view = _window->getView();
 }
 
 void Player::ProcessKeyboardInputs() {
     movement = sf::Vector2f(0, 0);
-    velocity = 100;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
         movement.y -= velocity;
     }
@@ -31,12 +31,19 @@ void Player::ProcessKeyboardInputs() {
     float deltaTime = MovementClock.restart().asSeconds();
     movement = movement * deltaTime;
 
+    if (movement.x != 0 && movement.y != 0){
+        movement.x = (float) (movement.x / sqrt(2));
+        movement.y = (float) (movement.y / sqrt(2));
+    }
     Map::move(this, movement);
 }
 
 void Player::processEvents() {
     ProcessKeyboardInputs();
     ProcessMouseInputs();
+
+    view.setCenter(getPosition().x, getPosition().y);
+    _window->setView(view);
 }
 
 void Player::ProcessMouseInputs() {
@@ -45,12 +52,11 @@ void Player::ProcessMouseInputs() {
 
     }
     sf::Vector2<int> mousePosition = sf::Mouse::getPosition(*_window);
-    getPosition();
+    sf::Vector2f worldPos = _window->mapPixelToCoords(mousePosition);
 
     const float PI = 3.14159265;
-
-    float rotation = (std::atan2((float)mousePosition.y - getPosition().y,
-                                 (float)mousePosition.x - getPosition().x)) * 180 / PI;
+    float rotation = (std::atan2((float)worldPos.y - getPosition().y,
+                                 (float)worldPos.x - getPosition().x)) * 180 / PI;
 
     _sprite.setRotation(rotation + 90);
 }
