@@ -101,3 +101,24 @@
 [2021-11-24 20:30:27] 	Enabled features (1800):
 [2021-11-24 20:30:27] 		Library
 [2021-11-24 20:30:27] 		Test
+
+
+[2021-11-24 22:38:47] Setting parental settings for 93642108, account flags are 142840c5
+[2021-11-24 22:38:47] Settings dump:
+[2021-11-24 22:38:47] 	Account ID: 93642108
+[2021-11-24 22:38:47] 	Enabled: false
+[2021-11-24 22:38:47] 	Base list: 0 (Allow all games)
+[2021-11-24 22:38:47] 	No custom list
+[2021-11-24 22:38:47] 	Enabled features (1800):
+[2021-11-24 22:38:47] 		Library
+[2021-11-24 22:38:47] 		Test
+[2021-11-24 22:38:47] Disabling parental settings for 93642108, account flags are 142840c5
+[2021-11-24 22:38:47] Validating parental settings
+[2021-11-24 22:38:47] Settings dump:
+[2021-11-24 22:38:47] 	Account ID: 93642108
+[2021-11-24 22:38:47] 	Enabled: false
+[2021-11-24 22:38:47] 	Base list: 0 (Allow all games)
+[2021-11-24 22:38:47] 	No custom list
+[2021-11-24 22:38:47] 	Enabled features (1800):
+[2021-11-24 22:38:47] 		Library
+[2021-11-24 22:38:47] 		Test

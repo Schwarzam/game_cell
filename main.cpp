@@ -6,6 +6,8 @@
 #include "src/GameManager.h"
 #include "src/Game.h"
 
+#include "steam/isteamnetworkingutils.h"
+
 int main() {
     if ( SteamAPI_RestartAppIfNecessary( 1826930 ) ) // Substitua k_uAppIdInvalid com o AppID do seu aplicativo
         {
@@ -23,6 +25,8 @@ int main() {
     std::cout << psteamfriends->GetPersonaName() << std::endl;
 
     Game game;
+
+    SteamNetworkingUtils()->InitRelayNetworkAccess();
     game.runWithMinimumTimeSteps();
 
     return 0;

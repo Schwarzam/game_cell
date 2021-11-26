@@ -10,3 +10,6 @@
 
 
 [2021-11-24 20:30:17] Loaded 0 apps from install folder "C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
+
+
+[2021-11-24 22:38:37] Loaded 0 apps from install folder "C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".

@@ -62,3 +62,15 @@
 [2021-11-24 20:30:30] Flushed store 'userlocal' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
 [2021-11-24 20:30:31] Flushed store 'userlocal' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
 [2021-11-24 20:30:33] Flushed store 'userlocal' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+
+
+[2021-11-24 22:38:27] Loaded store 'install' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-24 22:38:27] Loaded store 'install' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-24 22:38:37] Loaded store 'install' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-24 22:38:37] Loaded store 'userlocal' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf' successfully
+[2021-11-24 22:38:38] Flushed store 'install' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-24 22:38:39] Flushed store 'install' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-24 22:38:47] Flushed store 'install' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-24 22:38:47] Flushed store 'userlocal' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-11-24 22:38:48] Flushed store 'userlocal' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-11-24 22:38:49] Flushed store 'install' to 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
