@@ -10,7 +10,7 @@
 
 
 Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
-                map(Map("1"))
+                map(Map("d2"))
 {
 
 

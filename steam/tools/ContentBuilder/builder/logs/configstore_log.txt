@@ -48,6 +48,19 @@
 [2021-11-20 16:07:58] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
 
 
+[2021-11-21 11:17:01] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-21 11:17:01] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-21 11:17:10] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-11-21 11:17:10] Loaded store 'userlocal' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf' successfully
+[2021-11-21 11:17:11] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-21 11:17:12] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-21 11:17:24] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-21 11:17:24] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-11-21 11:17:24] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-11-21 11:17:25] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-11-21 11:17:25] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+
+
 [2021-11-24 20:30:08] Loaded store 'install' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
 [2021-11-24 20:30:08] Loaded store 'install' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
 [2021-11-24 20:30:17] Loaded store 'install' from 'C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully

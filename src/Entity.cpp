@@ -14,7 +14,7 @@ Entity::Entity(const std::string& name) {
     _sprite.setTexture(*_ptexture);
     _sprite.setOrigin((float)_ptexture->getSize().x/2, (float)_ptexture->getSize().y/2);
 
-    _sprite.setScale(0.05, 0.05);
+    _sprite.setScale(0.1, 0.1);
 
     _spriteSize.x = (float)_sprite.getTexture()->getSize().x * _sprite.getScale().x;
     _spriteSize.y = (float)_sprite.getTexture()->getSize().y * _sprite.getScale().y;

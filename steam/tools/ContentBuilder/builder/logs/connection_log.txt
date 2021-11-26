@@ -173,6 +173,71 @@
 [2021-11-20 16:11:19] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
 
 
+[2021-11-21 11:17:01] Log session started
+[2021-11-21 11:17:01] [0,0] SetSteamID( [U:1:0] )
+[2021-11-21 11:17:01] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.0.174)
+[2021-11-21 11:17:01] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-21 11:17:01] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.0.174)
+[2021-11-21 11:17:01] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-21 11:17:01] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.0.174)
+[2021-11-21 11:17:01] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-11-21 11:17:02] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:105::cdb9:c2c2]:80 ([2602:801:f005:105::cdb9:c2c2]:80)) - SUCCESS
+[2021-11-21 11:17:02] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:105::cdb9:c2c2]:80 ([2602:801:f005:105::cdb9:c2c2]:80)) - server indicated we are using ipv6, external address = '2804:14d:32a3:8a04:f8b7:f4fb:ee56:da2'
+[2021-11-21 11:17:02] IPv6 UDP connectivity test (ipv6check-udp.steamcontent.com / [2602:801:f005:105::cdb9:c2c3]:27019) - SUCCESS
+[2021-11-21 11:17:10] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-21 11:17:10] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-21 11:17:10] [0,0] Server says 50% of connections should be websockets, we rolled 34 - using WebSockets as default.
+[2021-11-21 11:17:10] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27023) starting...
+[2021-11-21 11:17:10] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27023) starting...
+[2021-11-21 11:17:10] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27026) starting...
+[2021-11-21 11:17:10] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27025) starting...
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27025) results: 48.8386ms + load 58.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27022) starting...
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27023) results: 41.8625ms + load 61.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:443) starting...
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27026) results: 34.7509ms + load 60.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27024) starting...
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27023) results: 56.3345ms + load 60.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27025) starting...
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm1-gru1.cm.steampowered.com:27022) results: 55.0346ms + load 61.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() stopping after 400.00ms timeout and using good enough host (cm1-gru1.cm.steampowered.com:27026)
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27024) results: 48.1129ms + load 63.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:443) results: 41.1720ms + load 63.0000
+[2021-11-21 11:17:11] [0,0] PingWebSocketCM() (cm2-gru1.cm.steampowered.com:27025) results: 34.2131ms + load 59.0000
+[2021-11-21 11:17:11] [1,3] Connect() starting connection (eNetQOSLevelHigh, cm2-gru1.cm.steampowered.com:27025, WebSocket)
+[2021-11-21 11:17:11] [1,3] ConnectionCompleted() (205.185.194.213:27025, WebSocket) local address (192.168.0.174:58823)
+[2021-11-21 11:17:11] [1,3] RecvMsgClientLogOnResponse() : [I:0:0] 'Account logon denied, need two-factor code'
+[2021-11-21 11:17:11] [1,3] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-21 11:17:11] [0,0] ConnectionDisconnected('I/O Operation Failed') : 'Account logon denied, need two-factor code' (205.185.194.213:27025, WebSocket)
+[2021-11-21 11:17:11] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2021-11-21 11:17:22] [0,0] SetSteamID( [U:1:93642108] )
+[2021-11-21 11:17:22] [0,0] Server says 50% of connections should be websockets, we rolled 75 - using UDP as default.
+[2021-11-21 11:17:22] [1,2] Connect() starting connection (eNetQOSLevelHigh, 205.185.194.213:27020, UDP)
+[2021-11-21 11:17:23] [1,2] ConnectionCompleted() (205.185.194.213:27020, UDP) local address (0.0.0.0:61309)
+[2021-11-21 11:17:23] [1,2] RecvMsgClientLogOnResponse() : [U:1:93642108] 'OK'
+[2021-11-21 11:17:23] CClientJobGetClientUpdateHosts: cached version not expired
+[2021-11-21 11:19:33] [3,2] RecvMsgClientLoggedOff('Session Replaced')
+[2021-11-21 11:19:33] [3,2] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-11-21 11:19:33] [0,0] ConnectionDisconnected('Disconnected By Remote Host') : 'Session Replaced' (205.185.194.213:27020, UDP)
+[2021-11-21 11:19:33] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2021-11-21 12:17:23] CClientJobGetClientUpdateHosts: cached version not expired
+[2021-11-21 12:54:01] CCMInterface::OnSystemPowerStateSuspend
+[2021-11-21 12:54:01] CCMInterface::OnSystemPowerStateSuspend
+[2021-11-21 12:54:01] CCMInterface::OnSystemPowerStateSuspend
+[2021-11-21 12:56:26] CCMInterface::OnSystemPowerStateResume -- CM interface reconnecting
+[2021-11-21 12:56:26] CCMInterface::OnSystemPowerStateResume -- CM interface reconnecting
+[2021-11-21 12:56:26] CCMInterface::OnSystemPowerStateResume -- CM interface reconnecting
+[2021-11-21 13:17:24] CClientJobGetClientUpdateHosts: cached version not expired
+[2021-11-21 13:41:23] CCMInterface::OnSystemPowerStateSuspend
+[2021-11-21 13:41:23] CCMInterface::OnSystemPowerStateSuspend
+[2021-11-21 13:41:23] CCMInterface::OnSystemPowerStateSuspend
+[2021-11-21 16:41:26] CClientJobGetClientUpdateHosts: cached version not expired
+[2021-11-21 18:20:13] CClientJobGetClientUpdateHosts: cached version not expired
+[2021-11-21 18:20:14] CCMInterface::OnSystemPowerStateResume -- CM interface reconnecting
+[2021-11-21 18:20:14] CCMInterface::OnSystemPowerStateResume -- CM interface reconnecting
+[2021-11-21 18:20:14] CCMInterface::OnSystemPowerStateResume -- CM interface reconnecting
+
+
 [2021-11-24 20:30:08] Log session started
 [2021-11-24 20:30:08] [0,0] SetSteamID( [U:1:0] )
 [2021-11-24 20:30:08] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
