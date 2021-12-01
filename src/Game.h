@@ -25,9 +25,14 @@ public:
     Map map;
     State gameState;
 
+
 private:
+    State lastGameState;
+
     void processEvents();//< Process events
-    static void update(); //< do some updates
+    void processGameState();
+
+    void update(); //< do some updates
     void render();//< draw all the stuff
 
     sf::RenderWindow _window; //< the window use to display the game

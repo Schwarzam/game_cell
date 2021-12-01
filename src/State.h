@@ -8,10 +8,12 @@
 enum State {
     Menu,
     Loading,
-    StaringGame,
+    StartGame,
     PausingGame,
     ResumingGame,
-    QuitGame
+    QuitGame,
+    Lobby,
+    RunningGame
 };
 
 

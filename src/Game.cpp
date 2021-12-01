@@ -10,8 +10,12 @@
 
 
 Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
-                map(Map("d2")), menu(&_window)
+                map(Map("d2")), menu(&_window, &gameState)
 {
+    menu.openClose();
+    menu.createMainMenu();
+
+    gameState = Menu;
 
     Entity *p1 = startMyPlayer("cleiton", &_window);
     p1->setPosition(sf::Vector2f(300, 300));
@@ -44,10 +48,13 @@ void Game::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
 
 void Game::update()
 {
-    for (auto& entity : entities){
-        entity.second->processEvents();
+    if (gameState == StartGame){
+        for (auto& entity : entities){
+            entity.second->processEvents();
+        }
     }
 
+    processGameState();
 }
 
 void Game::render()
@@ -55,13 +62,17 @@ void Game::render()
     //Clear screen
     _window.clear(sf::Color(155, 155, 155));
 
-    _window.draw(map);
-    for (auto& entity : entities){
-        _window.draw(*entity.second);
+    if (menu.isOpened()){
+        menu.render();
+    }else{
+        _window.draw(map);
+        for (auto& entity : entities){
+            _window.draw(*entity.second);
 
-//        sf::CircleShape shape(5);
-//        shape.setPosition(entity.second->getPosition());
-//        _window.draw(shape);
+            //        sf::CircleShape shape(5);
+            //        shape.setPosition(entity.second->getPosition());
+            //        _window.draw(shape);
+        }
     }
 
     //Count FPS
@@ -73,6 +84,11 @@ void Game::render()
 
 void Game::processEvents() {
     sf::Event event{};
+
+    if(menu.isOpened()){
+        menu.processMenuUpdates();
+    }
+
     while(_window.pollEvent(event))
     {
         if (event.type == sf::Event::Closed)//Close window
@@ -80,8 +96,14 @@ void Game::processEvents() {
 
         else if (event.type == sf::Event::KeyPressed) //keyboard input
         {
-            if (event.key.code == sf::Keyboard::Escape)
-                _window.close();
+            if (event.key.code == sf::Keyboard::Escape){
+                menu.clear();
+                menu.createPauseMenu();
+
+                menu.openClose();
+                gameState = PausingGame;
+            }
+
             if (event.key.code == sf::Keyboard::O){
                 //_window.setView(view);
             }
@@ -95,5 +117,24 @@ void Game::processEvents() {
             //_window.setView(view);
         }
     }
+}
+
+void Game::processGameState() {
+
+    if (gameState != lastGameState){
+        if(gameState == StartGame){
+            menu.openClose();
+        }
+
+        if(gameState == QuitGame){
+            _window.close();
+        }
+
+        if(gameState == Lobby){
+            menu.createMainMenu();
+        }
+    }
+
+    lastGameState = gameState;
 }
 
