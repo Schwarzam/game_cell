@@ -10,6 +10,8 @@
 #include "GameManager.h"
 #include "utils/fps.h"
 #include "map/Map.h"
+#include "utils/BaseMenu.h"
+#include "State.h"
 
 class Game : public GameManager {
 public:
@@ -21,6 +23,7 @@ public:
 
 public:
     Map map;
+    State gameState;
 
 private:
     void processEvents();//< Process events
@@ -28,7 +31,7 @@ private:
     void render();//< draw all the stuff
 
     sf::RenderWindow _window; //< the window use to display the game
-
+    BaseMenu menu;
 
     FPS fps;
 };

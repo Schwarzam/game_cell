@@ -10,9 +10,8 @@
 
 
 Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
-                map(Map("d2"))
+                map(Map("d2")), menu(&_window)
 {
-
 
     Entity *p1 = startMyPlayer("cleiton", &_window);
     p1->setPosition(sf::Vector2f(300, 300));

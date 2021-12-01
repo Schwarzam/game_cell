@@ -3,7 +3,7 @@ set(PROJECT_NAME thecell)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
-add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Game.cpp src/Game.h src/utils/fps.h src/Player.cpp src/Player.h src/map/Map.cpp src/map/Map.h)
+add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Game.cpp src/Game.h src/utils/fps.h src/Player.cpp src/Player.h src/map/Map.cpp src/map/Map.h src/utils/BaseMenu.cpp src/utils/BaseMenu.h src/State.h)
 
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR}/)
 
