@@ -11,7 +11,7 @@
 nlohmann::json Map::map_metadata;
 std::vector<sf::Rect<float>> Map::walls;
 
-Map::Map(std::string folder) {
+Map::Map(const std::string& folder) {
     mapfolder = "maps/" + folder + "/";
     _ptexture = Assets::Acquire(mapfolder + "static");
     _sprite.setTexture(*_ptexture);

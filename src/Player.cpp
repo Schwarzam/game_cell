@@ -9,8 +9,9 @@
 #include <iostream>
 #include "map/Map.h"
 
-Player::Player(const std::string &name, sf::RenderWindow *window) : Entity(name), _window(window) {
-    view = _window->getView();
+Player::Player(const std::string &name, sf::RenderWindow *window, sf::Vector2f position) : Entity(name), _window(window) {
+    view = window->getView();
+    setPosition(position);
 }
 
 void Player::ProcessKeyboardInputs() {
@@ -52,6 +53,7 @@ void Player::ProcessMouseInputs() {
 
     }
     sf::Vector2<int> mousePosition = sf::Mouse::getPosition(*_window);
+
     sf::Vector2f worldPos = _window->mapPixelToCoords(mousePosition);
 
     const float PI = 3.14159265;

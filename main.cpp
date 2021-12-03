@@ -4,7 +4,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "src/GameManager.h"
-#include "src/Game.h"
+#include "src/Core.h"
 
 #include "steam/isteamnetworkingutils.h"
 
@@ -24,9 +24,7 @@ int main() {
     ISteamFriends * psteamfriends = SteamFriends();
     std::cout << psteamfriends->GetPersonaName() << std::endl;
 
-    Game game;
-
-    SteamNetworkingUtils()->InitRelayNetworkAccess();
+    Core game;
     game.runWithMinimumTimeSteps();
 
     return 0;

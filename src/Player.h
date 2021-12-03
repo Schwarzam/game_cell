@@ -11,7 +11,7 @@
 
 class Player : public Entity {
 public:
-    explicit Player(const std::string& name, sf::RenderWindow *window);
+    explicit Player(const std::string& name, sf::RenderWindow *window, sf::Vector2f position);
 
     void processEvents() override;
     void ProcessKeyboardInputs();

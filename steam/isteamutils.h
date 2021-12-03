@@ -54,7 +54,7 @@ enum EFloatingGamepadTextInputMode
 enum ETextFilteringContext
 {
 	k_ETextFilteringContextUnknown = 0,	// Unknown context
-	k_ETextFilteringContextGameContent = 1,	// Game content, only legally required filtering is performed
+	k_ETextFilteringContextGameContent = 1,	// Core content, only legally required filtering is performed
 	k_ETextFilteringContextChat = 2,	// Chat from another player
 	k_ETextFilteringContextName = 3,	// Character or item name
 };
@@ -113,7 +113,7 @@ public:
 	virtual ESteamAPICallFailure GetAPICallFailureReason( SteamAPICall_t hSteamAPICall ) = 0;
 	virtual bool GetAPICallResult( SteamAPICall_t hSteamAPICall, void *pCallback, int cubCallback, int iCallbackExpected, bool *pbFailed ) = 0;
 
-	// Deprecated. Applications should use SteamAPI_RunCallbacks() instead. Game servers do not need to call this function.
+	// Deprecated. Applications should use SteamAPI_RunCallbacks() instead. Core servers do not need to call this function.
 	STEAM_PRIVATE_API( virtual void RunFrame() = 0; )
 
 	// returns the number of IPC calls made since the last time this function was called

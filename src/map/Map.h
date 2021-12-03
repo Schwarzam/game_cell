@@ -12,11 +12,8 @@
 
 class Map : public sf::Drawable {
 public:
-    explicit Map(std::string name);
-
+    explicit Map(const std::string& name);
     static void move(Player *player, sf::Vector2f movement);
-
-    void loadNextMap();
 
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;

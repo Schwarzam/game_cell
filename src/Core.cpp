@@ -2,27 +2,25 @@
 // Created by gusta on 20/11/2021.
 //
 
-#include "Game.h"
+#include "Core.h"
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <iostream>
+#include <SFML/Graphics/CircleShape.hpp>
 
 #include "../steam/steam_api.h"
 
 
-Game::Game() : _window(sf::VideoMode(1200, 720),"Game hld", sf::Style::Resize),
-                map(Map("d2")), menu(&_window, &gameState)
+Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
+                menu(&_window, &gameState), game(GameManager(&_window))
 {
     menu.openClose();
     menu.createMainMenu();
 
     gameState = Menu;
-
-    Entity *p1 = startMyPlayer("cleiton", &_window);
-    p1->setPosition(sf::Vector2f(300, 300));
-
 }
 
-void Game::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
+void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
     sf::Clock clock;
 
     sf::Time timeSinceLastUpdate;
@@ -31,14 +29,12 @@ void Game::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
     while (_window.isOpen())
     {
         processEvents();
-
         timeSinceLastUpdate = clock.restart();
         while (timeSinceLastUpdate > TimePerFrame)
         {
             timeSinceLastUpdate -= TimePerFrame;
             update();
         }
-
         SteamAPI_RunCallbacks();
 
         update();
@@ -46,33 +42,28 @@ void Game::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
     }
 }
 
-void Game::update()
+void Core::update()
 {
-    if (gameState == StartGame){
-        for (auto& entity : entities){
-            entity.second->processEvents();
-        }
+    if (game.running()){
+        game.processEvents();
     }
-
-    processGameState();
+    processCoreState();
 }
 
-void Game::render()
+void Core::render()
 {
     //Clear screen
     _window.clear(sf::Color(155, 155, 155));
 
+    sf::CircleShape shape(50);
+    shape.setPosition(200, 200);
+    _window.draw(shape);
+
+
     if (menu.isOpened()){
         menu.render();
     }else{
-        _window.draw(map);
-        for (auto& entity : entities){
-            _window.draw(*entity.second);
-
-            //        sf::CircleShape shape(5);
-            //        shape.setPosition(entity.second->getPosition());
-            //        _window.draw(shape);
-        }
+        game.render();
     }
 
     //Count FPS
@@ -82,7 +73,7 @@ void Game::render()
     _window.display();
 }
 
-void Game::processEvents() {
+void Core::processEvents() {
     sf::Event event{};
 
     if(menu.isOpened()){
@@ -119,11 +110,12 @@ void Game::processEvents() {
     }
 }
 
-void Game::processGameState() {
+void Core::processCoreState() {
 
     if (gameState != lastGameState){
         if(gameState == StartGame){
             menu.openClose();
+            game.startGame("d2");
         }
 
         if(gameState == QuitGame){
@@ -132,6 +124,8 @@ void Game::processGameState() {
 
         if(gameState == Lobby){
             menu.createMainMenu();
+
+            game.endGame();
         }
     }
 

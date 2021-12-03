@@ -2,8 +2,8 @@
 // Created by gusta on 20/11/2021.
 //
 
-#ifndef THECELL_GAME_H
-#define THECELL_GAME_H
+#ifndef THECELL_CORE_H
+#define THECELL_CORE_H
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Mouse.hpp>
@@ -13,24 +13,25 @@
 #include "utils/BaseMenu.h"
 #include "State.h"
 
-class Game : public GameManager {
+class Core  {
 public:
-    Game(); //< constructor
-    Game(const Game&) = delete;
-    Game& operator=(const Game&) = delete;
+    Core(); //< constructor
+    Core(const Core&) = delete;
+    Core& operator=(const Core&) = delete;
 
     void runWithMinimumTimeSteps(int minimum_frame_per_seconds=30);
 
 public:
-    Map map;
+
     State gameState;
 
 
 private:
     State lastGameState;
+    GameManager game;
 
     void processEvents();//< Process events
-    void processGameState();
+    void processCoreState();
 
     void update(); //< do some updates
     void render();//< draw all the stuff
@@ -42,4 +43,4 @@ private:
 };
 
 
-#endif //THECELL_GAME_H
+#endif //THECELL_CORE_H

@@ -31,3 +31,15 @@
 
 [2021-11-24 22:38:27] Inilializing System Manager
 [2021-11-24 22:38:27] Suspend inhibited
+
+
+[2021-11-26 18:54:11] Inilializing System Manager
+[2021-11-26 18:54:11] Suspend inhibited
+[2021-11-26 19:39:40] Suspending
+[2021-11-26 19:39:40] Suspend inhibit released
+[2021-11-26 20:17:02] Resumed
+[2021-11-26 20:17:02] Suspend inhibited
+[2021-11-26 20:38:58] Suspending
+[2021-11-26 20:38:58] Suspend inhibit released
+[2021-11-26 20:41:26] Resumed
+[2021-11-26 20:41:26] Suspend inhibited

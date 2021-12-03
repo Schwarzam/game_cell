@@ -10,19 +10,27 @@
 #include <SFML/System/Thread.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Entity.h"
+#include "map/Map.h"
 
 class GameManager {
 public:
-    GameManager() = default;
+    explicit GameManager(sf::RenderWindow *window);
 
-    static Entity *startMyPlayer(const std::string& name, sf::RenderWindow *window);
+    static Entity *startMyPlayer(const std::string& name, sf::RenderWindow *window, sf::Vector2f pos);
     static Entity *startEntity(const std::string& name);
 
-//    static void sortRender();
-//    static void gameEvents();
-//
-//    static bool validatePos(Entity *ent, sf::Sprite& _sprite, const sf::Vector2f &movement);
+    void startGame(const std::string& mapname);
+    void endGame();
+
+    bool running() const;
+    void processEvents();
+
+    void render();
 private:
+    sf::RenderWindow *_window;
+    Map *map = nullptr;
+
+    bool isRunning{};
 
 protected:
     static std::vector<std::pair<float, Entity*>> entities;
