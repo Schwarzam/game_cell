@@ -6,10 +6,21 @@
 #define GAME_CELL_SERVER_H
 
 
+#include "../steam/steamnetworkingtypes.h"
+
 class Server {
 public:
     Server();
+    ~Server();
 
+    void run();
+
+private:
+    // Socket to listen for new connections on
+    HSteamListenSocket m_hListenSocket;
+
+    // Poll group used to receive messages from all clients at once
+    HSteamNetPollGroup m_hNetPollGroup;
 
 };
 

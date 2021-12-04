@@ -9,6 +9,8 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "../steam/steam_api.h"
+#include "Server.h"
+#include "utils/ServerMenu.h"
 
 
 Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
@@ -16,6 +18,8 @@ Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
 {
     menu.openClose();
     menu.createMainMenu();
+
+    server = new Server();
 
     gameState = Menu;
 }
@@ -95,11 +99,9 @@ void Core::processEvents() {
                 gameState = PausingGame;
             }
 
-            if (event.key.code == sf::Keyboard::O){
+            if (event.key.code == sf::Keyboard::P){
                 //_window.setView(view);
-            }
-            if (event.key.code == sf::Keyboard::L) {
-                //_window.setView(view);
+
             }
         }
 
@@ -119,12 +121,12 @@ void Core::processCoreState() {
         }
 
         if(gameState == QuitGame){
+            delete server;
             _window.close();
         }
 
         if(gameState == Lobby){
             menu.createMainMenu();
-
             game.endGame();
         }
     }

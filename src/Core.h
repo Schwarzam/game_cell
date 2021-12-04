@@ -12,6 +12,7 @@
 #include "map/Map.h"
 #include "utils/BaseMenu.h"
 #include "State.h"
+#include "Server.h"
 
 class Core  {
 public:
@@ -27,6 +28,8 @@ public:
 
 
 private:
+    Server *server;
+
     State lastGameState;
     GameManager game;
 
