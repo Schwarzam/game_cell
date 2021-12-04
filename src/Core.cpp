@@ -57,12 +57,7 @@ void Core::update()
 void Core::render()
 {
     //Clear screen
-    _window.clear(sf::Color(155, 155, 155));
-
-    sf::CircleShape shape(50);
-    shape.setPosition(200, 200);
-    _window.draw(shape);
-
+    _window.clear(sf::Color(59, 59, 59));
 
     if (menu.isOpened()){
         menu.render();
@@ -118,6 +113,10 @@ void Core::processCoreState() {
         if(gameState == StartGame){
             menu.openClose();
             game.startGame("d2");
+        }
+
+        if(gameState == ResumingGame){
+            menu.openClose();
         }
 
         if(gameState == QuitGame){

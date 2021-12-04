@@ -6,19 +6,37 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include "BaseMenu.h"
+#include "../Assets.h"
+#include "../../steam/steam_api.h"
 
 
-BaseMenu::BaseMenu(sf::RenderWindow *window, State *gameState) : _window(window), gameState(gameState) {
-    font.loadFromFile("assets/fonts/MPLUS1Code-Regular.ttf");
+BaseMenu::BaseMenu(sf::RenderWindow *window, State *gameState) :_window(window), gameState(gameState), buttonsCount(0) {
+    font.loadFromFile("assets/fonts/Bungee-Regular.ttf");
+
+    _ptexture = Assets::Acquire("utils/menuSelected");
+    _spriteSelected.setTexture(*_ptexture);
+    _spriteSelected.setScale(sf::Vector2f(0.2f, 0.2f));
+
+    _ptextureBackground = Assets::Acquire("utils/background");
+    _spriteBackground.setTexture(*_ptextureBackground);
+    _spriteBackground.setScale(sf::Vector2f(0.3f, 0.3f));
 }
 
 void BaseMenu::clear() {
-    selected = 0;
+    selected = 0, buttonsCount = 0;
     MenuButtons.clear();
 }
 
 void BaseMenu::addButton(const std::string& buttonName, State action) {
-    MenuButtons.emplace_back(buttonName, action);
+    Button b1;
+    b1.name = buttonName;
+    b1.buttonOperation = action;
+    b1._ptexture = Assets::Acquire("utils/menuButton");
+    b1._sprite.setTexture(*b1._ptexture);
+    b1._sprite.setScale(sf::Vector2f(0.2f, 0.2f));
+
+    MenuButtons.emplace_back(b1);
+    buttonsCount++;
 }
 
 bool BaseMenu::checkIfButtonCanBePressed() {
@@ -33,37 +51,58 @@ bool BaseMenu::checkIfButtonCanBePressed() {
 
 void BaseMenu::processMenuUpdates() {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        if(checkIfButtonCanBePressed()){selected ++;}
+        if(checkIfButtonCanBePressed()){
+            if (selected + 1 < buttonsCount){selected ++;}
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-        if(checkIfButtonCanBePressed()){selected --;}
+        if(checkIfButtonCanBePressed()){
+            if (selected - 1 >= 0){selected --;}
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
-        if(checkIfButtonCanBePressed()){
-            *gameState = MenuButtons[selected].second;
-        }
+        if(checkIfButtonCanBePressed()){*gameState = MenuButtons[selected].buttonOperation;}
     }
 }
 
 void BaseMenu::render() {
+    //Draw background
+    _spriteBackground.setPosition(_window->getView().getCenter().x - _window->getView().getSize().x / 2 - 50,
+                                  _window->getView().getCenter().y -_window->getView().getSize().y / 2 + 100);
 
+    _window->draw(_spriteBackground);
+
+    //Drawn name on screen
+    sf::Text textName;
+    textName.setFont(font);
+    textName.setString(SteamFriends()->GetPersonaName());
+    textName.setPosition(_window->getView().getCenter().x - _window->getView().getSize().x / 2 + 50,
+                     _window->getView().getCenter().y -_window->getView().getSize().y / 2 + 50);
+    textName.setCharacterSize(32);
+    _window->draw(textName);
+
+    //Draw each of the menu buttons
     int height = 100, count = 0;
+    sf::Text text;
     for (auto& item : MenuButtons){
-
-        sf::Text text;
+        sf::Vector2f position = sf::Vector2f(_window->getView().getCenter().x,
+                                             _window->getView().getCenter().y -_window->getView().getSize().y / 2 + (float)height);
         text.setFont(font);
-        text.setString(item.first);
+        text.setString(item.name);
         text.setCharacterSize(32);
+
+        text.setPosition(position.x + 24, position.y + 10);
+        text.setFillColor(sf::Color::White);
+
         if(selected == count){
-            text.setFillColor(sf::Color::Red);
+            _spriteSelected.setPosition(position);
+            _window->draw(_spriteSelected);
         }else{
-            text.setFillColor(sf::Color::Black);
+            item._sprite.setPosition(position);
+            _window->draw(item._sprite);
         }
-
-        text.setPosition(_window->getView().getCenter().x,
-                         _window->getView().getCenter().y -_window->getView().getSize().y / 2 + height);
-
         _window->draw(text);
+
         height += 100;
         count ++;
     };
@@ -85,8 +124,8 @@ void BaseMenu::createMainMenu() {
 
 void BaseMenu::createPauseMenu() {
     clear();
-    addButton("Resume", RunningGame);
-    addButton("Return to Lobby", Lobby);
+    addButton("Resume", ResumingGame);
+    addButton("Lobby", Lobby);
 }
 
 

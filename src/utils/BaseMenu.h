@@ -12,7 +12,16 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <memory>
 #include "../State.h"
+
+struct Button{
+    std::string name;
+    State buttonOperation{};
+    std::shared_ptr<sf::Texture> _ptexture;
+    sf::Sprite _sprite;
+};
 
 class BaseMenu {
 public:
@@ -34,15 +43,21 @@ private:
     State *gameState;
     sf::Font font;
 
-    std::vector<std::pair<std::string, State>> MenuButtons;
+    std::vector<Button> MenuButtons;
     sf::RenderWindow *_window;
 
     bool checkIfButtonCanBePressed();
     sf::Clock selectionClock;
     float totalDelta;
 
-    int selected = 0;
+    int selected = 0, buttonsCount = 0;
+    std::shared_ptr<sf::Texture> _ptexture;
+    sf::Sprite _spriteSelected;
+
     bool isopen = false;
+
+    std::shared_ptr<sf::Texture> _ptextureBackground;
+    sf::Sprite _spriteBackground;
 };
 
 
