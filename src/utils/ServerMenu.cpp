@@ -68,7 +68,7 @@ void ServerMenu::RefreshInternetServers()
     MatchMakingKeyValuePair_t *pFilter = pFilters;
 
     strncpy_s( pFilters[ 0 ].m_szKey, "gamedir", sizeof(pFilters[ 0 ].m_szKey) );
-    strncpy_s( pFilters[ 0 ].m_szValue, "spacewar", sizeof(pFilters[ 0 ].m_szValue) );
+    strncpy_s( pFilters[ 0 ].m_szValue, "thecell", sizeof(pFilters[ 0 ].m_szValue) );
 
     strncpy_s( pFilters[ 1 ].m_szKey, "secure", sizeof(pFilters[ 1 ].m_szKey) );
     strncpy_s( pFilters[ 1 ].m_szValue, "1", sizeof(pFilters[ 1 ].m_szValue) );
@@ -111,7 +111,9 @@ void ServerMenu::ServerResponded( HServerListRequest hReq, int iServer )
 void ServerMenu::ServerFailedToRespond( HServerListRequest hReq, int iServer )
 {
     // Assert( hReq == m_hServerListRequest );
-
+    std::cout << "Server failed to respond" << std::endl;
+    gameserveritem_t *pServer = SteamMatchmakingServers()->GetServerDetails( hReq, iServer );
+    std::cout << pServer->m_NetAdr.GetConnectionAddressString() << pServer->m_nPing << std::endl;
     // bugbug jmccaskey - why would we ever need this?  Remove servers from our list I guess?
 }
 
@@ -122,7 +124,7 @@ void ServerMenu::ServerFailedToRespond( HServerListRequest hReq, int iServer )
 void ServerMenu::RefreshComplete( HServerListRequest hReq, EMatchMakingServerResponse response )
 {
     // Assert( hReq == m_hServerListRequest );
-
+    std::cout << "Refresh complete" << std::endl;
     // Doesn't really matter to us whether the response tells us the refresh succeeded or failed,
     // we just track whether we are done refreshing or not
     m_bRequestingServers = false;
