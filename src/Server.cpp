@@ -9,7 +9,7 @@
 
 #define INADDR_ANY ((unsigned long int) 0x00000000);
 #define MASTER_SERVER_UPDATER_PORT 27016
-#define PORT 27016
+#define PORT 27015
 
 Server::Server() {
     uint32 unIP = INADDR_ANY;
@@ -55,5 +55,15 @@ void Server::run() {
     SteamGameServer_RunCallbacks();
 
 
+}
+
+void Server::SendUpdatedServerDetailsToSteam() {
+    // to send the player count.  The player count is maintained by steam and you should use the player
+    // creation/authentication functions to maintain your player count.
+    SteamGameServer()->SetMaxPlayerCount( 4 );
+    SteamGameServer()->SetPasswordProtected( false );
+    SteamGameServer()->SetServerName( "Server Teste" );
+    SteamGameServer()->SetBotPlayerCount( 0 ); // optional, defaults to zero
+    SteamGameServer()->SetMapName( "d2" );
 }
 

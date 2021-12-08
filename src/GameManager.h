@@ -11,6 +11,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Entity.h"
 #include "map/Map.h"
+#include "utils/ServerMenu.h"
 
 class GameManager {
 public:
@@ -27,6 +28,8 @@ public:
 
     void render();
 private:
+    ServerMenu servers;
+
     sf::RenderWindow *_window;
     Map *map = nullptr;
 

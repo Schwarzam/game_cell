@@ -97,6 +97,23 @@
 [2021-11-24 22:39:03] Starting async write C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder/appcache/appinfo.vdf (3612092 bytes)
 
 
+[2021-12-01 20:57:01] RequestAppInfoUpdate: AppIDs 7
+[2021-12-01 20:57:01] Packages changed: force all
+[2021-12-01 20:57:01] Apps changed: force all
+[2021-12-01 20:57:01] Change number 13237966->13304235, apps: 0/0, packages: 0/0
+[2021-12-01 20:57:01] Requesting 856 apps, 253 packages (meta data, 1024 prev attempts)
+[2021-12-01 20:57:02] Requested 143 app access tokens, 127 received, 16 denied
+[2021-12-01 20:57:02] Updated SHAs with 127 new access tokens
+[2021-12-01 20:57:02] Downloaded 43 apps via HTTP, 1764 KB (391 KB compressed)
+[2021-12-01 20:57:02] Requesting 61 apps, 2 packages (full data, 1024 prev attempts)
+[2021-12-01 20:57:03] UpdatesJob: finished OK, apps updated 104 (2002 KB), packages updated 2 (9 KB)
+[2021-12-01 20:57:03] Requesting 4 apps, 0 packages (meta data, 1024 prev attempts)
+[2021-12-01 20:57:04] Requested 1 app access tokens, 0 received, 1 denied
+[2021-12-01 20:57:04] Requesting 3 apps, 0 packages (full data, 1024 prev attempts)
+[2021-12-01 20:57:04] UpdatesJob: finished OK, apps updated 3 (5 KB), packages updated 0 (0 KB)
+[2021-12-01 20:57:19] Starting async write C:\Users\gusta\CLionProjects\game_cell\steam\tools\ContentBuilder\builder/appcache/appinfo.vdf (3618455 bytes)
+
+
 [2021-11-26 18:54:29] RequestAppInfoUpdate: AppIDs 7
 [2021-11-26 18:54:29] Packages changed: force all
 [2021-11-26 18:54:29] Apps changed: force all

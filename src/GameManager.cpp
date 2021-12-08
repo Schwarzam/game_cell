@@ -10,6 +10,7 @@
 #include <utility>
 #include "Collision.h"
 #include "Player.h"
+#include "utils/ServerMenu.h"
 
 
 std::vector<std::pair<float, Entity*>> GameManager::entities;
@@ -34,6 +35,9 @@ GameManager::GameManager(sf::RenderWindow *window) : _window(window) {
 
 
 void GameManager::startGame(const std::string& mapname) {
+    servers = ServerMenu();
+    servers.RefreshInternetServers();
+
     isRunning = true;
 
     delete map;

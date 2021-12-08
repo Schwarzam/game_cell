@@ -13,6 +13,8 @@ public:
     Server();
     ~Server();
 
+    void SendUpdatedServerDetailsToSteam();
+
     void run();
 
 private:

@@ -33,6 +33,10 @@
 [2021-11-24 22:38:27] Suspend inhibited
 
 
+[2021-12-01 20:56:42] Inilializing System Manager
+[2021-12-01 20:56:42] Suspend inhibited
+
+
 [2021-11-26 18:54:11] Inilializing System Manager
 [2021-11-26 18:54:11] Suspend inhibited
 [2021-11-26 19:39:40] Suspending

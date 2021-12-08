@@ -10,6 +10,7 @@
 #include <iostream>
 #include "../../steam/steamclientpublic.h"
 #include "../../steam/matchmakingtypes.h"
+#include "../../steam/isteammatchmaking.h"
 
 // Class to encapsulate game server data
 class CGameServer
@@ -43,8 +44,15 @@ private:
     CSteamID m_steamID;
 };
 
-class ServerMenu {
+class ServerMenu : public ISteamMatchmakingServerListResponse {
+public:
     ServerMenu();
+
+    void RefreshInternetServers();
+
+    void ServerResponded( HServerListRequest hReq, int iServer ) override;
+    void ServerFailedToRespond( HServerListRequest hReq, int iServer ) override;
+    void RefreshComplete( HServerListRequest hReq, EMatchMakingServerResponse response ) override;
 
     static void Rebuild( std::list<CGameServer> &List, bool bIsRefreshing )
     {
@@ -55,6 +63,19 @@ class ServerMenu {
             std::cout << iter->GetDisplayString() << std::endl;
         }
     }
+
+private:
+    // Track the number of servers we know about
+    int m_nServers{};
+
+    // Track whether we are in the middle of a refresh or not
+    bool m_bRequestingServers{};
+
+    // Track what server list request is currently running
+    HServerListRequest m_hServerListRequest{};
+
+    // List of game servers
+    std::list< CGameServer > m_ListGameServers;
 };
 
 

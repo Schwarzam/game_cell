@@ -52,6 +52,9 @@ void Core::update()
         game.processEvents();
     }
     processCoreState();
+
+    server->run();
+    server->SendUpdatedServerDetailsToSteam();
 }
 
 void Core::render()
