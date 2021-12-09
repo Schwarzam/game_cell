@@ -113,7 +113,7 @@ void ServerMenu::ServerFailedToRespond( HServerListRequest hReq, int iServer )
     // Assert( hReq == m_hServerListRequest );
     std::cout << "Server failed to respond" << std::endl;
     gameserveritem_t *pServer = SteamMatchmakingServers()->GetServerDetails( hReq, iServer );
-    std::cout << pServer->m_NetAdr.GetConnectionAddressString() << pServer->m_nPing << std::endl;
+    std::cout << pServer->m_szGameDescription << pServer->m_nPing << std::endl;
     // bugbug jmccaskey - why would we ever need this?  Remove servers from our list I guess?
 }
 

@@ -3,19 +3,27 @@
 //
 
 #include <iostream>
+#include <ctime>
 #include "Server.h"
-#include "../steam/steamtypes.h"
-#include "../steam/steam_gameserver.h"
 
 #define INADDR_ANY ((unsigned long int) 0x00000000);
 #define MASTER_SERVER_UPDATER_PORT 27016
 #define PORT 27015
 
-Server::Server() {
+
+Server::Server() :
+    m_CallbackServersConnected(this, &Server::OnSteamServersConnected),
+    m_CallbackServersConnectFailure(this, &Server::OnSteamServersConnectFailure),
+    m_CallbackServerDisconnected(this, &Server::OnSteamServersDisconnected),
+    m_CallbackOnPolicyResponse(this, &Server::OnPolicyResponse),
+    m_CallbackAuthTicketResponse(this, &Server::OnValidateAuthTicketResponse),
+    m_CallbackConnectionStatusChange(this, &Server::OnNetConnectionStatusChanged)
+    {
     uint32 unIP = INADDR_ANY;
     uint16 usMasterServerUpdaterPort = MASTER_SERVER_UPDATER_PORT;
     uint16 port = PORT;
     EServerMode eMode = eServerModeAuthenticationAndSecure;
+
 
     if (!SteamGameServer_Init(unIP, port, usMasterServerUpdaterPort, eMode, "0.1")){
         std::cout << "Could not start server" << std::endl;
@@ -24,16 +32,20 @@ Server::Server() {
     }
 
     if(SteamGameServer()){
-        SteamGameServer()->SetModDir( "thecell" );
+        SteamGameServer()->SetModDir("thecell");
 
+        SteamGameServer()->SetServerName("The Cell Server");
         SteamGameServer()->SetProduct( "TheCellServer" );
         SteamGameServer()->SetGameDescription( "The Cell matchmaking server" );
 
         SteamGameServer()->LogOnAnonymous();
 
+        //SteamGameServer()->LogOn("");
+
         SteamNetworkingUtils()->InitRelayNetworkAccess();
 
         SteamGameServer()->SetAdvertiseServerActive( true );
+        //SteamGameServer()->GetSteamID();
 
         m_hListenSocket = SteamGameServerNetworkingSockets()->CreateListenSocketP2P(0, 0, nullptr);
         m_hNetPollGroup = SteamGameServerNetworkingSockets()->CreatePollGroup();
@@ -41,6 +53,13 @@ Server::Server() {
     }else{
         std::cout << "SteamGameServer() interface is invalid\n" << std::endl;
     }
+
+    // zero the client connection data
+    memset( &m_rgClientData, 0, sizeof( m_rgClientData ) );
+    memset( &m_rgPendingClientData, 0, sizeof( m_rgPendingClientData ) );
+
+    // Seed random num generator
+    srand( (uint32)time( NULL ) );
 }
 
 Server::~Server() {
@@ -55,16 +74,15 @@ Server::~Server() {
     SteamGameServer_Shutdown();
 }
 
-void Server::run() {
+void Server::RunFrame() {
     SteamGameServer_RunCallbacks();
-
-
+    SendUpdatedServerDetailsToSteam();
 }
 
 void Server::SendUpdatedServerDetailsToSteam() {
     // to send the player count.  The player count is maintained by steam and you should use the player
     // creation/authentication functions to maintain your player count.
-    SteamGameServer()->SetMaxPlayerCount( 4 );
+    SteamGameServer()->SetMaxPlayerCount( MAX_PLAYERS_PER_SERVER );
     SteamGameServer()->SetPasswordProtected( false );
     SteamGameServer()->SetServerName( "Server Teste" );
     SteamGameServer()->SetBotPlayerCount( 0 ); // optional, defaults to zero
@@ -76,6 +94,7 @@ void Server::SendUpdatedServerDetailsToSteam() {
 //-----------------------------------------------------------------------------
 void Server::OnAuthCompleted( bool bAuthSuccessful, uint32 iPendingAuthIndex )
 {
+    std::cout << "TEI" << std::endl;
     if ( !m_rgPendingClientData[iPendingAuthIndex].m_bActive )
     {
         std::cout << "Got auth completed callback for client who is not pending\n" << std::endl;
@@ -142,6 +161,7 @@ void Server::OnAuthCompleted( bool bAuthSuccessful, uint32 iPendingAuthIndex )
 }
 
 void Server::OnValidateAuthTicketResponse(ValidateAuthTicketResponse_t *pResponse) {
+    std::cout << "TEI" << std::endl;
     if ( pResponse->m_eAuthSessionResponse == k_EAuthSessionResponseOK )
     {
         // This is the final approval, and means we should let the client play (find the pending auth by steamid)
@@ -177,12 +197,14 @@ void Server::OnPolicyResponse( GSPolicyResponse_t *pPolicyResponse )
     // Check if we were able to go VAC secure or not
     if ( SteamGameServer()->BSecure() )
     {
-        std::cout <<  "Thecell is VAC Secure!\n";
+        std::cout <<  "Thecell is VAC Secure! " << pPolicyResponse->m_bSecure << "\n";
     }
     else
     {
         std::cout <<  ( "Thecell is not VAC Secure!\n" );
     }
+    std::cout << SteamGameServer_GetSteamID() << std::endl;
+    SteamGameServer()->GetSteamID();
 }
 
 //-----------------------------------------------------------------------------
@@ -190,6 +212,7 @@ void Server::OnPolicyResponse( GSPolicyResponse_t *pPolicyResponse )
 //-----------------------------------------------------------------------------
 void Server::OnNetConnectionStatusChanged(SteamNetConnectionStatusChangedCallback_t* pCallback)
 {
+    std::cout << "TEI" << std::endl;
     /// Connection handle
     HSteamNetConnection hConn = pCallback->m_hConn;
 
@@ -229,15 +252,15 @@ void Server::OnNetConnectionStatusChanged(SteamNetConnectionStatusChangedCallbac
                 // add the user to the poll group
                 SteamGameServerNetworkingSockets()->SetConnectionPollGroup(hConn, m_hNetPollGroup);
 
-                // Send them the server info as a reliable message
-                //char msg;
-                //msg.SetSteamIDServer(SteamGameServer()->GetSteamID().ConvertToUint64());
+                //Send them the server info as a reliable message
+                MsgServerSendInfo_t msg;
+                msg.SetSteamIDServer(SteamGameServer()->GetSteamID().ConvertToUint64());
 
                 // You can only make use of VAC when using the Steam authentication system
-                //msg.SetSecure(SteamGameServer()->BSecure());
+                msg.SetSecure(SteamGameServer()->BSecure());
 
-                //msg.SetServerName(m_sServerName.c_str());
-                //SteamGameServerNetworkingSockets()->SendMessageToConnection( hConn, &msg, sizeof(MsgServerSendInfo_t), k_nSteamNetworkingSend_Reliable, nullptr );
+                msg.SetServerName(m_sServerName.c_str());
+                SteamGameServerNetworkingSockets()->SendMessageToConnection( hConn, &msg, sizeof(MsgServerSendInfo_t), k_nSteamNetworkingSend_Reliable, nullptr );
 
                 return;
             }
@@ -282,8 +305,7 @@ void Server::OnSteamServersDisconnected( SteamServersDisconnected_t *pLoggedOff 
 //-----------------------------------------------------------------------------
 // Purpose: Called when an attempt to login to Steam fails
 //-----------------------------------------------------------------------------
-void Server::OnSteamServersConnectFailure( SteamServerConnectFailure_t *pConnectFailure )
-{
+void Server::OnSteamServersConnectFailure( SteamServerConnectFailure_t *pConnectFailure ){
     m_bConnectedToSteam = false;
     std::cout << ( "Thecell failed to connect to Steam\n" );
 }
@@ -291,8 +313,7 @@ void Server::OnSteamServersConnectFailure( SteamServerConnectFailure_t *pConnect
 //-----------------------------------------------------------------------------
 // Purpose: Take any action we need to on Steam notifying us we are now logged in
 //-----------------------------------------------------------------------------
-void Server::OnSteamServersConnected( SteamServersConnected_t *pLogonSuccess )
-{
+void Server::OnSteamServersConnected( SteamServersConnected_t *pLogonSuccess ){
     std::cout << ( "Thecell connected to Steam successfully\n" );
     m_bConnectedToSteam = true;
 
@@ -300,5 +321,33 @@ void Server::OnSteamServersConnected( SteamServersConnected_t *pLogonSuccess )
 
     // Tell Steam about our server details
     SendUpdatedServerDetailsToSteam();
+}
+
+void Server::ReceiveNetworkData() {
+    std::cout << "ReceiveNetworkData" << std::endl;
+}
+
+CSteamID Server::GetSteamID(){
+    std::cout << "GetSteamID" << std::endl;
+    return SteamGameServer()->GetSteamID();
+}
+
+void Server::OnClientBeginAuthentication(CSteamID steamIDClient, HSteamNetConnection connectionID, void *pToken,
+                                         uint32 uTokenLen) {
+    std::cout << "TEI" << std::endl;
+}
+
+bool Server::BSendDataToClient(uint32 uShipIndex, char *pData, uint32 nSizeOfData) {
+    std::cout << "TEI" << std::endl;
+    return false;
+}
+
+bool Server::BSendDataToPendingClient(uint32 uShipIndex, char *pData, uint32 nSizeOfData) {
+    std::cout << "TEI" << std::endl;
+    return false;
+}
+
+void Server::SendMessageToAll(HSteamNetConnection hConnIgnore, const void *pubData, uint32 cubData) {
+    std::cout << "TEI" << std::endl;
 }
 

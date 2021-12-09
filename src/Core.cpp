@@ -12,16 +12,22 @@
 #include "Server.h"
 #include "utils/ServerMenu.h"
 
+void launchServer(){
+
+}
 
 Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
-                menu(&_window, &gameState), game(GameManager(&_window))
+                menu(&_window, &gameState), game(GameManager(&_window)), thread(&launchServer)
 {
     menu.openClose();
     menu.createMainMenu();
 
+    gameState = Menu;
+
     server = new Server();
 
-    gameState = Menu;
+
+    thread.launch();
 }
 
 void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
@@ -51,10 +57,12 @@ void Core::update()
     if (game.running()){
         game.processEvents();
     }
+    server->RunFrame();
     processCoreState();
 
-    server->run();
-    server->SendUpdatedServerDetailsToSteam();
+    //if (server != nullptr){
+    //    server->RunFrame();
+    //}
 }
 
 void Core::render()
@@ -99,6 +107,7 @@ void Core::processEvents() {
 
             if (event.key.code == sf::Keyboard::P){
                 //_window.setView(view);
+                server->GetSteamID();
 
             }
         }
@@ -123,7 +132,7 @@ void Core::processCoreState() {
         }
 
         if(gameState == QuitGame){
-            delete server;
+            //delete server;
             _window.close();
         }
 

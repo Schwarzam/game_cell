@@ -136,6 +136,7 @@ enum EResult
 	k_EResultSteamRealmMismatch = 120,			// The user's realm does not match the realm of the requested resource
 	k_EResultInvalidSignature = 121,			// signature check did not match
 	k_EResultParseFailure = 122,				// Failed to parse input
+	k_EResultNoVerifiedPhone = 123,				// account does not have a verified phone number
 };
 
 // Error codes for use with the voice functions
@@ -874,7 +875,7 @@ inline bool CSteamID::IsValid() const
 // its steam3 component and started logging on.
 #define k_steamIDNotInitYetGS CSteamID( 1, 0, k_EUniverseInvalid, k_EAccountTypeInvalid )
 // This steamID can come from a user game connection to a GS that isn't using the steam authentication system but still
-// wants to support the "Join Core" option in the friends list
+// wants to support the "Join Game" option in the friends list
 #define k_steamIDNonSteamGS CSteamID( 2, 0, k_EUniverseInvalid, k_EAccountTypeInvalid )
 
 
@@ -951,8 +952,8 @@ public:
 
 	// Hidden functions used only by Steam
 	explicit CGameID( const char *pchGameID );
-	const char *Render() const;					// render this Core ID to string
-	static const char *Render( uint64 ulGameID );		// static method to render a uint64 representation of a Core ID to a string
+	const char *Render() const;					// render this Game ID to string
+	static const char *Render( uint64 ulGameID );		// static method to render a uint64 representation of a Game ID to a string
 
 	uint64 ToUint64() const
 	{

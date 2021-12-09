@@ -77,7 +77,7 @@ public:
 	virtual bool RemoveFavoriteGame( AppId_t nAppID, uint32 nIP, uint16 nConnPort, uint16 nQueryPort, uint32 unFlags ) = 0;
 
 	///////
-	// Core lobby functions
+	// Game lobby functions
 
 	// Get a list of relevant lobbies
 	// this is an asynchronous request
@@ -560,7 +560,7 @@ class ISteamGameSearch
 {
 public:
 	// =============================================================================================
-	// Core Player APIs
+	// Game Player APIs
 
 	// a keyname and a list of comma separated values: one of which is must be found in order for the match to qualify
 	// fails if a search is currently in progress
@@ -587,7 +587,7 @@ public:
 	virtual EGameSearchErrorCode_t EndGameSearch() = 0;
 
 	// =============================================================================================
-	// Core Host APIs
+	// Game Host APIs
 
 	// a keyname and a list of comma separated values: all the values you allow
 	virtual EGameSearchErrorCode_t SetGameHostParams( const char *pchKey, const char *pchValue ) = 0;
@@ -954,7 +954,7 @@ struct SearchForGameResultCallback_t
 
 
 //-----------------------------------------------------------------------------
-// ISteamGameSearch : Core Host API callbacks
+// ISteamGameSearch : Game Host API callbacks
 
 // callback from RequestPlayersForGame when the matchmaking service has started or ended search
 // callback will also follow a call from CancelRequestPlayersForGame - m_bSearchInProgress will be false

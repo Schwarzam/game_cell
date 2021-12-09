@@ -211,7 +211,7 @@ public:
 
 private:
 
-	/// Core server name
+	/// Game server name
 	char m_szServerName[k_cbMaxGameServerName];
 
 	// For data added after SteamMatchMaking001 add it here

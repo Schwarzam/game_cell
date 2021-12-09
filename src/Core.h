@@ -14,6 +14,8 @@
 #include "State.h"
 #include "Server.h"
 
+#include <SFML/System.hpp>
+
 class Core  {
 public:
     Core(); //< constructor
@@ -29,6 +31,7 @@ public:
 
 private:
     Server *server;
+    sf::Thread thread;
 
     State lastGameState;
     GameManager game;

@@ -325,7 +325,7 @@ STEAM_DEFINE_USER_INTERFACE_ACCESSOR( ISteamUserStats *, SteamUserStats, STEAMUS
 struct UserStatsReceived_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 1 };
-	uint64		m_nGameID;		// Core these stats are for
+	uint64		m_nGameID;		// Game these stats are for
 	EResult		m_eResult;		// Success / error fetching the stats
 	CSteamID	m_steamIDUser;	// The user for whom the stats are retrieved for
 };
@@ -337,7 +337,7 @@ struct UserStatsReceived_t
 struct UserStatsStored_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 2 };
-	uint64		m_nGameID;		// Core these stats are for
+	uint64		m_nGameID;		// Game these stats are for
 	EResult		m_eResult;		// success / error
 };
 
@@ -351,7 +351,7 @@ struct UserAchievementStored_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 3 };
 
-	uint64		m_nGameID;				// Core this is for
+	uint64		m_nGameID;				// Game this is for
 	bool		m_bGroupAchievement;	// if this is a "group" achievement
 	char		m_rgchAchievementName[k_cchStatNameMax];		// name of the achievement
 	uint32		m_nCurProgress;			// current progress towards the achievement
@@ -427,7 +427,7 @@ struct UserAchievementIconFetched_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 9 };
 
-	CGameID		m_nGameID;				// Core this is for
+	CGameID		m_nGameID;				// Game this is for
 	char		m_rgchAchievementName[k_cchStatNameMax];		// name of the achievement
 	bool		m_bAchieved;		// Is the icon for the achieved or not achieved version?
 	int			m_nIconHandle;		// Handle to the image, which can be used in SteamUtils()->GetImageRGBA(), 0 means no image is set for the achievement
@@ -441,7 +441,7 @@ struct GlobalAchievementPercentagesReady_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 10 };
 
-	uint64		m_nGameID;				// Core this is for
+	uint64		m_nGameID;				// Game this is for
 	EResult		m_eResult;				// Result of the operation
 };
 
@@ -463,7 +463,7 @@ struct LeaderboardUGCSet_t
 struct PS3TrophiesInstalled_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 12 };
-	uint64	m_nGameID;				// Core these stats are for
+	uint64	m_nGameID;				// Game these stats are for
 	EResult m_eResult;				// The result of the operation
 	uint64 m_ulRequiredDiskSpace;	// If m_eResult is k_EResultDiskFull, will contain the amount of space needed to install trophies
 
@@ -477,7 +477,7 @@ struct PS3TrophiesInstalled_t
 struct GlobalStatsReceived_t
 {
 	enum { k_iCallback = k_iSteamUserStatsCallbacks + 12 };
-	uint64	m_nGameID;				// Core global stats were requested for
+	uint64	m_nGameID;				// Game global stats were requested for
 	EResult	m_eResult;				// The result of the request
 };
 
