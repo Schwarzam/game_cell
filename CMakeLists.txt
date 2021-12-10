@@ -30,9 +30,9 @@ if(WIN32)
     include_directories(${SMFL_folder}/include)
     target_link_libraries(${PROJECT_NAME} sfml-audio sfml-graphics sfml-window sfml-system ${STEAMLIB} ${LINK_LIBS})
 
-    file(REMOVE ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/${PROJECT_NAME}.exe)
-    file(COPY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
-    file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
+    #file(REMOVE ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/${PROJECT_NAME}.exe)
+    #file(COPY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
+    #file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_SOURCE_DIR}/steam/tools/ContentBuilder/content/win/)
 endif()
 
 if(UNIX AND NOT APPLE)

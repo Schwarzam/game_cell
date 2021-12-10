@@ -26,19 +26,11 @@ Server::Server() :
     EServerMode eMode = eServerModeAuthenticationAndSecure;
 
 
-    if (!SteamGameServer_Init(0, port, MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE, eMode, "0.1")){
+    if (!SteamGameServer_Init(0, port, usMasterServerUpdaterPort, eMode, "0.1")){
         std::cout << "Could not start server" << std::endl;
     }else{
 
     }
-
-    void *pOut{};
-    int cbMaxOut = 16*1024;
-    uint32 *pNetAdr{};
-    uint16 *pPort{};
-    SteamGameServer()->GetNextOutgoingPacket(pOut, cbMaxOut, pNetAdr, pPort);
-    std::cout << pPort << std::endl;
-
 
     if(SteamGameServer()){
         SteamGameServer()->SetModDir("thecell");
