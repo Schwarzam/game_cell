@@ -7,11 +7,12 @@
 #include "Server.h"
 
 #define INADDR_ANY ((unsigned long int) 0x00000000);
-#define MASTER_SERVER_UPDATER_PORT 27016
-#define PORT 27015
+#define MASTER_SERVER_UPDATER_PORT 3481
+#define PORT 3478
 
 
 Server::Server() :
+    m_sServerName("Server Teste"),
     m_CallbackServersConnected(this, &Server::OnSteamServersConnected),
     m_CallbackServersConnectFailure(this, &Server::OnSteamServersConnectFailure),
     m_CallbackServerDisconnected(this, &Server::OnSteamServersDisconnected),
@@ -25,11 +26,19 @@ Server::Server() :
     EServerMode eMode = eServerModeAuthenticationAndSecure;
 
 
-    if (!SteamGameServer_Init(unIP, port, usMasterServerUpdaterPort, eMode, "0.1")){
+    if (!SteamGameServer_Init(0, port, MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE, eMode, "0.1")){
         std::cout << "Could not start server" << std::endl;
     }else{
 
     }
+
+    void *pOut{};
+    int cbMaxOut = 16*1024;
+    uint32 *pNetAdr{};
+    uint16 *pPort{};
+    SteamGameServer()->GetNextOutgoingPacket(pOut, cbMaxOut, pNetAdr, pPort);
+    std::cout << pPort << std::endl;
+
 
     if(SteamGameServer()){
         SteamGameServer()->SetModDir("thecell");
@@ -84,7 +93,7 @@ void Server::SendUpdatedServerDetailsToSteam() {
     // creation/authentication functions to maintain your player count.
     SteamGameServer()->SetMaxPlayerCount( MAX_PLAYERS_PER_SERVER );
     SteamGameServer()->SetPasswordProtected( false );
-    SteamGameServer()->SetServerName( "Server Teste" );
+    SteamGameServer()->SetServerName( "The cell Server" );
     SteamGameServer()->SetBotPlayerCount( 0 ); // optional, defaults to zero
     SteamGameServer()->SetMapName( "d2" );
 }

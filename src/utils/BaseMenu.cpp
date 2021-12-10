@@ -17,9 +17,9 @@ BaseMenu::BaseMenu(sf::RenderWindow *window, State *gameState) :_window(window),
     _spriteSelected.setTexture(*_ptexture);
     _spriteSelected.setScale(sf::Vector2f(0.2f, 0.2f));
 
-    _ptextureBackground = Assets::Acquire("utils/background");
-    _spriteBackground.setTexture(*_ptextureBackground);
-    _spriteBackground.setScale(sf::Vector2f(0.3f, 0.3f));
+    //_ptextureBackground = Assets::Acquire("utils/background");
+    //_spriteBackground.setTexture(*_ptextureBackground);
+    //_spriteBackground.setScale(sf::Vector2f(0.3f, 0.3f));
 }
 
 void BaseMenu::clear() {
@@ -67,10 +67,10 @@ void BaseMenu::processMenuUpdates() {
 
 void BaseMenu::render() {
     //Draw background
-    _spriteBackground.setPosition(_window->getView().getCenter().x - _window->getView().getSize().x / 2 - 50,
-                                  _window->getView().getCenter().y -_window->getView().getSize().y / 2 + 100);
+    //_spriteBackground.setPosition(_window->getView().getCenter().x - _window->getView().getSize().x / 2 - 50,
+    //                              _window->getView().getCenter().y -_window->getView().getSize().y / 2 + 100);
 
-    _window->draw(_spriteBackground);
+    //_window->draw(_spriteBackground);
 
     //Drawn name on screen
     sf::Text textName;

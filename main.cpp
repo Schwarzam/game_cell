@@ -10,9 +10,9 @@
 
 int main() {
     if ( SteamAPI_RestartAppIfNecessary( 1826930 ) ) // Substitua k_uAppIdInvalid com o AppID do seu aplicativo
-        {
+    {
         return 1;
-        }
+    }
 
     if ( !SteamAPI_Init() )
     {
