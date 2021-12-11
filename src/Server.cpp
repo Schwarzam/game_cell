@@ -204,8 +204,8 @@ void Server::OnPolicyResponse( GSPolicyResponse_t *pPolicyResponse )
     {
         std::cout <<  ( "Thecell is not VAC Secure!\n" );
     }
-    std::cout << SteamGameServer_GetSteamID() << std::endl;
-    SteamGameServer()->GetSteamID();
+    //std::cout << SteamGameServer_GetSteamID() << std::endl;
+    //SteamGameServer()->GetSteamID();
 }
 
 //-----------------------------------------------------------------------------

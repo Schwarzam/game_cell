@@ -23,6 +23,11 @@ private:
 
     std::string mapfolder;
     static nlohmann::json map_metadata;
+
+    static float mapH;
+    static float mapW;
+    static float mapBlockSize;
+
     static std::vector<sf::Rect<float>> walls;
 };
 
