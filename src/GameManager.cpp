@@ -31,8 +31,8 @@ GameManager::GameManager(sf::RenderWindow *window) :
 
 
 void GameManager::startGame(const std::string& mapname) {
-    servers = ServerMenu();
-    servers.RefreshInternetServers();
+    //servers = ServerMenu();
+    //servers.RefreshInternetServers();
 
     isRunning = true;
 

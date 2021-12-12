@@ -26,10 +26,6 @@ Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
 
     server = new P2Pserver();
 
-    SteamPartyBeaconLocation_t *pBeaconLocation;
-    SteamParties()->CreateBeacon(1, pBeaconLocation, "salve salve", "salinha teste");
-
-
     thread.launch();
 }
 
