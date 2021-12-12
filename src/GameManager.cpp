@@ -3,15 +3,7 @@
 //
 
 #include "GameManager.h"
-#include "GameManager.h"
-
-#include <cmath>
-#include <iostream>
 #include <utility>
-#include "Collision.h"
-#include "Player.h"
-#include "utils/ServerMenu.h"
-
 
 std::vector<std::pair<float, Entity*>> GameManager::entities;
 
@@ -27,9 +19,11 @@ Entity *GameManager::startMyPlayer(const std::string &name, sf::RenderWindow *wi
     return ent;
 }
 
-GameManager::GameManager(sf::RenderWindow *window) : _window(window) {
-
-
+GameManager::GameManager(sf::RenderWindow *window) :
+        _window(window),
+        fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(300.f, 379.f)){
+    light.setRange(100);
+    light.setFade(false);
 }
 
 
@@ -66,8 +60,23 @@ void GameManager::render() {
     _window->draw(*map);
 
     for (auto& entity : entities){
-        _window->draw(*entity.second);
+        if (!entity.second->isMyPlayer()){
+            _window->draw(*entity.second);
+        }
     }
+    for (auto& entity : entities){
+        if (entity.second->isMyPlayer()){
+            light.setPosition(entity.second->getPosition());
+            _window->draw(*entity.second);
+
+            fog.clear();
+            fog.draw(light);
+            fog.display();
+
+            _window->draw(fog);
+        }
+    }
+
 }
 
 

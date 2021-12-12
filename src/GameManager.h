@@ -9,6 +9,9 @@
 #include <vector>
 #include <SFML/System/Thread.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "utils/Candle/include/Candle/RadialLight.hpp"
+#include "utils/Candle/include/Candle/LightingArea.hpp"
+
 #include "Entity.h"
 #include "map/Map.h"
 #include "utils/ServerMenu.h"
@@ -32,8 +35,10 @@ private:
 
     sf::RenderWindow *_window;
     Map *map = nullptr;
-
     bool isRunning{};
+
+    candle::RadialLight light;
+    candle::LightingArea fog;
 
 protected:
     static std::vector<std::pair<float, Entity*>> entities;

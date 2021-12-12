@@ -10,6 +10,7 @@
 #include "map/Map.h"
 
 Player::Player(const std::string &name, sf::RenderWindow *window, sf::Vector2f position) : Entity(name), _window(window) {
+    myPlayer = true;
     view = window->getView();
     setPosition(position);
 }

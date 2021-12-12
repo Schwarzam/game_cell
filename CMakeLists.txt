@@ -3,7 +3,33 @@ set(PROJECT_NAME thecell)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
-add_executable(${PROJECT_NAME} main.cpp src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Core.cpp src/Core.h src/utils/fps.h src/Player.cpp src/Player.h src/map/Map.cpp src/map/Map.h src/utils/BaseMenu.cpp src/utils/BaseMenu.h src/State.h src/utils/ServerMenu.cpp src/utils/ServerMenu.h src/utils/Message.h)
+
+set(CANDLE_HEADERS
+        src/utils/Candle/include/Candle/LightingArea.hpp
+        src/utils/Candle/include/Candle/LightSource.hpp
+        src/utils/Candle/include/Candle/RadialLight.hpp
+        src/utils/Candle/include/Candle/DirectedLight.hpp
+        src/utils/Candle/include/Candle/geometry/Line.hpp
+        src/utils/Candle/include/Candle/geometry/Polygon.hpp
+        src/utils/Candle/include/Candle/geometry/Vector2.hpp
+        src/utils/Candle/include/Candle/graphics/Color.hpp
+        src/utils/Candle/include/Candle/graphics/VertexArray.hpp
+        src/utils/Candle/include/Candle/Constants.hpp
+        )
+
+set(CANDLE_SRC
+        src/utils/Candle/src/LightingArea.cpp
+        src/utils/Candle/src/LightSource.cpp
+        src/utils/Candle/src/RadialLight.cpp
+        src/utils/Candle/src/DirectedLight.cpp
+        src/utils/Candle/src/Line.cpp
+        src/utils/Candle/src/Polygon.cpp
+        src/utils/Candle/src/Color.cpp
+        src/utils/Candle/src/VertexArray.cpp
+        src/utils/Candle/src/Constants.cpp
+        )
+
+add_executable(${PROJECT_NAME} main.cpp ${CANDLE_HEADERS} ${CANDLE_SRC} src/Assets.cpp src/Assets.h src/Collision.cpp src/Collision.h src/Server.cpp src/Server.h src/Entity.cpp src/Entity.h src/GameManager.cpp src/GameManager.h src/Core.cpp src/Core.h src/utils/fps.h src/Player.cpp src/Player.h src/map/Map.cpp src/map/Map.h src/utils/BaseMenu.cpp src/utils/BaseMenu.h src/State.h src/utils/ServerMenu.cpp src/utils/ServerMenu.h src/utils/Message.h)
 
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR}/)
 

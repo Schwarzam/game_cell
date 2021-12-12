@@ -24,6 +24,8 @@ public:
     const sf::Sprite& getSprite() const;
     const sf::Rect<float>& getRect() const;
     const sf::Vector2f& getSpriteSize() const;
+
+    const bool &isMyPlayer() const;
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
     std::shared_ptr<sf::Texture> _ptexture;
@@ -35,6 +37,8 @@ protected:
     sf::Sprite _sprite;
     sf::Vector2f _spriteSize;
     sf::Rect<float> playerRect;
+
+    bool myPlayer = false;
 };
 
 
