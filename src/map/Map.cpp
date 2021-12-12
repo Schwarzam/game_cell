@@ -13,6 +13,7 @@ std::vector<sf::Rect<float>> Map::walls;
 float Map::mapH;
 float Map::mapW;
 float Map::mapBlockSize;
+candle::EdgeVector Map::edges;
 
 Map::Map(const std::string& folder) {
     mapfolder = "maps/" + folder + "/";
@@ -34,7 +35,15 @@ Map::Map(const std::string& folder) {
         if (map_metadata["layers"][i]["name"] == "walls"){
             for (int dr = 0; dr < map_metadata["layers"][i]["data"].size(); dr++){
                 if (map_metadata["layers"][i]["data"][dr].get<int>() != 0){
+                    float left = (float)(dr % mapHeight.y) * utilSize.y;
+                    float top = (float)(dr / mapHeight.x) * utilSize.x;
                     walls.emplace_back(sf::Rect<float>((float)(dr % mapHeight.y) * utilSize.y, (dr / mapHeight.x) * utilSize.x, utilSize.x, utilSize.y));
+
+
+                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left + 32, top));
+                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left, top + 32));
+                    edges.emplace_back(sf::Vector2f(left + 32, top), sf::Vector2f(left + 32, top + 32));
+                    edges.emplace_back(sf::Vector2f(left, top + 32), sf::Vector2f(left + 32, top + 32));
                 }
             }
         }
@@ -121,4 +130,8 @@ void Map::move(Player *player, sf::Vector2f movement) {
         }
     }
     player->move(movement);
+}
+
+candle::EdgeVector Map::getEdges() {
+    return edges;
 }

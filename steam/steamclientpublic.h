@@ -338,7 +338,7 @@ enum EBroadcastUploadResult
 	k_EBroadcastUploadResultAlreadyActive = 17, // We already already have an stream running.
 	k_EBroadcastUploadResultForcedOff = 18, // We explicitly shutting down a broadcast
 	k_EBroadcastUploadResultAudioBehind = 19, // Audio stream was too far behind video 
-	k_EBroadcastUploadResultShutdown = 20,	// Broadcast Server was shut down
+	k_EBroadcastUploadResultShutdown = 20,	// Broadcast DedicatedServer was shut down
 	k_EBroadcastUploadResultDisconnect = 21,	// broadcast uploader TCP disconnected 
 	k_EBroadcastUploadResultVideoInitFailed = 22,	// invalid video settings 
 	k_EBroadcastUploadResultAudioInitFailed = 23,	// invalid audio settings 

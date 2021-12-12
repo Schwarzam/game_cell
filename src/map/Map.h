@@ -9,12 +9,14 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "../Player.h"
+#include "../utils/Candle/include/Candle/LightSource.hpp"
 
 class Map : public sf::Drawable {
 public:
     explicit Map(const std::string& name);
     static void move(Player *player, sf::Vector2f movement);
 
+    static candle::EdgeVector getEdges();
 private:
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
@@ -29,6 +31,7 @@ private:
     static float mapBlockSize;
 
     static std::vector<sf::Rect<float>> walls;
+    static candle::EdgeVector edges;
 };
 
 

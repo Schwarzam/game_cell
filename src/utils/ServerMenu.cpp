@@ -53,7 +53,7 @@ void ServerMenu::RefreshInternetServers()
     m_bRequestingServers = true;
     m_nServers = 0;
     m_ListGameServers.clear();
-    //SetHeading( "Internet Server browser" );
+    //SetHeading( "Internet DedicatedServer browser" );
 
     Rebuild( m_ListGameServers, m_bRequestingServers );
 
@@ -88,7 +88,7 @@ void ServerMenu::RefreshInternetServers()
 void ServerMenu::ServerResponded( HServerListRequest hReq, int iServer )
 {
     // Assert( hReq == m_hServerListRequest );
-    std::cout << "Server list" << std::endl;
+    std::cout << "DedicatedServer list" << std::endl;
     gameserveritem_t *pServer = SteamMatchmakingServers()->GetServerDetails( hReq, iServer );
     if ( pServer )
     {
@@ -111,7 +111,7 @@ void ServerMenu::ServerResponded( HServerListRequest hReq, int iServer )
 void ServerMenu::ServerFailedToRespond( HServerListRequest hReq, int iServer )
 {
     // Assert( hReq == m_hServerListRequest );
-    std::cout << "Server failed to respond" << std::endl;
+    std::cout << "DedicatedServer failed to respond" << std::endl;
     gameserveritem_t *pServer = SteamMatchmakingServers()->GetServerDetails( hReq, iServer );
     std::cout << pServer->m_szGameDescription << pServer->m_nPing << std::endl;
     // bugbug jmccaskey - why would we ever need this?  Remove servers from our list I guess?

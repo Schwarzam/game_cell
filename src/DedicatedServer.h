@@ -14,12 +14,11 @@
 
 #include "../steam/steam_gameserver.h"
 
-#include "utils/Message.h"
 
 #define MAX_PLAYERS_PER_SERVER 6
 
 // Forward declaration
-class Server;
+class DedicatedServer;
 
 struct ClientConnectionData_t{
     bool m_bActive{};					// Is this slot in use? Or is it available for new connections?
@@ -29,14 +28,14 @@ struct ClientConnectionData_t{
 };
 
 
-class Server
+class DedicatedServer
 {
 public:
     //Constructor
-    Server();
+    DedicatedServer();
 
     // Destructor
-    ~Server();
+    ~DedicatedServer();
 
     // Run a game frame
     void RunFrame();
@@ -72,16 +71,16 @@ private:
     //
 
     // Tells us when we have successfully connected to Steam
-    STEAM_GAMESERVER_CALLBACK( Server, OnSteamServersConnected, SteamServersConnected_t, m_CallbackServersConnected );
+    STEAM_GAMESERVER_CALLBACK( DedicatedServer, OnSteamServersConnected, SteamServersConnected_t, m_CallbackServersConnected );
 
     // Tells us when there was a failure to connect to Steam
-    STEAM_GAMESERVER_CALLBACK( Server, OnSteamServersConnectFailure, SteamServerConnectFailure_t, m_CallbackServersConnectFailure );
+    STEAM_GAMESERVER_CALLBACK( DedicatedServer, OnSteamServersConnectFailure, SteamServerConnectFailure_t, m_CallbackServersConnectFailure );
 
     // Tells us when we have been logged out of Steam
-    STEAM_GAMESERVER_CALLBACK( Server, OnSteamServersDisconnected, SteamServersDisconnected_t, m_CallbackServerDisconnected );
+    STEAM_GAMESERVER_CALLBACK( DedicatedServer, OnSteamServersDisconnected, SteamServersDisconnected_t, m_CallbackServerDisconnected );
 
     // Tells us that Steam has set our security policy (VAC on or off)
-    STEAM_GAMESERVER_CALLBACK( Server, OnPolicyResponse, GSPolicyResponse_t, m_CallbackOnPolicyResponse );
+    STEAM_GAMESERVER_CALLBACK( DedicatedServer, OnPolicyResponse, GSPolicyResponse_t, m_CallbackOnPolicyResponse );
 
     //
     // Various callback functions that Steam will call to let us know about whether we should
@@ -89,11 +88,11 @@ private:
     //
 
     // Tells us a client has been authenticated and approved to play by Steam (passes auth, license check, VAC status, etc...)
-    STEAM_GAMESERVER_CALLBACK( Server, OnValidateAuthTicketResponse, ValidateAuthTicketResponse_t, m_CallbackAuthTicketResponse );
+    STEAM_GAMESERVER_CALLBACK( DedicatedServer, OnValidateAuthTicketResponse, ValidateAuthTicketResponse_t, m_CallbackAuthTicketResponse );
 
     // client connection state
     // All connection changes are handled through this callback
-    STEAM_GAMESERVER_CALLBACK(Server, OnNetConnectionStatusChanged, SteamNetConnectionStatusChangedCallback_t, m_CallbackConnectionStatusChange);
+    STEAM_GAMESERVER_CALLBACK(DedicatedServer, OnNetConnectionStatusChanged, SteamNetConnectionStatusChangedCallback_t, m_CallbackConnectionStatusChange);
 
 
 

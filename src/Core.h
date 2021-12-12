@@ -12,7 +12,8 @@
 #include "map/Map.h"
 #include "utils/BaseMenu.h"
 #include "State.h"
-#include "Server.h"
+#include "DedicatedServer.h"
+#include "P2Pserver.h"
 
 #include <SFML/System.hpp>
 
@@ -30,7 +31,7 @@ public:
 
 
 private:
-    Server *server;
+    P2Pserver *server;
     sf::Thread thread;
 
     State lastGameState;

@@ -292,10 +292,10 @@ typedef void* HServerListRequest;
 class ISteamMatchmakingServerListResponse
 {
 public:
-	// Server has responded ok with updated data
+	// DedicatedServer has responded ok with updated data
 	virtual void ServerResponded( HServerListRequest hRequest, int iServer ) = 0; 
 
-	// Server has failed to respond
+	// DedicatedServer has failed to respond
 	virtual void ServerFailedToRespond( HServerListRequest hRequest, int iServer ) = 0; 
 
 	// A list refresh you had initiated is now 100% completed
@@ -316,10 +316,10 @@ public:
 class ISteamMatchmakingPingResponse
 {
 public:
-	// Server has responded successfully and has updated data
+	// DedicatedServer has responded successfully and has updated data
 	virtual void ServerResponded( gameserveritem_t &server ) = 0;
 
-	// Server failed to respond to the ping request
+	// DedicatedServer failed to respond to the ping request
 	virtual void ServerFailedToRespond() = 0;
 };
 
@@ -407,21 +407,21 @@ public:
 	/* the filter operation codes that go in the key part of MatchMakingKeyValuePair_t should be one of these:
 
 		"map"
-			- Server passes the filter if the server is playing the specified map.
+			- DedicatedServer passes the filter if the server is playing the specified map.
 		"gamedataand"
-			- Server passes the filter if the server's game data (ISteamGameServer::SetGameData) contains all of the
+			- DedicatedServer passes the filter if the server's game data (ISteamGameServer::SetGameData) contains all of the
 			specified strings.  The value field is a comma-delimited list of strings to match.
 		"gamedataor"
-			- Server passes the filter if the server's game data (ISteamGameServer::SetGameData) contains at least one of the
+			- DedicatedServer passes the filter if the server's game data (ISteamGameServer::SetGameData) contains at least one of the
 			specified strings.  The value field is a comma-delimited list of strings to match.
 		"gamedatanor"
-			- Server passes the filter if the server's game data (ISteamGameServer::SetGameData) does not contain any
+			- DedicatedServer passes the filter if the server's game data (ISteamGameServer::SetGameData) does not contain any
 			of the specified strings.  The value field is a comma-delimited list of strings to check.
 		"gametagsand"
-			- Server passes the filter if the server's game tags (ISteamGameServer::SetGameTags) contains all
+			- DedicatedServer passes the filter if the server's game tags (ISteamGameServer::SetGameTags) contains all
 			of the specified strings.  The value field is a comma-delimited list of strings to check.
 		"gametagsnor"
-			- Server passes the filter if the server's game tags (ISteamGameServer::SetGameTags) does not contain any
+			- DedicatedServer passes the filter if the server's game tags (ISteamGameServer::SetGameTags) does not contain any
 			of the specified strings.  The value field is a comma-delimited list of strings to check.
 		"and" (x1 && x2 && ... && xn)
 		"or" (x1 || x2 || ... || xn)
@@ -454,24 +454,24 @@ public:
 			Unary NOT can be achieved using either "nand" or "nor" with a single operand.
 
 		"addr"
-			- Server passes the filter if the server's query address matches the specified IP or IP:port.
+			- DedicatedServer passes the filter if the server's query address matches the specified IP or IP:port.
 		"gameaddr"
-			- Server passes the filter if the server's game address matches the specified IP or IP:port.
+			- DedicatedServer passes the filter if the server's game address matches the specified IP or IP:port.
 
 		The following filter operations ignore the "value" part of MatchMakingKeyValuePair_t
 
 		"dedicated"
-			- Server passes the filter if it passed true to SetDedicatedServer.
+			- DedicatedServer passes the filter if it passed true to SetDedicatedServer.
 		"secure"
-			- Server passes the filter if the server is VAC-enabled.
+			- DedicatedServer passes the filter if the server is VAC-enabled.
 		"notfull"
-			- Server passes the filter if the player count is less than the reported max player count.
+			- DedicatedServer passes the filter if the player count is less than the reported max player count.
 		"hasplayers"
-			- Server passes the filter if the player count is greater than zero.
+			- DedicatedServer passes the filter if the player count is greater than zero.
 		"noplayers"
-			- Server passes the filter if it doesn't have any players.
+			- DedicatedServer passes the filter if it doesn't have any players.
 		"linux"
-			- Server passes the filter if it's a linux server
+			- DedicatedServer passes the filter if it's a linux server
 	*/
 
 	// Get details on a given server in the list, you can get the valid range of index

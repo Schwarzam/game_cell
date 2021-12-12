@@ -75,7 +75,7 @@ public:
 	virtual bool WasRestartRequested() = 0;
 
 //
-// Server state.  These properties may be changed at any time.
+// DedicatedServer state.  These properties may be changed at any time.
 //
 
 	/// Max player count that will be reported to server browser and client queries
@@ -184,7 +184,7 @@ public:
 	// connect to
 	virtual SteamIPAddress_t GetPublicIP() = 0;
 
-// Server browser related query packet processing for shared socket mode.  These are used
+// DedicatedServer browser related query packet processing for shared socket mode.  These are used
 // when you pass STEAMGAMESERVER_QUERY_PORT_SHARED as the query port to SteamGameServer_Init.
 // IP address and port are in host order, i.e 127.0.0.1 == 0x7f000001
 
@@ -205,7 +205,7 @@ public:
 	virtual int GetNextOutgoingPacket( void *pOut, int cbMaxOut, uint32 *pNetAdr, uint16 *pPort ) = 0;
 
 //
-// Server clan association
+// DedicatedServer clan association
 //
 
 	// associate this game server with this clan for the purposes of computing player compat

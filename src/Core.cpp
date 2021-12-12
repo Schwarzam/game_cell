@@ -9,7 +9,7 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "../steam/steam_api.h"
-#include "Server.h"
+#include "DedicatedServer.h"
 #include "utils/ServerMenu.h"
 
 void launchServer(){
@@ -24,7 +24,10 @@ Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
 
     gameState = Menu;
 
-    server = new Server();
+    server = new P2Pserver();
+
+    SteamPartyBeaconLocation_t *pBeaconLocation;
+    SteamParties()->CreateBeacon(1, pBeaconLocation, "salve salve", "salinha teste");
 
 
     thread.launch();
@@ -107,7 +110,6 @@ void Core::processEvents() {
 
             if (event.key.code == sf::Keyboard::P){
                 //_window.setView(view);
-                server->GetSteamID();
 
             }
         }

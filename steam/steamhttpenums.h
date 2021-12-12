@@ -1,4 +1,4 @@
-//====== Copyright © 1996-2010, Valve Corporation, All rights reserved. =======
+//====== Copyright ï¿½ 1996-2010, Valve Corporation, All rights reserved. =======
 //
 // Purpose: HTTP related enums, stuff that is shared by both clients and servers, and our
 // UI projects goes here.
@@ -86,7 +86,7 @@ enum EHTTPStatusCode
 	k_EHTTPStatusCode429TooManyRequests	=		429,
 	k_EHTTPStatusCode444ConnectionClosed =		444, // nginx only?
 
-	// Server error codes
+	// DedicatedServer error codes
 	k_EHTTPStatusCode500InternalServerError =	500,
 	k_EHTTPStatusCode501NotImplemented =		501,
 	k_EHTTPStatusCode502BadGateway =			502,

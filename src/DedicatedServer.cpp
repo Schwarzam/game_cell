@@ -4,21 +4,21 @@
 
 #include <iostream>
 #include <ctime>
-#include "Server.h"
+#include "DedicatedServer.h"
 
-#define INADDR_ANY ((unsigned long int) 0x00000000);
-#define MASTER_SERVER_UPDATER_PORT 3481
-#define PORT 3478
+#define INADDR_ANY (long)0x00000000
+#define MASTER_SERVER_UPDATER_PORT 27024
+#define PORT 27023
 
 
-Server::Server() :
-    m_sServerName("Server Teste"),
-    m_CallbackServersConnected(this, &Server::OnSteamServersConnected),
-    m_CallbackServersConnectFailure(this, &Server::OnSteamServersConnectFailure),
-    m_CallbackServerDisconnected(this, &Server::OnSteamServersDisconnected),
-    m_CallbackOnPolicyResponse(this, &Server::OnPolicyResponse),
-    m_CallbackAuthTicketResponse(this, &Server::OnValidateAuthTicketResponse),
-    m_CallbackConnectionStatusChange(this, &Server::OnNetConnectionStatusChanged)
+DedicatedServer::DedicatedServer() :
+    m_sServerName("DedicatedServer Teste"),
+    m_CallbackServersConnected(this, &DedicatedServer::OnSteamServersConnected),
+    m_CallbackServersConnectFailure(this, &DedicatedServer::OnSteamServersConnectFailure),
+    m_CallbackServerDisconnected(this, &DedicatedServer::OnSteamServersDisconnected),
+    m_CallbackOnPolicyResponse(this, &DedicatedServer::OnPolicyResponse),
+    m_CallbackAuthTicketResponse(this, &DedicatedServer::OnValidateAuthTicketResponse),
+    m_CallbackConnectionStatusChange(this, &DedicatedServer::OnNetConnectionStatusChanged)
     {
     uint32 unIP = INADDR_ANY;
     uint16 usMasterServerUpdaterPort = MASTER_SERVER_UPDATER_PORT;
@@ -35,7 +35,7 @@ Server::Server() :
     if(SteamGameServer()){
         SteamGameServer()->SetModDir("thecell");
 
-        SteamGameServer()->SetServerName("The Cell Server");
+        SteamGameServer()->SetServerName("The Cell DedicatedServer");
         SteamGameServer()->SetProduct( "TheCellServer" );
         SteamGameServer()->SetGameDescription( "The Cell matchmaking server" );
 
@@ -46,9 +46,10 @@ Server::Server() :
         SteamNetworkingUtils()->InitRelayNetworkAccess();
 
         SteamGameServer()->SetAdvertiseServerActive( true );
-        //SteamGameServer()->GetSteamID();
+
 
         m_hListenSocket = SteamGameServerNetworkingSockets()->CreateListenSocketP2P(0, 0, nullptr);
+
         m_hNetPollGroup = SteamGameServerNetworkingSockets()->CreatePollGroup();
         std::cout << "Created server connection" << std::endl;
     }else{
@@ -63,8 +64,8 @@ Server::Server() :
     srand( (uint32)time( NULL ) );
 }
 
-Server::~Server() {
-    std::cout << "Server Destroyed" << std::endl;
+DedicatedServer::~DedicatedServer() {
+    std::cout << "DedicatedServer Destroyed" << std::endl;
     SteamGameServerNetworkingSockets()->CloseListenSocket(m_hListenSocket);
     SteamGameServerNetworkingSockets()->DestroyPollGroup(m_hNetPollGroup);
 
@@ -75,17 +76,17 @@ Server::~Server() {
     SteamGameServer_Shutdown();
 }
 
-void Server::RunFrame() {
+void DedicatedServer::RunFrame() {
     SteamGameServer_RunCallbacks();
     SendUpdatedServerDetailsToSteam();
 }
 
-void Server::SendUpdatedServerDetailsToSteam() {
+void DedicatedServer::SendUpdatedServerDetailsToSteam() {
     // to send the player count.  The player count is maintained by steam and you should use the player
     // creation/authentication functions to maintain your player count.
     SteamGameServer()->SetMaxPlayerCount( MAX_PLAYERS_PER_SERVER );
     SteamGameServer()->SetPasswordProtected( false );
-    SteamGameServer()->SetServerName( "The cell Server" );
+    SteamGameServer()->SetServerName( "The cell DedicatedServer" );
     SteamGameServer()->SetBotPlayerCount( 0 ); // optional, defaults to zero
     SteamGameServer()->SetMapName( "d2" );
 }
@@ -93,7 +94,7 @@ void Server::SendUpdatedServerDetailsToSteam() {
 //-----------------------------------------------------------------------------
 // Purpose: A new client that connected has had their authentication processed
 //-----------------------------------------------------------------------------
-void Server::OnAuthCompleted( bool bAuthSuccessful, uint32 iPendingAuthIndex )
+void DedicatedServer::OnAuthCompleted( bool bAuthSuccessful, uint32 iPendingAuthIndex )
 {
     std::cout << "TEI" << std::endl;
     if ( !m_rgPendingClientData[iPendingAuthIndex].m_bActive )
@@ -161,7 +162,7 @@ void Server::OnAuthCompleted( bool bAuthSuccessful, uint32 iPendingAuthIndex )
     }
 }
 
-void Server::OnValidateAuthTicketResponse(ValidateAuthTicketResponse_t *pResponse) {
+void DedicatedServer::OnValidateAuthTicketResponse(ValidateAuthTicketResponse_t *pResponse) {
     std::cout << "TEI" << std::endl;
     if ( pResponse->m_eAuthSessionResponse == k_EAuthSessionResponseOK )
     {
@@ -193,7 +194,7 @@ void Server::OnValidateAuthTicketResponse(ValidateAuthTicketResponse_t *pRespons
     }
 }
 
-void Server::OnPolicyResponse( GSPolicyResponse_t *pPolicyResponse )
+void DedicatedServer::OnPolicyResponse( GSPolicyResponse_t *pPolicyResponse )
 {
     // Check if we were able to go VAC secure or not
     if ( SteamGameServer()->BSecure() )
@@ -204,14 +205,14 @@ void Server::OnPolicyResponse( GSPolicyResponse_t *pPolicyResponse )
     {
         std::cout <<  ( "Thecell is not VAC Secure!\n" );
     }
-    //std::cout << SteamGameServer_GetSteamID() << std::endl;
-    //SteamGameServer()->GetSteamID();
+    std::cout << SteamGameServer_GetSteamID() << std::endl;
+    //GetSteamID();
 }
 
 //-----------------------------------------------------------------------------
 // Purpose: Handle any connection status change
 //-----------------------------------------------------------------------------
-void Server::OnNetConnectionStatusChanged(SteamNetConnectionStatusChangedCallback_t* pCallback)
+void DedicatedServer::OnNetConnectionStatusChanged(SteamNetConnectionStatusChangedCallback_t* pCallback)
 {
     std::cout << "TEI" << std::endl;
     /// Connection handle
@@ -254,22 +255,22 @@ void Server::OnNetConnectionStatusChanged(SteamNetConnectionStatusChangedCallbac
                 SteamGameServerNetworkingSockets()->SetConnectionPollGroup(hConn, m_hNetPollGroup);
 
                 //Send them the server info as a reliable message
-                MsgServerSendInfo_t msg;
-                msg.SetSteamIDServer(SteamGameServer()->GetSteamID().ConvertToUint64());
-
-                // You can only make use of VAC when using the Steam authentication system
-                msg.SetSecure(SteamGameServer()->BSecure());
-
-                msg.SetServerName(m_sServerName.c_str());
-                SteamGameServerNetworkingSockets()->SendMessageToConnection( hConn, &msg, sizeof(MsgServerSendInfo_t), k_nSteamNetworkingSend_Reliable, nullptr );
+//                MsgServerSendInfo_t msg;
+//                msg.SetSteamIDServer(SteamGameServer()->GetSteamID().ConvertToUint64());
+//
+//                // You can only make use of VAC when using the Steam authentication system
+//                msg.SetSecure(SteamGameServer()->BSecure());
+//
+//                msg.SetServerName(m_sServerName.c_str());
+//                SteamGameServerNetworkingSockets()->SendMessageToConnection( hConn, &msg, sizeof(MsgServerSendInfo_t), k_nSteamNetworkingSend_Reliable, nullptr );
 
                 return;
             }
         }
 
-        // No empty slots.  Server full!
+        // No empty slots.  DedicatedServer full!
         std::cout << ("Rejecting connection; server full") << std::endl;
-        SteamGameServerNetworkingSockets()->CloseConnection( hConn, k_ESteamNetConnectionEnd_AppException_Generic, "Server full!", false );
+        SteamGameServerNetworkingSockets()->CloseConnection( hConn, k_ESteamNetConnectionEnd_AppException_Generic, "DedicatedServer full!", false );
     }
     // Check if a client has disconnected
     else if ((eOldState == k_ESteamNetworkingConnectionState_Connecting || eOldState == k_ESteamNetworkingConnectionState_Connected) &&
@@ -296,7 +297,7 @@ void Server::OnNetConnectionStatusChanged(SteamNetConnectionStatusChangedCallbac
 //-----------------------------------------------------------------------------
 // Purpose: Called when we were previously logged into steam but get logged out
 //-----------------------------------------------------------------------------
-void Server::OnSteamServersDisconnected( SteamServersDisconnected_t *pLoggedOff )
+void DedicatedServer::OnSteamServersDisconnected( SteamServersDisconnected_t *pLoggedOff )
 {
     m_bConnectedToSteam = false;
     std::cout << ( "Thecell got logged out of Steam\n" );
@@ -306,7 +307,7 @@ void Server::OnSteamServersDisconnected( SteamServersDisconnected_t *pLoggedOff 
 //-----------------------------------------------------------------------------
 // Purpose: Called when an attempt to login to Steam fails
 //-----------------------------------------------------------------------------
-void Server::OnSteamServersConnectFailure( SteamServerConnectFailure_t *pConnectFailure ){
+void DedicatedServer::OnSteamServersConnectFailure( SteamServerConnectFailure_t *pConnectFailure ){
     m_bConnectedToSteam = false;
     std::cout << ( "Thecell failed to connect to Steam\n" );
 }
@@ -314,7 +315,7 @@ void Server::OnSteamServersConnectFailure( SteamServerConnectFailure_t *pConnect
 //-----------------------------------------------------------------------------
 // Purpose: Take any action we need to on Steam notifying us we are now logged in
 //-----------------------------------------------------------------------------
-void Server::OnSteamServersConnected( SteamServersConnected_t *pLogonSuccess ){
+void DedicatedServer::OnSteamServersConnected( SteamServersConnected_t *pLogonSuccess ){
     std::cout << ( "Thecell connected to Steam successfully\n" );
     m_bConnectedToSteam = true;
 
@@ -324,31 +325,31 @@ void Server::OnSteamServersConnected( SteamServersConnected_t *pLogonSuccess ){
     SendUpdatedServerDetailsToSteam();
 }
 
-void Server::ReceiveNetworkData() {
+void DedicatedServer::ReceiveNetworkData() {
     std::cout << "ReceiveNetworkData" << std::endl;
 }
 
-CSteamID Server::GetSteamID(){
+CSteamID DedicatedServer::GetSteamID(){
     std::cout << "GetSteamID" << std::endl;
     return SteamGameServer()->GetSteamID();
 }
 
-void Server::OnClientBeginAuthentication(CSteamID steamIDClient, HSteamNetConnection connectionID, void *pToken,
+void DedicatedServer::OnClientBeginAuthentication(CSteamID steamIDClient, HSteamNetConnection connectionID, void *pToken,
                                          uint32 uTokenLen) {
     std::cout << "TEI" << std::endl;
 }
 
-bool Server::BSendDataToClient(uint32 uShipIndex, char *pData, uint32 nSizeOfData) {
+bool DedicatedServer::BSendDataToClient(uint32 uShipIndex, char *pData, uint32 nSizeOfData) {
     std::cout << "TEI" << std::endl;
     return false;
 }
 
-bool Server::BSendDataToPendingClient(uint32 uShipIndex, char *pData, uint32 nSizeOfData) {
+bool DedicatedServer::BSendDataToPendingClient(uint32 uShipIndex, char *pData, uint32 nSizeOfData) {
     std::cout << "TEI" << std::endl;
     return false;
 }
 
-void Server::SendMessageToAll(HSteamNetConnection hConnIgnore, const void *pubData, uint32 cubData) {
+void DedicatedServer::SendMessageToAll(HSteamNetConnection hConnIgnore, const void *pubData, uint32 cubData) {
     std::cout << "TEI" << std::endl;
 }
 

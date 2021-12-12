@@ -850,7 +850,7 @@ public:
 	/// last several minutes.  It is *highly* recommended to treat failure as fatal.
 	///
 	/// To communicate using a connection-oriented (TCP-style) API:
-	/// - Server creates a listen socket using CreateListenSocketP2PFakeIP
+	/// - DedicatedServer creates a listen socket using CreateListenSocketP2PFakeIP
 	/// - Client connects using ConnectByIPAddress, passing in the FakeIP address.
 	/// - The connection will behave mostly like a P2P connection.  The identities
 	///   that appear in SteamNetConnectionInfo_t will be the FakeIP identity until
