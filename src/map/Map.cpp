@@ -7,12 +7,9 @@
 #include "Map.h"
 #include "../Assets.h"
 #include "../Collision.h"
+#include "StringUtils.h"
 
-nlohmann::json Map::map_metadata;
 std::vector<sf::Rect<float>> Map::walls;
-float Map::mapH;
-float Map::mapW;
-float Map::mapBlockSize;
 candle::EdgeVector Map::edges;
 
 Map::Map(const std::string& folder) {
@@ -20,34 +17,36 @@ Map::Map(const std::string& folder) {
     _ptexture = Assets::Acquire(mapfolder + "static");
     _sprite.setTexture(*_ptexture);
 
+    readMetadata();
+
 
     std::ifstream file("assets/" + mapfolder + "metadata.json");
-    file >> map_metadata;
-
-    sf::Vector2i utilSize = sf::Vector2i(map_metadata["tilewidth"].get<int>(), map_metadata["tileheight"].get<int>());
-    sf::Vector2i mapHeight = sf::Vector2i(map_metadata["height"].get<int>(), map_metadata["width"].get<int>());
-
-    mapH = map_metadata["height"].get<float>();
-    mapW = map_metadata["width"].get<float>();
-    mapBlockSize = map_metadata["tilewidth"].get<float>();
-
-    for (int i = 0; i < map_metadata["layers"].size(); i++){
-        if (map_metadata["layers"][i]["name"] == "walls"){
-            for (int dr = 0; dr < map_metadata["layers"][i]["data"].size(); dr++){
-                if (map_metadata["layers"][i]["data"][dr].get<int>() != 0){
-                    float left = (float)(dr % mapHeight.y) * utilSize.y;
-                    float top = (float)(dr / mapHeight.x) * utilSize.x;
-                    walls.emplace_back(sf::Rect<float>((float)(dr % mapHeight.y) * utilSize.y, (dr / mapHeight.x) * utilSize.x, utilSize.x, utilSize.y));
-
-
-                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left + 32, top));
-                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left, top + 32));
-                    edges.emplace_back(sf::Vector2f(left + 32, top), sf::Vector2f(left + 32, top + 32));
-                    edges.emplace_back(sf::Vector2f(left, top + 32), sf::Vector2f(left + 32, top + 32));
-                }
-            }
-        }
-    }
+//    file >> map_metadata;
+//
+//    sf::Vector2i utilSize = sf::Vector2i(map_metadata["tilewidth"].get<int>(), map_metadata["tileheight"].get<int>());
+//    sf::Vector2i mapHeight = sf::Vector2i(map_metadata["height"].get<int>(), map_metadata["width"].get<int>());
+//
+//    mapH = map_metadata["height"].get<float>();
+//    mapW = map_metadata["width"].get<float>();
+//    mapBlockSize = map_metadata["tilewidth"].get<float>();
+//
+//    for (int i = 0; i < map_metadata["layers"].size(); i++){
+//        if (map_metadata["layers"][i]["name"] == "walls"){
+//            for (int dr = 0; dr < map_metadata["layers"][i]["data"].size(); dr++){
+//                if (map_metadata["layers"][i]["data"][dr].get<int>() != 0){
+//                    float left = (float)(dr % mapHeight.y) * utilSize.y;
+//                    float top = (float)(dr / mapHeight.x) * utilSize.x;
+//                    walls.emplace_back(sf::Rect<float>((float)(dr % mapHeight.y) * utilSize.y, (dr / mapHeight.x) * utilSize.x, utilSize.x, utilSize.y));
+//
+//
+//                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left + 32, top));
+//                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left, top + 32));
+//                    edges.emplace_back(sf::Vector2f(left + 32, top), sf::Vector2f(left + 32, top + 32));
+//                    edges.emplace_back(sf::Vector2f(left, top + 32), sf::Vector2f(left + 32, top + 32));
+//                }
+//            }
+//        }
+//    }
 }
 
 void Map::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -68,7 +67,7 @@ void Map::move(Player *player, sf::Vector2f movement) {
 
 
         //Outside bottom map
-        if (nextPos.top + nextPos.height > mapH * mapBlockSize){
+        if (nextPos.top + nextPos.height > metadata.at("height")){
             movement.y = 0.0f;
         }
         //Outside up map
@@ -76,7 +75,7 @@ void Map::move(Player *player, sf::Vector2f movement) {
             movement.y = 0.0f;
         }
         //Outside right map
-        if (nextPos.left + nextPos.width > mapW * mapBlockSize){
+        if (nextPos.left + nextPos.width > metadata.at("width")){
             movement.x = 0.0f;
         }
         //Outside left map
@@ -134,4 +133,50 @@ void Map::move(Player *player, sf::Vector2f movement) {
 
 candle::EdgeVector Map::getEdges() {
     return edges;
+}
+
+void Map::readMetadata() {
+    std::string myText;
+    std::string mapName;
+
+    // Read from the text file
+    std::ifstream MyReadFile("assets/" + mapfolder + "metadata.txt");
+
+
+    // Use a while loop together with the getline() function to read the file line by line
+    while (getline (MyReadFile, myText)) {
+        if (contains(myText, "//")){
+            continue;
+        }
+        if (contains(myText, "--")){
+            break;
+        }
+        if (myText.size() > 2){
+            std::string index = myText.substr(0,myText.find(":"));
+            if (index == "name"){
+                mapName = index;
+            }
+            else if(index == "wall"){
+                std::vector<std::string> v;
+                split(trim(myText.substr(myText.find(":") + 1, myText.size())), ",", &v);
+
+                float left = std::stof(v[0]);
+                float top = std::stof(v[1]);
+                float width = std::stof(v[2]);
+                float height = std::stof(v[3]);
+
+                walls.emplace_back(sf::Rect<float>(left, top, width, height));
+
+                if (trim(v[4]) == "true"){
+                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left + width, top));
+                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left, top + height));
+                    edges.emplace_back(sf::Vector2f(left + width, top), sf::Vector2f(left + width, top + height));
+                    edges.emplace_back(sf::Vector2f(left, top + height), sf::Vector2f(left + width, top + height));
+                }
+
+            }else{
+                metadata[index] = std::stof(trim(myText.substr(myText.find(":") + 1, myText.size())));
+            }
+        }
+    }
 }

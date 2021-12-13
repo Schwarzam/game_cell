@@ -22,7 +22,7 @@ Entity *GameManager::startMyPlayer(const std::string &name, sf::RenderWindow *wi
 GameManager::GameManager(sf::RenderWindow *window) :
         _window(window),
         fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(1600.f, 1600.f)){
-    light.setRange(350);
+    light.setRange(500);
     light.setFade(true);
 
     fog.setAreaColor(sf::Color::Black);
@@ -71,8 +71,8 @@ void GameManager::render() {
 
             light.setPosition(entity.second->getPosition());
 
-            //candle::EdgeVector edges = Map::getEdges();
-            //light.castLight(edges.begin(), edges.end());
+            candle::EdgeVector edges = Map::getEdges();
+            light.castLight(edges.begin(), edges.end());
 
             _window->draw(*entity.second);
 
