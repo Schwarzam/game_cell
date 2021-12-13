@@ -13,6 +13,8 @@
 class Map : public sf::Drawable {
 public:
     explicit Map(const std::string& name);
+    ~Map();
+
     static void move(Player *player, sf::Vector2f movement);
 
     static candle::EdgeVector getEdges();

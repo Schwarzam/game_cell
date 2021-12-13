@@ -6,6 +6,7 @@
 #define THECELL_P2PSERVER_H
 
 
+#include <SFML/System/Thread.hpp>
 #include "../steam/isteamnetworkingsockets.h"
 #include "../steam/steamnetworkingtypes.h"
 #include "../steam/isteammatchmaking.h"
@@ -20,7 +21,7 @@ public:
 
 private:
 
-    STEAM_CALLBACK(P2Pserver, OnCreatedBeaconCall, CreateBeaconCallback_t, m_createdBeaconCallback);
+    //STEAM_CALLBACK(P2Pserver, OnCreatedBeaconCall, CreateBeaconCallback_t, m_createdBeaconCallback);
 
     void createLobby();
     void onLobbyCreated( LobbyCreated_t *pCallback, bool status );

@@ -16,8 +16,8 @@ void launchServer(){
 
 }
 
-Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Fullscreen),
-                menu(&_window, &gameState), game(GameManager(&_window)), thread(&launchServer)
+Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fullscreen),
+                menu(&_window, &gameState), game(new GameManager(&_window)), thread(&launchServer), fps(&_window)
 {
     menu.openClose();
     menu.createMainMenu();
@@ -25,8 +25,24 @@ Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Fullscree
     gameState = Menu;
 
     server = new P2Pserver();
-
     thread.launch();
+
+    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+
+
+    std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+    _window.create(modes[0], "The Cell", sf::Style::Fullscreen);
+//    for (std::size_t i = 0; i < modes.size(); ++i)
+//    {
+//        sf::VideoMode mode = modes[i];
+//        std::cout << "Mode #" << i << ": "
+//                  << mode.width << "x" << mode.height << " - "
+//                  << mode.bitsPerPixel << " bpp" << std::endl;
+//
+//        _window.create(mode, "The Cell", sf::Style::Fullscreen);
+//        break;
+//    }
+    _window.setVerticalSyncEnabled(true);
 }
 
 void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
@@ -53,8 +69,8 @@ void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
 
 void Core::update()
 {
-    if (game.running()){
-        game.processEvents();
+    if (game->running()){
+        game->processEvents();
     }
     server->RunFrame();
     processCoreState();
@@ -72,11 +88,11 @@ void Core::render()
     if (menu.isOpened()){
         menu.render();
     }else{
-        game.render();
+        game->render();
     }
 
     //Count FPS
-    _window.setTitle(fps.getFPS());
+    fps.drawFPS();
 
     //Update the window
     _window.display();
@@ -122,7 +138,8 @@ void Core::processCoreState() {
     if (gameState != lastGameState){
         if(gameState == StartGame){
             menu.openClose();
-            game.startGame("d2");
+            game = new GameManager(&_window);
+            game->startGame("d2");
         }
 
         if(gameState == ResumingGame){
@@ -136,7 +153,8 @@ void Core::processCoreState() {
 
         if(gameState == Lobby){
             menu.createMainMenu();
-            game.endGame();
+            game->endGame();
+            free(game);
         }
     }
 

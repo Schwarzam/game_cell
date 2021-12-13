@@ -150,3 +150,5 @@ void Map::readMetadata() {
         }
     }
 }
+
+Map::~Map() = default;

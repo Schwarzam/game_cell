@@ -578,7 +578,7 @@ public:
 	/// call ConnectToHostedDedicatedServer to connect to the server.
 	virtual int FindRelayAuthTicketForServer( const SteamNetworkingIdentity &identityGameServer, int nRemoteVirtualPort, SteamDatagramRelayAuthTicket *pOutParsedTicket ) = 0;
 
-	/// Client call to connect to a server hosted in a Valve data center, on the specified virtual
+	/// P2PClient call to connect to a server hosted in a Valve data center, on the specified virtual
 	/// port.  You must have placed a ticket for this server into the cache, or else this connect
 	/// attempt will fail!  If you are not issuing your own tickets, then to connect to a dedicated
 	/// server via SDR in auto-ticket mode, use ConnectP2P.  (The server must be configured to allow
@@ -851,7 +851,7 @@ public:
 	///
 	/// To communicate using a connection-oriented (TCP-style) API:
 	/// - DedicatedServer creates a listen socket using CreateListenSocketP2PFakeIP
-	/// - Client connects using ConnectByIPAddress, passing in the FakeIP address.
+	/// - P2PClient connects using ConnectByIPAddress, passing in the FakeIP address.
 	/// - The connection will behave mostly like a P2P connection.  The identities
 	///   that appear in SteamNetConnectionInfo_t will be the FakeIP identity until
 	///   we know the real identity.  Then it will be the real identity.  If the

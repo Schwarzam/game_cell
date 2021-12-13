@@ -35,7 +35,7 @@ private:
     sf::Thread thread;
 
     State lastGameState;
-    GameManager game;
+    GameManager *game;
 
     void processEvents();//< Process events
     void processCoreState();

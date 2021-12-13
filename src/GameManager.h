@@ -16,6 +16,7 @@
 #include "map/Map.h"
 #include "utils/ServerMenu.h"
 
+
 class GameManager {
 public:
     explicit GameManager(sf::RenderWindow *window);
@@ -30,14 +31,20 @@ public:
     void processEvents();
 
     void render();
+    static sf::Mutex* getMutex();
 private:
+
+    [[noreturn]] static void processLight(candle::RadialLight * p_light);
+    sf::Thread *thread = nullptr;
+    static sf::Mutex *mutex;
+
     ServerMenu servers;
 
     sf::RenderWindow *_window;
     Map *map = nullptr;
     bool isRunning{};
 
-    candle::RadialLight light;
+    candle::RadialLight *light = new candle::RadialLight;
     candle::LightingArea fog;
 
 protected:

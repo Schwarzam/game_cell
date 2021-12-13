@@ -668,7 +668,7 @@ class ISteamParties
 public:
 
 	// =============================================================================================
-	// Party Client APIs
+	// Party P2PClient APIs
 	
 	// Enumerate any active beacons for parties you may wish to join
 	virtual uint32 GetNumActiveBeacons() = 0;
