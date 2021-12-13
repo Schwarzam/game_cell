@@ -17,10 +17,12 @@ P2Pserver::P2Pserver() :
 
     if (SteamNetworkingSockets()->GetIdentity(&identity)){
         std::cout << "Identidade: " << identity.GetSteamID().ConvertToUint64() << std::endl;
-        createBeacon();
+        createLobby();
     }else{
         std::cout << "Failed to start server." << std::endl;
     }
+
+    //SteamMatchmaking()->CreateLobby(k_ELobbyTypePublic, 6);
 
 
 
@@ -34,18 +36,27 @@ void P2Pserver::RunFrame() {
     SteamAPI_RunCallbacks();
 }
 
-void P2Pserver::createBeacon() {
-    uint32 numLocations{};
-
-    if (SteamParties()->GetNumAvailableBeaconLocations(&numLocations)){
-        SteamPartyBeaconLocation_t pList{};
-        if (SteamParties()->GetAvailableBeaconLocations( &pList , 1 )){
-            std::cout << pList.m_ulLocationID << std::endl;
-            SteamParties()->CreateBeacon(6, &pList, "teste", "servidor teste");
-        }
-    }
+void P2Pserver::createLobby() {
+    SteamAPICall_t hSteamAPICall = SteamMatchmaking()->CreateLobby(k_ELobbyTypePublic, 6);
+    m_LobbyCreated_t.Set(hSteamAPICall, this, &P2Pserver::onLobbyCreated);
 }
 
 void P2Pserver::OnCreatedBeaconCall( CreateBeaconCallback_t *pParam ){
     std::cout << pParam->m_eResult << std::endl;
+}
+
+void P2Pserver::onLobbyCreated( LobbyCreated_t *pCallback, bool bIOFailure ) {
+    if(pCallback->m_eResult == k_EResultOK){
+        std::cout << "Lobby Created :" << pCallback->m_eResult << std::endl;
+        requestLobbyList();
+    }
+}
+
+void P2Pserver::requestLobbyList() {
+    SteamAPICall_t hSteamAPICall = SteamMatchmaking()->RequestLobbyList();
+    m_LobbyMatchList_t.Set( hSteamAPICall, this, &P2Pserver::onLobbyRequested );
+}
+
+void P2Pserver::onLobbyRequested(LobbyMatchList_t  *pCallback, bool status) {
+    std::cout << pCallback->m_nLobbiesMatching << std::endl;
 }

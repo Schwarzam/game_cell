@@ -21,14 +21,14 @@ Entity *GameManager::startMyPlayer(const std::string &name, sf::RenderWindow *wi
 
 GameManager::GameManager(sf::RenderWindow *window) :
         _window(window),
-        fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(1600.f, 1600.f)){
+        fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(1600.f, 1600.f))
+{
     light.setRange(500);
     light.setFade(true);
+    light.setColor(sf::Color::Yellow);
 
     fog.setAreaColor(sf::Color::Black);
 }
-
-
 
 void GameManager::startGame(const std::string& mapname) {
     //servers = ServerMenu();
@@ -44,6 +44,7 @@ void GameManager::startGame(const std::string& mapname) {
 }
 
 void GameManager::endGame() {
+    delete map;
     isRunning = false;
     entities.clear();
 }

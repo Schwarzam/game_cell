@@ -5,7 +5,6 @@
 #ifndef THECELL_MAP_H
 #define THECELL_MAP_H
 
-#include <nlohmann/json.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "../Player.h"
@@ -25,7 +24,6 @@ private:
     sf::Sprite _sprite;
 
     std::string mapfolder;
-    //static nlohmann::json map_metadata;
 
     static std::map<std::string, float> metadata;
 

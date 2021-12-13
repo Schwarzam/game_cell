@@ -16,37 +16,7 @@ Map::Map(const std::string& folder) {
     mapfolder = "maps/" + folder + "/";
     _ptexture = Assets::Acquire(mapfolder + "static");
     _sprite.setTexture(*_ptexture);
-
     readMetadata();
-
-
-    std::ifstream file("assets/" + mapfolder + "metadata.json");
-//    file >> map_metadata;
-//
-//    sf::Vector2i utilSize = sf::Vector2i(map_metadata["tilewidth"].get<int>(), map_metadata["tileheight"].get<int>());
-//    sf::Vector2i mapHeight = sf::Vector2i(map_metadata["height"].get<int>(), map_metadata["width"].get<int>());
-//
-//    mapH = map_metadata["height"].get<float>();
-//    mapW = map_metadata["width"].get<float>();
-//    mapBlockSize = map_metadata["tilewidth"].get<float>();
-//
-//    for (int i = 0; i < map_metadata["layers"].size(); i++){
-//        if (map_metadata["layers"][i]["name"] == "walls"){
-//            for (int dr = 0; dr < map_metadata["layers"][i]["data"].size(); dr++){
-//                if (map_metadata["layers"][i]["data"][dr].get<int>() != 0){
-//                    float left = (float)(dr % mapHeight.y) * utilSize.y;
-//                    float top = (float)(dr / mapHeight.x) * utilSize.x;
-//                    walls.emplace_back(sf::Rect<float>((float)(dr % mapHeight.y) * utilSize.y, (dr / mapHeight.x) * utilSize.x, utilSize.x, utilSize.y));
-//
-//
-//                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left + 32, top));
-//                    edges.emplace_back(sf::Vector2f(left, top), sf::Vector2f(left, top + 32));
-//                    edges.emplace_back(sf::Vector2f(left + 32, top), sf::Vector2f(left + 32, top + 32));
-//                    edges.emplace_back(sf::Vector2f(left, top + 32), sf::Vector2f(left + 32, top + 32));
-//                }
-//            }
-//        }
-//    }
 }
 
 void Map::draw(sf::RenderTarget &target, sf::RenderStates states) const {

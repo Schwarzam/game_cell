@@ -12,7 +12,7 @@
 #include "map/Map.h"
 #include "utils/BaseMenu.h"
 #include "State.h"
-#include "DedicatedServer.h"
+#include "old/DedicatedServer.h"
 #include "P2Pserver.h"
 
 #include <SFML/System.hpp>

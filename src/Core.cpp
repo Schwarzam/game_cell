@@ -9,14 +9,14 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "../steam/steam_api.h"
-#include "DedicatedServer.h"
+#include "old/DedicatedServer.h"
 #include "utils/ServerMenu.h"
 
 void launchServer(){
 
 }
 
-Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
+Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Fullscreen),
                 menu(&_window, &gameState), game(GameManager(&_window)), thread(&launchServer)
 {
     menu.openClose();

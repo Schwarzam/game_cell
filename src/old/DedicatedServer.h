@@ -6,13 +6,13 @@
 #define GAME_CELL_SERVER_H
 
 
-#include "../steam/steamnetworkingtypes.h"
-#include "../steam/isteamnetworkingsockets.h"
-#include "../steam/isteamuser.h"
-#include "../steam/isteamgameserver.h"
-#include "../steam/steam_api_common.h"
+#include "../../steam/steamnetworkingtypes.h"
+#include "../../steam/isteamnetworkingsockets.h"
+#include "../../steam/isteamuser.h"
+#include "../../steam/isteamgameserver.h"
+#include "../../steam/steam_api_common.h"
 
-#include "../steam/steam_gameserver.h"
+#include "../../steam/steam_gameserver.h"
 
 
 #define MAX_PLAYERS_PER_SERVER 6
