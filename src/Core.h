@@ -14,6 +14,7 @@
 #include "State.h"
 #include "old/DedicatedServer.h"
 #include "P2Pserver.h"
+#include "P2PClient.h"
 
 #include <SFML/System.hpp>
 
@@ -36,6 +37,8 @@ private:
 
     State lastGameState;
     GameManager *game;
+
+    P2PClient client;
 
     void processEvents();//< Process events
     void processCoreState();

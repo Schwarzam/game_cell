@@ -6,8 +6,19 @@
 #define THECELL_P2PCLIENT_H
 
 
-class P2PClient {
+#include "../steam/isteammatchmaking.h"
+#include "P2Pserver.h"
 
+class P2PClient {
+public:
+    P2PClient();
+    ~P2PClient() = default;
+
+    void processEvents();
+    void requestLobbyList();
+private:
+    void onLobbyRequested( LobbyMatchList_t *pCallback, bool status );
+    CCallResult<P2PClient, LobbyMatchList_t> m_LobbyMatchList_t;
 };
 
 

@@ -27,11 +27,8 @@ Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fulls
     server = new P2Pserver();
     thread.launch();
 
-    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
-
-
     std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
-    _window.create(modes[0], "The Cell", sf::Style::Fullscreen);
+    _window.create(modes[0], "The Cell", sf::Style::Resize);
 //    for (std::size_t i = 0; i < modes.size(); ++i)
 //    {
 //        sf::VideoMode mode = modes[i];
@@ -69,6 +66,8 @@ void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
 
 void Core::update()
 {
+    client.processEvents();
+
     if (game->running()){
         game->processEvents();
     }
@@ -122,7 +121,7 @@ void Core::processEvents() {
 
             if (event.key.code == sf::Keyboard::P){
                 //_window.setView(view);
-
+                client.requestLobbyList();
             }
         }
 
