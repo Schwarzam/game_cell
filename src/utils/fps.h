@@ -42,7 +42,7 @@ public:
         textName.setFont(font);
         textName.setString(ss.str());
         textName.setPosition(32 + _window->getView().getCenter().x - _window->getView().getSize().x/2,
-                             (float)_window->getPosition().y + (float)_window->getSize().y - 32  + _window->getView().getCenter().y- _window->getView().getSize().y/2);
+                             (float)_window->getPosition().y + 32  + _window->getView().getCenter().y- _window->getView().getSize().y/2);
         textName.setCharacterSize(16);
         _window->draw(textName);
     }

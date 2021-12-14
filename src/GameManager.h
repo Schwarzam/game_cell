@@ -51,6 +51,14 @@ protected:
     static std::vector<std::pair<float, Entity*>> entities;
 };
 
+enum GameState{
+    WaitingForPlayers,
+    ReadyToStart,
+    CountDown,
+    StartingRound,
+    Finished
+};
+
 
 
 #endif //THECELL_GAMEMANAGER_H

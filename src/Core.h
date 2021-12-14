@@ -15,6 +15,7 @@
 #include "old/DedicatedServer.h"
 #include "P2Pserver.h"
 #include "P2PClient.h"
+#include "utils/Chat.h"
 
 #include <SFML/System.hpp>
 
@@ -33,12 +34,14 @@ public:
 
 private:
     P2Pserver *server;
+    P2PClient client;
+
     sf::Thread thread;
 
     State lastGameState;
     GameManager *game;
 
-    P2PClient client;
+    Chat chat;
 
     void processEvents();//< Process events
     void processCoreState();

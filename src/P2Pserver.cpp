@@ -6,14 +6,15 @@
 #include "P2Pserver.h"
 #include "../steam/isteamnetworkingutils.h"
 #include "../steam/isteammatchmaking.h"
+#include "utils/Chat.h"
 
-P2Pserver::P2Pserver()
+P2Pserver::P2Pserver() :
+        m_LobbyEnter_t(this, &P2Pserver::onLobbyEnter),
+        m_LobbyChatUpdate_t(this, &P2Pserver::onLobbyChatUpdate)
     //m_createdBeaconCallback(this, &P2Pserver::OnCreatedBeaconCall)
 {
-
     SteamNetworkingUtils()->InitRelayNetworkAccess();
     m_hListenSocket = SteamNetworkingSockets()->CreateListenSocketP2P(0, 0, nullptr );
-
 
     if (SteamNetworkingSockets()->GetIdentity(&identity)){
         std::cout << "Identidade: " << identity.GetSteamID().ConvertToUint64() << std::endl;
@@ -27,8 +28,6 @@ P2Pserver::~P2Pserver() = default;
 
 void P2Pserver::RunFrame() {
     SteamAPI_RunCallbacks();
-
-
 }
 
 void P2Pserver::createLobby() {
@@ -39,9 +38,10 @@ void P2Pserver::createLobby() {
 
 void P2Pserver::onLobbyCreated( LobbyCreated_t *pCallback, bool bIOFailure ) {
     if(pCallback->m_eResult == k_EResultOK){
-        std::cout << "Lobby Created :" << pCallback->m_ulSteamIDLobby << std::endl;
+        lobbyId = pCallback->m_ulSteamIDLobby;
 
         if (pCallback->m_eResult == k_EResultOK){
+            Chat::addMessage("Lobby Created!");
             SteamMatchmaking()->SetLobbyJoinable(pCallback->m_ulSteamIDLobby, true);
         }
     }
@@ -55,3 +55,23 @@ void P2Pserver::requestLobbyList() {
 void P2Pserver::onLobbyRequested(LobbyMatchList_t  *pCallback, bool status) {
     std::cout << pCallback->m_nLobbiesMatching << std::endl;
 }
+
+void P2Pserver::onLobbyEnter(LobbyEnter_t *pParam) {
+    std::cout << "Entered lobby: " << pParam->m_EChatRoomEnterResponse << std::endl;
+    std::cout << "Members in lobby: " << SteamMatchmaking()->GetNumLobbyMembers(lobbyId) << std::endl;
+
+    Chat::addMessage("Entered Lobby");
+
+    try{
+        //SteamMatchmaking()->GetLobbyMemberByIndex(lobbyId, 0);
+    }catch(std::exception& e) {
+
+    }
+}
+
+void P2Pserver::onLobbyChatUpdate(LobbyChatUpdate_t *pParam) {
+    std::cout << "Lobby chat update: " << pParam->m_ulSteamIDLobby << std::endl;
+
+    Chat::addMessage("Lobby chat update");
+}
+

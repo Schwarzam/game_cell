@@ -17,7 +17,7 @@ void launchServer(){
 }
 
 Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fullscreen),
-                menu(&_window, &gameState), game(new GameManager(&_window)), thread(&launchServer), fps(&_window)
+                menu(&_window, &gameState), game(new GameManager(&_window)), thread(&launchServer), fps(&_window), chat(&_window)
 {
     menu.openClose();
     menu.createMainMenu();
@@ -28,7 +28,7 @@ Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fulls
     thread.launch();
 
     std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
-    _window.create(modes[0], "The Cell", sf::Style::Resize);
+    _window.create(modes[0], "The Cell", sf::Style::Fullscreen);
 //    for (std::size_t i = 0; i < modes.size(); ++i)
 //    {
 //        sf::VideoMode mode = modes[i];
@@ -92,6 +92,7 @@ void Core::render()
 
     //Count FPS
     fps.drawFPS();
+    chat.drawChat();
 
     //Update the window
     _window.display();
@@ -156,7 +157,6 @@ void Core::processCoreState() {
             free(game);
         }
     }
-
     lastGameState = gameState;
 }
 

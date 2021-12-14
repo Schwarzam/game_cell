@@ -21,7 +21,8 @@ public:
 
 private:
 
-    //STEAM_CALLBACK(P2Pserver, OnCreatedBeaconCall, CreateBeaconCallback_t, m_createdBeaconCallback);
+    STEAM_CALLBACK(P2Pserver, onLobbyEnter, LobbyEnter_t, m_LobbyEnter_t);
+    STEAM_CALLBACK(P2Pserver, onLobbyChatUpdate, LobbyChatUpdate_t, m_LobbyChatUpdate_t);
 
     void createLobby();
     void onLobbyCreated( LobbyCreated_t *pCallback, bool status );
@@ -31,10 +32,15 @@ private:
     void onLobbyRequested( LobbyMatchList_t *pCallback, bool status );
     CCallResult<P2Pserver, LobbyMatchList_t> m_LobbyMatchList_t;
 
+
+
+
     HSteamListenSocket m_hListenSocket;
     HSteamNetPollGroup m_hNetPollGroup{};
 
     SteamNetworkingIdentity identity{};
+
+    CSteamID lobbyId{};
 };
 
 
