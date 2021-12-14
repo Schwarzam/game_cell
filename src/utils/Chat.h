@@ -17,14 +17,16 @@ public:
     Chat(sf::RenderWindow *window);
     ~Chat();
 
-    static void addMessage(std::string message);
+    static void addMessage(const std::string& message);
 
     void drawChat();
 private:
-    static std::vector<std::string> messages;
+    static std::vector<std::pair<std::string, float>> messages;
 
     sf::RenderWindow *_window;
     sf::Font font;
+
+    static sf::Clock clock;
 };
 
 
