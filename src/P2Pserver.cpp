@@ -21,6 +21,7 @@ P2Pserver::P2Pserver() :
         createLobby();
     }else{
         std::cout << "Failed to start server." << std::endl;
+        Chat::addMessage("Failed to start server!", sf::Color::Red);
     }
 }
 
@@ -41,7 +42,7 @@ void P2Pserver::onLobbyCreated( LobbyCreated_t *pCallback, bool bIOFailure ) {
         lobbyId = pCallback->m_ulSteamIDLobby;
 
         if (pCallback->m_eResult == k_EResultOK){
-            Chat::addMessage("Lobby Created!");
+            Chat::addMessage("Lobby Created!", sf::Color::Yellow);
             SteamMatchmaking()->SetLobbyJoinable(pCallback->m_ulSteamIDLobby, true);
         }
     }
@@ -60,7 +61,7 @@ void P2Pserver::onLobbyEnter(LobbyEnter_t *pParam) {
     std::cout << "Entered lobby: " << pParam->m_EChatRoomEnterResponse << std::endl;
     std::cout << "Members in lobby: " << SteamMatchmaking()->GetNumLobbyMembers(lobbyId) << std::endl;
 
-    Chat::addMessage("Entered Lobby");
+    Chat::addMessage("Entered Lobby", sf::Color::Yellow);
 
     try{
         //SteamMatchmaking()->GetLobbyMemberByIndex(lobbyId, 0);
