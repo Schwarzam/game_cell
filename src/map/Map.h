@@ -18,6 +18,9 @@ public:
     static void move(Player *player, sf::Vector2f movement);
 
     static candle::EdgeVector getEdges();
+
+    std::shared_ptr<sf::Texture> get_backgroundShadow();
+
 private:
     void readMetadata();
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
@@ -31,6 +34,7 @@ private:
 
     static std::vector<sf::Rect<float>> walls;
     static candle::EdgeVector edges;
+    std::shared_ptr<sf::Texture> backgroundShadow;
 };
 
 

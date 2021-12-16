@@ -22,15 +22,12 @@ Entity *GameManager::startMyPlayer(const std::string &name, sf::RenderWindow *wi
 }
 
 GameManager::GameManager(sf::RenderWindow *window) :
-        _window(window),
-        fog(candle::LightingArea::FOG, sf::Vector2f(0.f, 0.f), sf::Vector2f(1600.f, 1600.f))
+        _window(window)
 {
     mutex = new sf::Mutex();
     light->setRange(350);
     light->setFade(true);
     light->setColor(sf::Color::Yellow);
-
-    fog.setAreaColor(sf::Color::Black);
 }
 
 void GameManager::startGame(const std::string& mapname) {
@@ -47,6 +44,8 @@ void GameManager::startGame(const std::string& mapname) {
 
     thread = new sf::Thread(&GameManager::processLight, light);
     thread->launch();
+
+    fog = new candle::LightingArea(candle::LightingArea::FOG, map->get_backgroundShadow().get());
 }
 
 void GameManager::endGame() {
@@ -84,11 +83,11 @@ void GameManager::render() {
             light->setPosition(entity.second->getPosition());
             _window->draw(*entity.second);
 
-            fog.clear();
-            fog.draw(*light);
-            fog.display();
+            fog->clear();
+            fog->draw(*light);
+            fog->display();
 
-            _window->draw(fog);
+            _window->draw(*fog);
         }
     }
 

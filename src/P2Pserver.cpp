@@ -11,7 +11,6 @@
 P2Pserver::P2Pserver() :
         m_LobbyEnter_t(this, &P2Pserver::onLobbyEnter),
         m_LobbyChatUpdate_t(this, &P2Pserver::onLobbyChatUpdate)
-    //m_createdBeaconCallback(this, &P2Pserver::OnCreatedBeaconCall)
 {
     SteamNetworkingUtils()->InitRelayNetworkAccess();
     m_hListenSocket = SteamNetworkingSockets()->CreateListenSocketP2P(0, 0, nullptr );
@@ -40,10 +39,12 @@ void P2Pserver::createLobby() {
 void P2Pserver::onLobbyCreated( LobbyCreated_t *pCallback, bool bIOFailure ) {
     if(pCallback->m_eResult == k_EResultOK){
         lobbyId = pCallback->m_ulSteamIDLobby;
+        std::cout << "lobby ID: " << lobbyId.ConvertToUint64() << std::endl;
 
         if (pCallback->m_eResult == k_EResultOK){
             Chat::addMessage("Lobby Created!", sf::Color::Yellow);
             SteamMatchmaking()->SetLobbyJoinable(pCallback->m_ulSteamIDLobby, true);
+            SteamMatchmaking()->SetLobbyData(lobbyId, "game", SteamFriends()->GetPersonaName());
         }
     }
 }
@@ -63,11 +64,11 @@ void P2Pserver::onLobbyEnter(LobbyEnter_t *pParam) {
 
     Chat::addMessage("Entered Lobby", sf::Color::Yellow);
 
-    try{
+    //try{
         //SteamMatchmaking()->GetLobbyMemberByIndex(lobbyId, 0);
-    }catch(std::exception& e) {
+    //}catch(std::exception& e) {
 
-    }
+    //}
 }
 
 void P2Pserver::onLobbyChatUpdate(LobbyChatUpdate_t *pParam) {

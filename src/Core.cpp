@@ -16,7 +16,7 @@ void launchServer(){
 
 }
 
-Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fullscreen),
+Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Resize),
                 menu(&_window, &gameState), game(new GameManager(&_window)), thread(&launchServer), fps(&_window), chat(&_window)
 {
     menu.openClose();
@@ -28,7 +28,7 @@ Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fulls
     thread.launch();
 
     std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
-    _window.create(modes[0], "The Cell", sf::Style::Fullscreen);
+    _window.create(modes[0], "The Cell", sf::Style::Resize);
 //    for (std::size_t i = 0; i < modes.size(); ++i)
 //    {
 //        sf::VideoMode mode = modes[i];
@@ -74,9 +74,9 @@ void Core::update()
     server->RunFrame();
     processCoreState();
 
-    //if (server != nullptr){
-    //    server->RunFrame();
-    //}
+    if (server != nullptr){
+
+    }
 }
 
 void Core::render()
@@ -123,6 +123,10 @@ void Core::processEvents() {
             if (event.key.code == sf::Keyboard::P){
                 //_window.setView(view);
                 client.requestLobbyList();
+            }
+
+            if(event.key.code == sf::Keyboard::L){
+
             }
         }
 

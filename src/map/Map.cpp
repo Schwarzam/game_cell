@@ -17,6 +17,8 @@ Map::Map(const std::string& folder) {
     _ptexture = Assets::Acquire(mapfolder + "static");
     _sprite.setTexture(*_ptexture);
     readMetadata();
+
+    backgroundShadow = Assets::Acquire(mapfolder + "fundo_sombra");
 }
 
 void Map::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -149,6 +151,10 @@ void Map::readMetadata() {
             }
         }
     }
+}
+
+std::shared_ptr<sf::Texture> Map::get_backgroundShadow() {
+    return backgroundShadow;
 }
 
 Map::~Map() = default;

@@ -45,7 +45,8 @@ private:
     bool isRunning{};
 
     candle::RadialLight *light = new candle::RadialLight;
-    candle::LightingArea fog;
+    candle::LightingArea *fog = nullptr;
+
 
 protected:
     static std::vector<std::pair<float, Entity*>> entities;
