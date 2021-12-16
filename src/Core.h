@@ -12,7 +12,10 @@
 #include "map/Map.h"
 #include "utils/BaseMenu.h"
 #include "State.h"
-#include "Server.h"
+#include "old/DedicatedServer.h"
+#include "P2Pserver.h"
+#include "P2PClient.h"
+#include "utils/Chat.h"
 
 #include <SFML/System.hpp>
 
@@ -30,11 +33,15 @@ public:
 
 
 private:
-    Server *server;
+    P2Pserver *server;
+    P2PClient client;
+
     sf::Thread thread;
 
     State lastGameState;
-    GameManager game;
+    GameManager *game;
+
+    Chat chat;
 
     void processEvents();//< Process events
     void processCoreState();

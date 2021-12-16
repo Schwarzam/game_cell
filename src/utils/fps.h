@@ -15,7 +15,9 @@ class FPS
 public:
     /// @brief Constructor with initialization.
     ///
-    FPS() : mFrame(0), mFps(0) {}
+    FPS(sf::RenderWindow *window) : mFrame(0), mFps(0), _window(window) {
+        font.loadFromFile("assets/fonts/Bungee-Regular.ttf");
+    }
 
     /// @brief Update the frame count.
     ///
@@ -31,7 +33,25 @@ public:
         return ss.str();
     }
 
+    void drawFPS() {
+        update();
+        std::ostringstream ss;
+        ss << mFps;
+
+        sf::Text textName;
+        textName.setFont(font);
+        textName.setString(ss.str());
+        textName.setPosition(32 + _window->getView().getCenter().x - _window->getView().getSize().x/2,
+                             (float)_window->getPosition().y + 32  + _window->getView().getCenter().y- _window->getView().getSize().y/2);
+        textName.setCharacterSize(16);
+        _window->draw(textName);
+    }
+
+
+
 private:
+    sf::Font font;
+    sf::RenderWindow *_window;
     unsigned int mFrame;
     unsigned int mFps;
     sf::Clock mClock;

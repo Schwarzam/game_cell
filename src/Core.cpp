@@ -9,25 +9,37 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "../steam/steam_api.h"
-#include "Server.h"
+#include "old/DedicatedServer.h"
 #include "utils/ServerMenu.h"
 
 void launchServer(){
 
 }
 
-Core::Core() : _window(sf::VideoMode(1200, 720),"Core hld", sf::Style::Resize),
-                menu(&_window, &gameState), game(GameManager(&_window)), thread(&launchServer)
+Core::Core() : _window(sf::VideoMode(1200, 720, 32),"The Cell", sf::Style::Fullscreen),
+                menu(&_window, &gameState), game(new GameManager(&_window)), thread(&launchServer), fps(&_window), chat(&_window)
 {
     menu.openClose();
     menu.createMainMenu();
 
     gameState = Menu;
 
-    server = new Server();
-
-
+    server = new P2Pserver();
     thread.launch();
+
+    std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+    _window.create(modes[0], "The Cell", sf::Style::Fullscreen);
+//    for (std::size_t i = 0; i < modes.size(); ++i)
+//    {
+//        sf::VideoMode mode = modes[i];
+//        std::cout << "Mode #" << i << ": "
+//                  << mode.width << "x" << mode.height << " - "
+//                  << mode.bitsPerPixel << " bpp" << std::endl;
+//
+//        _window.create(mode, "The Cell", sf::Style::Fullscreen);
+//        break;
+//    }
+    _window.setVerticalSyncEnabled(true);
 }
 
 void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
@@ -54,8 +66,10 @@ void Core::runWithMinimumTimeSteps(int minimum_frame_per_seconds) {
 
 void Core::update()
 {
-    if (game.running()){
-        game.processEvents();
+    client.processEvents();
+
+    if (game->running()){
+        game->processEvents();
     }
     server->RunFrame();
     processCoreState();
@@ -73,11 +87,12 @@ void Core::render()
     if (menu.isOpened()){
         menu.render();
     }else{
-        game.render();
+        game->render();
     }
 
     //Count FPS
-    _window.setTitle(fps.getFPS());
+    fps.drawFPS();
+    chat.drawChat();
 
     //Update the window
     _window.display();
@@ -107,8 +122,7 @@ void Core::processEvents() {
 
             if (event.key.code == sf::Keyboard::P){
                 //_window.setView(view);
-                server->GetSteamID();
-
+                client.requestLobbyList();
             }
         }
 
@@ -124,7 +138,8 @@ void Core::processCoreState() {
     if (gameState != lastGameState){
         if(gameState == StartGame){
             menu.openClose();
-            game.startGame("d2");
+            game = new GameManager(&_window);
+            game->startGame("d2");
         }
 
         if(gameState == ResumingGame){
@@ -138,10 +153,10 @@ void Core::processCoreState() {
 
         if(gameState == Lobby){
             menu.createMainMenu();
-            game.endGame();
+            game->endGame();
+            free(game);
         }
     }
-
     lastGameState = gameState;
 }
 

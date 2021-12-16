@@ -63,4 +63,8 @@ const sf::Vector2f &Entity::getSpriteSize() const{
     return _spriteSize;
 }
 
+const bool &Entity::isMyPlayer() const {
+    return myPlayer;
+}
+
 

@@ -3,7 +3,6 @@
 //
 #define ARRAYSIZE(A) ( sizeof(A)/sizeof(A[0]) )
 
-#include <debugapi.h>
 #include "ServerMenu.h"
 #include "../../steam/isteammatchmaking.h"
 #include "../../steam/isteamutils.h"
@@ -16,16 +15,16 @@ CGameServer::CGameServer( gameserveritem_t *pGameServerItem )
     m_unIPAddress = pGameServerItem->m_NetAdr.GetIP();
     m_nConnectionPort = pGameServerItem->m_NetAdr.GetConnectionPort();
     m_nPing = pGameServerItem->m_nPing;
-    strncpy_s( m_szMap, pGameServerItem->m_szMap, ARRAYSIZE( m_szMap ) );
-    strncpy_s( m_szGameDescription, pGameServerItem->m_szGameDescription, ARRAYSIZE( m_szGameDescription ) );
+    //strncpy_s( m_szMap, pGameServerItem->m_szMap, ARRAYSIZE( m_szMap ) );
+    //strncpy_s( m_szGameDescription, pGameServerItem->m_szGameDescription, ARRAYSIZE( m_szGameDescription ) );
     m_nPlayers = pGameServerItem->m_nPlayers;
     m_nMaxPlayers = pGameServerItem->m_nMaxPlayers;
     m_nBotPlayers = pGameServerItem->m_nBotPlayers;
     m_bPassword = pGameServerItem->m_bPassword;
     m_bSecure = pGameServerItem->m_bSecure;
     m_nServerVersion = pGameServerItem->m_nServerVersion;
-    strncpy_s( m_szServerName, pGameServerItem->GetName(), ARRAYSIZE( m_szServerName ) );
-    sprintf_s( m_szServerString, "%s (%i/%i) at %s ping(%d)", pGameServerItem->GetName(), pGameServerItem->m_nPlayers, pGameServerItem->m_nMaxPlayers, pGameServerItem->m_NetAdr.GetConnectionAddressString(), pGameServerItem->m_nPing );
+    //strncpy_s( m_szServerName, pGameServerItem->GetName(), ARRAYSIZE( m_szServerName ) );
+    //sprintf_s( m_szServerString, "%s (%i/%i) at %s ping(%d)", pGameServerItem->GetName(), pGameServerItem->m_nPlayers, pGameServerItem->m_nMaxPlayers, pGameServerItem->m_NetAdr.GetConnectionAddressString(), pGameServerItem->m_nPing );
     m_steamID = pGameServerItem->m_steamID;
 }
 
@@ -48,12 +47,11 @@ void ServerMenu::RefreshInternetServers()
 
     std::cout << "Refresing servers" << std::endl;
 
-    OutputDebugString( "Refreshing internet servers\n" );
     // Track that we are now in a refresh, what type of refresh, and reset our server count
     m_bRequestingServers = true;
     m_nServers = 0;
     m_ListGameServers.clear();
-    //SetHeading( "Internet Server browser" );
+    //SetHeading( "Internet DedicatedServer browser" );
 
     Rebuild( m_ListGameServers, m_bRequestingServers );
 
@@ -67,11 +65,11 @@ void ServerMenu::RefreshInternetServers()
     MatchMakingKeyValuePair_t pFilters[2];
     MatchMakingKeyValuePair_t *pFilter = pFilters;
 
-    strncpy_s( pFilters[ 0 ].m_szKey, "gamedir", sizeof(pFilters[ 0 ].m_szKey) );
-    strncpy_s( pFilters[ 0 ].m_szValue, "thecell", sizeof(pFilters[ 0 ].m_szValue) );
+    //strncpy_s( pFilters[ 0 ].m_szKey, "gamedir", sizeof(pFilters[ 0 ].m_szKey) );
+    //strncpy_s( pFilters[ 0 ].m_szValue, "thecell", sizeof(pFilters[ 0 ].m_szValue) );
 
-    strncpy_s( pFilters[ 1 ].m_szKey, "secure", sizeof(pFilters[ 1 ].m_szKey) );
-    strncpy_s( pFilters[ 1 ].m_szValue, "1", sizeof(pFilters[ 1 ].m_szValue) );
+    //strncpy_s( pFilters[ 1 ].m_szKey, "secure", sizeof(pFilters[ 1 ].m_szKey) );
+    //strncpy_s( pFilters[ 1 ].m_szValue, "1", sizeof(pFilters[ 1 ].m_szValue) );
 
     //strncpy_safe( pFilters[ 2 ].m_szKey, "gametype", sizeof(pFilters[ 1 ].m_szValue) );
     //strncpy_safe( pFilters[ 2 ].m_szValue, "dm", sizeof(pFilters[ 1 ].m_szValue) );
@@ -88,7 +86,7 @@ void ServerMenu::RefreshInternetServers()
 void ServerMenu::ServerResponded( HServerListRequest hReq, int iServer )
 {
     // Assert( hReq == m_hServerListRequest );
-    std::cout << "Server list" << std::endl;
+    std::cout << "DedicatedServer list" << std::endl;
     gameserveritem_t *pServer = SteamMatchmakingServers()->GetServerDetails( hReq, iServer );
     if ( pServer )
     {
@@ -111,7 +109,7 @@ void ServerMenu::ServerResponded( HServerListRequest hReq, int iServer )
 void ServerMenu::ServerFailedToRespond( HServerListRequest hReq, int iServer )
 {
     // Assert( hReq == m_hServerListRequest );
-    std::cout << "Server failed to respond" << std::endl;
+    std::cout << "DedicatedServer failed to respond" << std::endl;
     gameserveritem_t *pServer = SteamMatchmakingServers()->GetServerDetails( hReq, iServer );
     std::cout << pServer->m_szGameDescription << pServer->m_nPing << std::endl;
     // bugbug jmccaskey - why would we ever need this?  Remove servers from our list I guess?
