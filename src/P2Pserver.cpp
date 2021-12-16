@@ -17,6 +17,7 @@ P2Pserver::P2Pserver() :
 
     if (SteamNetworkingSockets()->GetIdentity(&identity)){
         std::cout << "Identidade: " << identity.GetSteamID().ConvertToUint64() << std::endl;
+        serverID = identity.GetSteamID();
         createLobby();
     }else{
         std::cout << "Failed to start server." << std::endl;
@@ -45,6 +46,8 @@ void P2Pserver::onLobbyCreated( LobbyCreated_t *pCallback, bool bIOFailure ) {
             Chat::addMessage("Lobby Created!", sf::Color::Yellow);
             SteamMatchmaking()->SetLobbyJoinable(pCallback->m_ulSteamIDLobby, true);
             SteamMatchmaking()->SetLobbyData(lobbyId, "game", SteamFriends()->GetPersonaName());
+
+            SteamMatchmaking()->SetLobbyGameServer( lobbyId, 0, 0, serverID );
         }
     }
 }

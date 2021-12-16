@@ -41,6 +41,7 @@ private:
     SteamNetworkingIdentity identity{};
 
     CSteamID lobbyId{};
+    CSteamID serverID{};
 };
 
 

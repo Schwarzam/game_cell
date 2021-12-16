@@ -19,6 +19,8 @@ public:
 private:
     void onLobbyRequested( LobbyMatchList_t *pCallback, bool status );
     CCallResult<P2PClient, LobbyMatchList_t> m_LobbyMatchList_t;
+
+
 };
 
 

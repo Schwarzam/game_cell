@@ -16,16 +16,13 @@ void P2PClient::requestLobbyList() {
 }
 
 void P2PClient::onLobbyRequested(LobbyMatchList_t *pCallback, bool status) {
-    std::cout << pCallback->m_nLobbiesMatching << std::endl;
-
-    ISteamMatchmaking* pSteamMatchmaking = SteamMatchmaking();
+    std::cout << "Found: " << pCallback->m_nLobbiesMatching << " lobbies." << std::endl;
 
     for ( uint32 iLobby = 0; iLobby < pCallback->m_nLobbiesMatching; iLobby++ ){
-        if (pSteamMatchmaking){
-            pSteamMatchmaking->GetLobbyByIndex( iLobby );
+        if (SteamMatchmaking()){
+            SteamMatchmaking()->GetLobbyByIndex( iLobby );
         }
     }
-
 }
 
 void P2PClient::processEvents() {
