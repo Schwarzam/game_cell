@@ -1,0 +1,16 @@
+
+
+[2021-12-09 23:02:06] Failed to read store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf.tmp'
+[2021-12-09 23:02:06] Failed to read store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf.tmp'
+[2021-12-09 23:02:06] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-12-09 23:02:19] Loaded store 'install' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf' successfully
+[2021-12-09 23:02:20] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-12-09 23:02:39] Failed to read store 'userlocal' from 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf.tmp'
+[2021-12-09 23:02:40] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-12-09 23:02:40] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-12-09 23:02:41] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-12-09 23:02:41] Flushed store 'install' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\config\config.vdf'
+[2021-12-09 23:02:45] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-12-09 23:02:45] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-12-09 23:02:46] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'
+[2021-12-09 23:02:51] Flushed store 'userlocal' to 'C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\userdata\93642108\config\localconfig.vdf'

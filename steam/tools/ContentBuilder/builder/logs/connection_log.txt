@@ -1,0 +1,32 @@
+
+
+[2021-12-09 23:02:06] Log session started
+[2021-12-09 23:02:06] [0,0] SetSteamID( [U:1:0] )
+[2021-12-09 23:02:06] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
+[2021-12-09 23:02:06] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-12-09 23:02:06] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
+[2021-12-09 23:02:06] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-12-09 23:02:06] CCMInterface::OnNetworkDeviceStateChange -- Saw device up (192.168.15.10)
+[2021-12-09 23:02:06] CCMInterface::OnNetworkDeviceStateChange -- Start connecting to Steam
+[2021-12-09 23:02:06] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:105::cdb9:c2c2]:80 ([2602:801:f005:105::cdb9:c2c2]:80)) - SUCCESS
+[2021-12-09 23:02:06] IPv6 HTTP connectivity test (ipv6check-http.steamcontent.com / [2602:801:f005:105::cdb9:c2c2]:80 ([2602:801:f005:105::cdb9:c2c2]:80)) - server indicated we are using ipv6, external address = '2804:431:c7d9:85f9:fc8a:5d36:b6c4:fce1'
+[2021-12-09 23:02:06] IPv6 UDP connectivity test (ipv6check-udp.steamcontent.com / [2602:801:f005:100::cdb9:c204]:27019) - SUCCESS
+[2021-12-09 23:02:19] [0,0] SetSteamID( [U:1:0] )
+[2021-12-09 23:02:19] [0,0] SetSteamID( [U:1:0] )
+[2021-12-09 23:02:19] [0,0] Server says 0% of connections should be websockets, we rolled 53 - using UDP as default.
+[2021-12-09 23:02:19] CCMInterface::YieldingConnect -- no CMs cached locally, calling ISteamDirectory/GetCMList web api for launcher type 'steamcmd'. . .
+[2021-12-09 23:02:20] CCMInterface::YieldingConnect -- got 100 CMs and 100 WebSocket CMS from ISteamDirectory/GetCMList.
+[2021-12-09 23:02:20] [1,2] Connect() starting connection (eNetQOSLevelHigh, 205.185.194.197:27017, UDP)
+[2021-12-09 23:02:21] [1,2] ConnectionCompleted() (155.133.255.164:27020, UDP) local address (0.0.0.0:58140)
+[2021-12-09 23:02:21] [1,2] RecvMsgClientLogOnResponse() : [I:0:0] 'Account logon denied, need two-factor code'
+[2021-12-09 23:02:21] [1,2] AsyncDisconnect( bDontWaitOnTCPShutdown: false )
+[2021-12-09 23:02:21] [0,0] ConnectionDisconnected('Disconnected By Remote Host') : 'Account logon denied, need two-factor code' (155.133.255.164:27020, UDP)
+[2021-12-09 23:02:21] [0,0] ConnectionDisconnected() not auto reconnecting due to eResultLogonSession specifies no reconnect
+[2021-12-09 23:02:37] [0,0] SetSteamID( [U:1:0] )
+[2021-12-09 23:02:37] [0,0] Server says 0% of connections should be websockets, we rolled 57 - using UDP as default.
+[2021-12-09 23:02:37] [1,10] Connect() starting connection (eNetQOSLevelHigh, 205.185.194.197:27017, UDP)
+[2021-12-09 23:02:38] [1,10] ConnectionCompleted() (205.185.194.197:27019, UDP) local address (0.0.0.0:58140)
+[2021-12-09 23:02:39] [1,10] RecvMsgClientLogOnResponse() : [U:1:93642108] 'OK'
+[2021-12-09 23:02:39] CClientJobGetClientUpdateHosts: failed to load, 'File 'update_hosts_cached.vdf' not found'
+[2021-12-09 23:02:39] CClientJobGetClientUpdateHosts: received update from server
+[2021-12-09 23:02:39] CClientJobGetClientUpdateHosts: cached copy new expiration: Sun Dec 12 10:14:34 2021

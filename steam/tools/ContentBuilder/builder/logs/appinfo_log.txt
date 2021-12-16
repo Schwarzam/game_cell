@@ -1,0 +1,15 @@
+
+
+[2021-12-09 23:02:39] RequestAppInfoUpdate: AppIDs 7
+[2021-12-09 23:02:39] Change number 0->13378924, apps: 0/0, packages: 0/0
+[2021-12-09 23:02:39] Requesting 1 apps, 253 packages (meta data, 1024 prev attempts)
+[2021-12-09 23:02:40] Downloaded 1 apps via HTTP, 12 KB (3 KB compressed)
+[2021-12-09 23:02:40] Requesting 0 apps, 253 packages (full data, 1024 prev attempts)
+[2021-12-09 23:02:40] UpdatesJob: finished OK, apps updated 1 (12 KB), packages updated 253 (67 KB)
+[2021-12-09 23:02:40] Requesting 858 apps, 0 packages (meta data, 1024 prev attempts)
+[2021-12-09 23:02:41] Requested 143 app access tokens, 127 received, 16 denied
+[2021-12-09 23:02:41] Updated SHAs with 127 new access tokens
+[2021-12-09 23:02:42] Downloaded 104 apps via HTTP, 3226 KB (761 KB compressed)
+[2021-12-09 23:02:42] Requesting 754 apps, 0 packages (full data, 1024 prev attempts)
+[2021-12-09 23:02:44] UpdatesJob: finished OK, apps updated 858 (4853 KB), packages updated 0 (0 KB)
+[2021-12-09 23:02:59] Starting async write C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder/appcache/appinfo.vdf (3620701 bytes)
