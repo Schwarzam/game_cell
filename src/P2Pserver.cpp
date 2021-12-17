@@ -10,7 +10,8 @@
 
 P2Pserver::P2Pserver() :
         m_LobbyEnter_t(this, &P2Pserver::onLobbyEnter),
-        m_LobbyChatUpdate_t(this, &P2Pserver::onLobbyChatUpdate)
+        m_LobbyChatUpdate_t(this, &P2Pserver::onLobbyChatUpdate),
+        m_LobbyDataUpdate_t(this, &P2Pserver::onLobbyDataUpdate)
 {
     SteamNetworkingUtils()->InitRelayNetworkAccess();
     m_hListenSocket = SteamNetworkingSockets()->CreateListenSocketP2P(0, 0, nullptr );
@@ -76,7 +77,9 @@ void P2Pserver::onLobbyEnter(LobbyEnter_t *pParam) {
 
 void P2Pserver::onLobbyChatUpdate(LobbyChatUpdate_t *pParam) {
     std::cout << "Lobby chat update: " << pParam->m_ulSteamIDLobby << std::endl;
+}
 
-    Chat::addMessage("Lobby chat update");
+void P2Pserver::onLobbyDataUpdate(LobbyDataUpdate_t *pParam) {
+    std::cout << "Lobby data update: " << pParam->m_ulSteamIDLobby << "  " << (int)pParam->m_bSuccess << std::endl;
 }
 

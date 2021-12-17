@@ -25,7 +25,7 @@ GameManager::GameManager(sf::RenderWindow *window) :
         _window(window)
 {
     mutex = new sf::Mutex();
-    light->setRange(350);
+    light->setRange(600);
     light->setFade(true);
     light->setColor(sf::Color::Yellow);
 }

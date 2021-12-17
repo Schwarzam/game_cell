@@ -23,6 +23,7 @@ private:
 
     STEAM_CALLBACK(P2Pserver, onLobbyEnter, LobbyEnter_t, m_LobbyEnter_t);
     STEAM_CALLBACK(P2Pserver, onLobbyChatUpdate, LobbyChatUpdate_t, m_LobbyChatUpdate_t);
+    STEAM_CALLBACK(P2Pserver, onLobbyDataUpdate, LobbyDataUpdate_t, m_LobbyDataUpdate_t);
 
     void createLobby();
     void onLobbyCreated( LobbyCreated_t *pCallback, bool status );
