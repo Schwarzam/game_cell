@@ -18,9 +18,9 @@ void P2PClient::requestLobbyList() {
 void P2PClient::onLobbyRequested(LobbyMatchList_t *pCallback, bool status) {
     std::cout << "Found: " << pCallback->m_nLobbiesMatching << " lobbies." << std::endl;
 
-
     for ( uint32 iLobby = 0; iLobby < pCallback->m_nLobbiesMatching; iLobby++ ){
         if (SteamMatchmaking()){
+            std::cout << "Getting lobby " << iLobby << std::endl;
             SteamMatchmaking()->GetLobbyByIndex( iLobby );
         }
     }
