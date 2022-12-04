@@ -1,6 +1,0 @@
-
-
-[2021-12-11 18:35:46] Loaded 0 apps from install folder "C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
-
-
-[2021-12-13 10:20:21] Loaded 0 apps from install folder "C:\Users\gusta\game_cell\steam\tools\ContentBuilder\builder\steamapps\appmanifest_*.acf".
