@@ -8,6 +8,10 @@ func _ready():
 	_animated_sprite.play("idle")
 	
 	position = Vector2(100, 100)
+	print("Iniciado")
+	
+func _physics_process(delta):
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

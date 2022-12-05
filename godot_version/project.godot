@@ -14,6 +14,10 @@ config/name="The Cell"
 run/main_scene="res://Player/PlayerScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+EntitiesControler="*res://EntitiesControler.gd"
+
 [global]
 
 "default texture"=false
