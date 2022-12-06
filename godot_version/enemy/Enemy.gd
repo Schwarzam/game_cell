@@ -9,8 +9,6 @@ func _ready():
 	position = Vector2(rand_range(0, 300), rand_range(0, 300))
 	
 	EntitiesControler._register_enitity(get_instance_id())
-	print(get_instance_id())
-	print("Iniciado")
 	
 func _physics_process(delta):
 	if not lock_animation:
