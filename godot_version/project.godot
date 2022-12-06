@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Steam",
+"language": "NativeScript",
+"path": "res://addons/godotsteam/godotsteam.gdns"
+} ]
+_global_script_class_icons={
+"Steam": ""
+}
+
 [application]
 
 config/name="The Cell"
@@ -17,6 +27,11 @@ config/icon="res://icon.png"
 [autoload]
 
 EntitiesControler="*res://EntitiesControler.gd"
+Steam="*res://addons/godotsteam/steam.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godotsteam/plugin.cfg" )
 
 [global]
 

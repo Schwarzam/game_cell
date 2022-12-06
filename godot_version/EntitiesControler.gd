@@ -6,7 +6,16 @@ var new_entity = {
 }
 var user
 
+
+func _initialize_Steam() -> void:
+	#var INIT: Dictionary = Steam.steamInit()
+	#print("Did Steam initialize?: "+str(INIT))
+	print(Steam)
+	
 func _ready():
+	_initialize_Steam()
+	
+	
 	pass # Replace with function body.
 
 func _process(delta):
