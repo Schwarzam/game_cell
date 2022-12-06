@@ -20,6 +20,7 @@ func _register_user(user):
 func _register_enitity(id):
 	self.entities[id] = new_entity.duplicate()
 
+#activated by entity once damaged
 func _on_damage(id):
 	entities[id].life -= 10
 	if entities[id].life <= 0:

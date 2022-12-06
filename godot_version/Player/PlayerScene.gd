@@ -19,7 +19,6 @@ func run_action(action):
 		_animated_sprite.play(action)
 		
 		
-
 func _physics_process(delta):
 	if self.attacking:
 		if _animated_sprite.frame > 7 and _animated_sprite.frame < 11:

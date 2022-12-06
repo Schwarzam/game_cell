@@ -16,12 +16,14 @@ func _physics_process(delta):
 	if not lock_animation:
 		if _animated_sprite.animation != 'idle':
 			_animated_sprite.play("idle")
-	
+
+#activated by signal damage
 func on_hit():
 	_animated_sprite.play("damage")
 	lock_animation = true
 	EntitiesControler._on_damage(get_instance_id())
 
+#Activated by control on death
 func on_death():
 	_animated_sprite.play("death")
 	lock_animation = true
