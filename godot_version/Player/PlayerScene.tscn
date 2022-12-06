@@ -195,6 +195,7 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -2 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -3 )
@@ -208,14 +209,14 @@ frame = 17
 
 [node name="ThunderAttack" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ThunderAttack"]
+[node name="esquerda" type="CollisionShape2D" parent="ThunderAttack"]
 position = Vector2( -44, 4 )
 shape = SubResource( 52 )
 disabled = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ThunderAttack"]
+[node name="direita" type="CollisionShape2D" parent="ThunderAttack"]
 position = Vector2( 44, 4 )
 shape = SubResource( 52 )
 disabled = true
 
-[connection signal="body_entered" from="ThunderAttack" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="ThunderAttack" to="." method="_on_mouse1_damage"]

@@ -19,19 +19,19 @@ func run_action(action):
 		_animated_sprite.play(action)
 		
 		
-func _process(delta):
-	if self.attacking:
-		if _animated_sprite.frame > 7 and _animated_sprite.frame < 11:
-			get_node("Area2D/CollisionShape2D2").disabled = false
-		else:
-			get_node("Area2D/CollisionShape2D2").disabled = true
-			
-		if _animated_sprite.frame > 10 and _animated_sprite.frame < 14:
-			get_node("Area2D/CollisionShape2D").disabled = false
-		else:
-			get_node("Area2D/CollisionShape2D").disabled = true
 
 func _physics_process(delta):
+	if self.attacking:
+		if _animated_sprite.frame > 7 and _animated_sprite.frame < 11:
+			get_node("ThunderAttack/direita").disabled = false
+		else:
+			get_node("ThunderAttack/direita").disabled = true
+			
+		if _animated_sprite.frame > 10 and _animated_sprite.frame < 14:
+			get_node("ThunderAttack/esquerda").disabled = false
+		else:
+			get_node("ThunderAttack/esquerda").disabled = true
+			
 	if Input.is_action_pressed("up"):
 		motion.y -= SPEED
 		run_action("run")
@@ -61,9 +61,10 @@ func _unhandled_input(event):
 		self.attacking = true
 		_animated_sprite.play("attack")
 		
-		EntitiesControler.print_tei()
+		#EntitiesControler.print_tei()
 		
 
-
-func _on_Area2D_body_entered(body):
-	print(body)
+func _on_mouse1_damage(body):
+	if body.has_method("on_hit"):
+		body.on_hit()
+	pass # Replace with function body.
