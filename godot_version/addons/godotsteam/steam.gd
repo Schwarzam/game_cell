@@ -47,7 +47,7 @@ func _ready() -> void:
 	Steam.connect("p2p_session_request", self, "_on_P2P_Session_Request")
 	Steam.connect("p2p_session_connect_fail", self, "_on_P2P_Session_Connect_Fail")
 	
-	_create_Lobby()
+	_on_Open_Lobby_List_pressed()
 
 
 func _process(_delta: float) -> void:
@@ -62,6 +62,33 @@ func _create_Lobby() -> void:
 	# Make sure a lobby is not already set
 	if LOBBY_ID == 0:
 		Steam.createLobby(LOBBY_AVAILABILITY.PUBLIC, LOBBY_MAX_MEMBERS)
+	
+func _on_Open_Lobby_List_pressed() -> void:
+	# Set distance to worldwide
+	Steam.addRequestLobbyListDistanceFilter(3)
+
+	print("Requesting a lobby list")
+	Steam.requestLobbyList()
+
+func _on_Lobby_Match_List(lobbies: Array) -> void:
+	print("Got lobby list")
+	for LOBBY in lobbies:
+		# Pull lobby data from Steam, these are specific to our example
+		var LOBBY_NAME: String = Steam.getLobbyData(LOBBY, "name")
+		var LOBBY_MODE: String = Steam.getLobbyData(LOBBY, "mode")
+		print(LOBBY_NAME, LOBBY_MODE)
+		# Get the current number of members
+		var LOBBY_NUM_MEMBERS: int = Steam.getNumLobbyMembers(LOBBY)
+
+		# Create a button for the lobby
+		var LOBBY_BUTTON: Button = Button.new()
+		#LOBBY_BUTTON.set_text("Lobby ", LOBBY, ": ", LOBBY_NAME, " [", LOBBY_MODE, "] - ", LOBBY_NUM_MEMBERS, " Player(s)")
+		LOBBY_BUTTON.set_size(Vector2(800, 50))
+		LOBBY_BUTTON.set_name("lobby_"+str(LOBBY))
+		LOBBY_BUTTON.connect("pressed", self, "_join_Lobby", [LOBBY])
+
+		# Add the new lobby to the list
+		#$"Lobby Panel/Panel/Scroll/VBox".add_child(LOBBY_BUTTON)
 
 func _on_Lobby_Created(connect: int, lobby_id: int) -> void:
 	if connect == 1:
@@ -73,8 +100,8 @@ func _on_Lobby_Created(connect: int, lobby_id: int) -> void:
 		Steam.setLobbyJoinable(LOBBY_ID, true)
 
 		# Set some lobby data
-		Steam.setLobbyData(lobby_id, "name", "Gramps' Lobby")
-		Steam.setLobbyData(lobby_id, "mode", "GodotSteam test")
+		Steam.setLobbyData(lobby_id, "name", "The Cell - Normal Lobby")
+		Steam.setLobbyData(lobby_id, "mode", "Normal")
 
 		# Allow P2P connections to fallback to being relayed through Steam if needed
 		var RELAY: bool = Steam.allowP2PPacketRelay(true)
