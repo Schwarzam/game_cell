@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="The Cell"
-run/main_scene="res://Game/Game.tscn"
+run/main_scene="res://Game/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
