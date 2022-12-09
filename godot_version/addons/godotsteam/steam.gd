@@ -28,6 +28,7 @@ func _ready() -> void:
 #		get_tree().quit()
 	#Is the user online?
 	IS_ONLINE = Steam.loggedOn()
+	
 	# Get the user's Stean name and ID
 	STEAM_ID = Steam.getSteamID()
 	STEAM_NAME = Steam.getPersonaName()

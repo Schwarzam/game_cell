@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/death.png-29b20848be8b9b4de5874f36369d8217.stex"
+path="res://.import/death.png-37e8847ec6d18517096a7d7fb8e37ce5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stormhead/death.png"
-dest_files=[ "res://.import/death.png-29b20848be8b9b4de5874f36369d8217.stex" ]
+source_file="res://Player/heros/ray/death.png"
+dest_files=[ "res://.import/death.png-37e8847ec6d18517096a7d7fb8e37ce5.stex" ]
 
 [params]
 

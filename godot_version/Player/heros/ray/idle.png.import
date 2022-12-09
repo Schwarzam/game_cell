@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/attack.png-654aa7d02b90dd11a99328f9e035b8cd.stex"
+path="res://.import/idle.png-dfd3ed0de7fd73dd157784094d63a41a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stormhead/attack.png"
-dest_files=[ "res://.import/attack.png-654aa7d02b90dd11a99328f9e035b8cd.stex" ]
+source_file="res://Player/heros/ray/idle.png"
+dest_files=[ "res://.import/idle.png-dfd3ed0de7fd73dd157784094d63a41a.stex" ]
 
 [params]
 

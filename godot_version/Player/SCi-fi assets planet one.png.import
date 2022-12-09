@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/damaged.png-9195b6bb3e610a99f0610279dd1a746d.stex"
+path="res://.import/SCi-fi assets planet one.png-3fc5071884375d680b02c9638e77e33d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stormhead/damaged.png"
-dest_files=[ "res://.import/damaged.png-9195b6bb3e610a99f0610279dd1a746d.stex" ]
+source_file="res://Player/SCi-fi assets planet one.png"
+dest_files=[ "res://.import/SCi-fi assets planet one.png-3fc5071884375d680b02c9638e77e33d.stex" ]
 
 [params]
 

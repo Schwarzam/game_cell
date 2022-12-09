@@ -6,49 +6,45 @@ onready var _animated_sprite = $AnimatedSprite
 var attacking = false
 var SPEED = 100
 var motion = Vector2(0, 0)
+
+var heroSelected = "Ray"
+var hero
+
+var loaded = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_animated_sprite.connect("animation_finished", self, "_on_attack_finished")
+	
+	var format_hero_scene = "res://Player/heros/%s/%s.tscn"
+	var actua_hero_scene = format_hero_scene % [heroSelected.to_lower(), heroSelected]
+	print(actua_hero_scene, load(actua_hero_scene))
+	hero = load(actua_hero_scene).instance()
+	
+	add_child(hero)
 
 func _on_attack_finished():
 	self.attacking = false
-	
-
-func run_action(action):
-	if not self.attacking:
-		_animated_sprite.play(action)
 		
 		
 func _physics_process(delta):
-	if self.attacking:
-		if _animated_sprite.frame > 7 and _animated_sprite.frame < 11:
-			get_node("ThunderAttack/direita").disabled = false
-		else:
-			get_node("ThunderAttack/direita").disabled = true
-			
-		if _animated_sprite.frame > 10 and _animated_sprite.frame < 14:
-			get_node("ThunderAttack/esquerda").disabled = false
-		else:
-			get_node("ThunderAttack/esquerda").disabled = true
-			
+		
 	if Input.is_action_pressed("up"):
 		motion.y -= SPEED
-		run_action("run")
+		hero.run_action("run")
 	if Input.is_action_pressed("down"):
 		motion.y += SPEED
-		run_action("run")
+		hero.run_action("run")
 	if Input.is_action_pressed("right"):
 		motion.x += SPEED
-		run_action("run")
+		hero.run_action("run")
 	if Input.is_action_pressed("left"):
 		motion.x -= SPEED
-		run_action("run")
+		hero.run_action("run")
 		
 	move_and_slide(motion, Vector2(0, 0), false, 4, 0.785, true)
 	
-	if _animated_sprite.get_animation() != "idle":
+	if hero.get_animation() != "idle":
 		if !(Input.is_action_pressed("up") || Input.is_action_pressed("down") || Input.is_action_pressed("left") || Input.is_action_pressed("right")):
-			run_action("idle")
+			hero.run_action("idle")
 		motion = Vector2(0, 0)
 		
 	for index in get_slide_count():
@@ -57,13 +53,7 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		self.attacking = true
-		_animated_sprite.play("attack")
+		hero.attack()
 		
 		#EntitiesControler.print_tei()
 		
-
-func _on_mouse1_damage(body):
-	if body.has_method("on_hit"):
-		body.on_hit()
-	pass # Replace with function body.
