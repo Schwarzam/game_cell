@@ -1,5 +1,10 @@
 extends Node
 
+var Steam
+func _enter_tree():
+	if OS.get_name() != 'OSX':
+		Steam = preload("res://addons/godotsteam/godotsteam.gdns").new()
+		
 # Steam variables
 var IS_OWNED: bool = false
 var IS_ONLINE: bool = false
@@ -17,9 +22,6 @@ var LOBBY_MAX_MEMBERS: int = 6
 enum LOBBY_AVAILABILITY {PRIVATE, FRIENDS, PUBLIC, INVISIBLE}
 
 func _ready() -> void:
-	if OS.get_name() != "OSX":
-		var Steam = preload("res://addons/godotsteam/godotsteam.gdns").new()
-	# Initialize Steam
 	var INIT: Dictionary = Steam.steamInit(false)
 	print("[STEAM] Did Steam initialize?: "+str(INIT))
 	if INIT['status'] != 1:
