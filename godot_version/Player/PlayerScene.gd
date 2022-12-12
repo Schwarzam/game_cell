@@ -1,7 +1,5 @@
-extends KinematicBody2D
+extends Node
 
-
-onready var _animated_sprite = $AnimatedSprite
 
 var attacking = false
 var SPEED = 100
@@ -21,9 +19,6 @@ func _ready():
 	
 	add_child(hero)
 
-func _on_attack_finished():
-	self.attacking = false
-		
 		
 func _physics_process(delta):
 		
@@ -40,15 +35,15 @@ func _physics_process(delta):
 		motion.x -= SPEED
 		hero.run_action("run")
 		
-	move_and_slide(motion, Vector2(0, 0), false, 4, 0.785, true)
+	hero.move_and_slide(motion, Vector2(0, 0), false, 4, 0.785, true)
 	
 	if hero.get_animation() != "idle":
 		if !(Input.is_action_pressed("up") || Input.is_action_pressed("down") || Input.is_action_pressed("left") || Input.is_action_pressed("right")):
 			hero.run_action("idle")
 		motion = Vector2(0, 0)
 		
-	for index in get_slide_count():
-		var collision = get_slide_collision(index)
+	for index in hero.get_slide_count():
+		var collision = hero.get_slide_collision(index)
 		#print(collision)
 
 func _unhandled_input(event):

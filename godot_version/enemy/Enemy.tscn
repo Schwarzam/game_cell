@@ -58,17 +58,17 @@ animations = [ {
 "frames": [ SubResource( 9 ) ],
 "loop": true,
 "name": "damage",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [node name="Enemy" type="Node2D"]
