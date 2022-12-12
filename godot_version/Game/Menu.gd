@@ -1,5 +1,10 @@
 extends Control
 
+var Steam
+func _enter_tree():
+	if OS.get_name() != 'OSX':
+		Steam = preload("res://addons/godotsteam/godotsteam.gdns").new()
+	
 var SteamName = ""
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,7 +15,7 @@ var SteamName = ""
 func _ready():
 	Steam.connect("avatar_loaded", self, "_loaded_avatar")
 	
-	Steam.getPlayerAvatar(Steam.AVATAR_MEDIUM)
+	Steam.getPlayerAvatar(2) ## 2 - medium
 	
 	SteamName = Steam.getPersonaName()
 	$CanvasLayer/Label.text = SteamName

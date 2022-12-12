@@ -33,11 +33,12 @@ func _register_enitity(id):
 
 #activated by entity once damaged
 func _on_damage(id):
-	entities[id].life -= 10
-	if entities[id].life <= 0:
-		var node = instance_from_id(id)
-		node.on_death()
-		entities.erase(id)
+	if id in entities:
+		entities[id].life -= 10
+		if entities[id].life <= 0:
+			var node = instance_from_id(id)
+			node.on_death()
+			entities.erase(id)
 		
 
 func end_game():
