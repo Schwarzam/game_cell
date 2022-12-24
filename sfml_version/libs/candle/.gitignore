@@ -1,8 +1,0 @@
-# Ignoring build dir
-build/
-release/
-debug/
-
-# Ignore generated docs and working files
-doc/html/
-doc/*.odg
