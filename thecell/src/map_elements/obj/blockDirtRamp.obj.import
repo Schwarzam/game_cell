@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blockDirtRamp.obj-39da7f544d8f04c4b2bb551ae2066fff.mesh"
+
+[deps]
+
+files=[ "res://.import/blockDirtRamp.obj-39da7f544d8f04c4b2bb551ae2066fff.mesh" ]
+
+source_file="res://src/map_elements/obj/blockDirtRamp.obj"
+dest_files=[ "res://.import/blockDirtRamp.obj-39da7f544d8f04c4b2bb551ae2066fff.mesh", "res://.import/blockDirtRamp.obj-39da7f544d8f04c4b2bb551ae2066fff.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/coinGold.obj-4ecd88e944df24d8af8560c642e9ee25.mesh"
+
+[deps]
+
+files=[ "res://.import/coinGold.obj-4ecd88e944df24d8af8560c642e9ee25.mesh" ]
+
+source_file="res://src/map_elements/obj/coinGold.obj"
+dest_files=[ "res://.import/coinGold.obj-4ecd88e944df24d8af8560c642e9ee25.mesh", "res://.import/coinGold.obj-4ecd88e944df24d8af8560c642e9ee25.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

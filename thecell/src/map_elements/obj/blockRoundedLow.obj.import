@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blockRoundedLow.obj-a2534e8e5ba3e94e536dd5da983b7ab0.mesh"
+
+[deps]
+
+files=[ "res://.import/blockRoundedLow.obj-a2534e8e5ba3e94e536dd5da983b7ab0.mesh" ]
+
+source_file="res://src/map_elements/obj/blockRoundedLow.obj"
+dest_files=[ "res://.import/blockRoundedLow.obj-a2534e8e5ba3e94e536dd5da983b7ab0.mesh", "res://.import/blockRoundedLow.obj-a2534e8e5ba3e94e536dd5da983b7ab0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

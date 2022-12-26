@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blockHexagonLow.obj-cd2cdc38f2019966d6b02643c2a5cfbf.mesh"
+
+[deps]
+
+files=[ "res://.import/blockHexagonLow.obj-cd2cdc38f2019966d6b02643c2a5cfbf.mesh" ]
+
+source_file="res://src/map_elements/obj/blockHexagonLow.obj"
+dest_files=[ "res://.import/blockHexagonLow.obj-cd2cdc38f2019966d6b02643c2a5cfbf.mesh", "res://.import/blockHexagonLow.obj-cd2cdc38f2019966d6b02643c2a5cfbf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

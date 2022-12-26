@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blockSnowRoundedLarge.obj-b96699987a16058770de7c58f5355804.mesh"
+
+[deps]
+
+files=[ "res://.import/blockSnowRoundedLarge.obj-b96699987a16058770de7c58f5355804.mesh" ]
+
+source_file="res://src/map_elements/obj/blockSnowRoundedLarge.obj"
+dest_files=[ "res://.import/blockSnowRoundedLarge.obj-b96699987a16058770de7c58f5355804.mesh", "res://.import/blockSnowRoundedLarge.obj-b96699987a16058770de7c58f5355804.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

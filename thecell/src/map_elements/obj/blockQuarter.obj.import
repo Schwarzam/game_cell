@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blockQuarter.obj-3adfb1510abf8569fc14d657a1c59a1b.mesh"
+
+[deps]
+
+files=[ "res://.import/blockQuarter.obj-3adfb1510abf8569fc14d657a1c59a1b.mesh" ]
+
+source_file="res://src/map_elements/obj/blockQuarter.obj"
+dest_files=[ "res://.import/blockQuarter.obj-3adfb1510abf8569fc14d657a1c59a1b.mesh", "res://.import/blockQuarter.obj-3adfb1510abf8569fc14d657a1c59a1b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

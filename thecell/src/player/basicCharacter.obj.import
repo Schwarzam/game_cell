@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/basicCharacter.obj-7e867f7c4cf1176d9167a34edca9515e.mesh"
+
+[deps]
+
+files=[ "res://.import/basicCharacter.obj-7e867f7c4cf1176d9167a34edca9515e.mesh" ]
+
+source_file="res://src/player/basicCharacter.obj"
+dest_files=[ "res://.import/basicCharacter.obj-7e867f7c4cf1176d9167a34edca9515e.mesh", "res://.import/basicCharacter.obj-7e867f7c4cf1176d9167a34edca9515e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

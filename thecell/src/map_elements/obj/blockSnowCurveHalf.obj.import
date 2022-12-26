@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blockSnowCurveHalf.obj-4380c3eecf52a8e56ec4f3f69714a1be.mesh"
+
+[deps]
+
+files=[ "res://.import/blockSnowCurveHalf.obj-4380c3eecf52a8e56ec4f3f69714a1be.mesh" ]
+
+source_file="res://src/map_elements/obj/blockSnowCurveHalf.obj"
+dest_files=[ "res://.import/blockSnowCurveHalf.obj-4380c3eecf52a8e56ec4f3f69714a1be.mesh", "res://.import/blockSnowCurveHalf.obj-4380c3eecf52a8e56ec4f3f69714a1be.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

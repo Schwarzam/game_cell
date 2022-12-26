@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/doorLargeClosed.obj-e4c944d844eda0f155d30dd03e814d23.mesh"
+
+[deps]
+
+files=[ "res://.import/doorLargeClosed.obj-e4c944d844eda0f155d30dd03e814d23.mesh" ]
+
+source_file="res://src/map_elements/obj/doorLargeClosed.obj"
+dest_files=[ "res://.import/doorLargeClosed.obj-e4c944d844eda0f155d30dd03e814d23.mesh", "res://.import/doorLargeClosed.obj-e4c944d844eda0f155d30dd03e814d23.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
