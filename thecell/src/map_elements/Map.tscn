@@ -5,8 +5,8 @@
 [ext_resource path="res://src/map_elements/obj/flag.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://src/map_elements/obj/blockLong.obj" type="ArrayMesh" id=4]
 
-[node name="Spatial" type="Spatial"]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -0.012, -0.033, 0.088 )
+[node name="Map" type="Spatial"]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -0.012, -0.033, 0.088 )
 
 [node name="flag" type="MeshInstance" parent="."]
 mesh = ExtResource( 3 )
