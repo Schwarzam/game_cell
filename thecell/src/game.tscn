@@ -5,6 +5,8 @@
 
 [node name="Spatial" type="Spatial"]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-
 [node name="Map" parent="." instance=ExtResource( 1 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -0.012, -0.033, -0.168592 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130.971, 62.3898, 237.542 )
