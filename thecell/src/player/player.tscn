@@ -96,6 +96,7 @@ surfaces/0 = {
 
 [sub_resource type="CapsuleShape" id=7]
 radius = 0.404892
+height = 0.871396
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 2 )
@@ -124,7 +125,7 @@ mesh = SubResource( 5 )
 mesh = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0381573, 0.761934, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0381573, 0.829494, 0 )
 shape = SubResource( 7 )
 
 [node name="SpringArm" type="SpringArm" parent="."]
