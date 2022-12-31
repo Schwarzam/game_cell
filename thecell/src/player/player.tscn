@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/player/SpringArm.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.gd" type="Script" id=2]
+[ext_resource path="res://src/player/Basic/adventurer.tres" type="Material" id=3]
 [ext_resource path="res://src/player/Basic/Vector/lambert1.material" type="Material" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
@@ -94,44 +95,48 @@ surfaces/0 = {
 "vertex_count": 52
 }
 
-[sub_resource type="CapsuleShape" id=7]
-radius = 0.404892
-height = 0.871396
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.365819, 0.205001, 0.801174 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 2 )
-
-[node name="Camera" type="Camera" parent="."]
 
 [node name="CharBase" type="Spatial" parent="."]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 
 [node name="Body1" type="MeshInstance" parent="CharBase"]
 mesh = SubResource( 1 )
+material/0 = ExtResource( 3 )
 
 [node name="Head1" type="MeshInstance" parent="CharBase"]
 mesh = SubResource( 2 )
+material/0 = ExtResource( 3 )
 
 [node name="ArmLeft1" type="MeshInstance" parent="CharBase"]
 mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
 
 [node name="ArmRight1" type="MeshInstance" parent="CharBase"]
 mesh = SubResource( 4 )
+material/0 = ExtResource( 3 )
 
 [node name="LegLeft1" type="MeshInstance" parent="CharBase"]
 mesh = SubResource( 5 )
+material/0 = ExtResource( 3 )
 
 [node name="LegRight1" type="MeshInstance" parent="CharBase"]
 mesh = SubResource( 6 )
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0381573, 0.829494, 0 )
-shape = SubResource( 7 )
+material/0 = ExtResource( 3 )
 
 [node name="SpringArm" type="SpringArm" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40287, 0 )
 spring_length = 7.0
 margin = 0.2
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="SpringArm"]
 current = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.805059, 0 )
+shape = SubResource( 7 )
