@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/player/SpringArm.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.gd" type="Script" id=2]
 [ext_resource path="res://src/player/animated-characters/Model/skin.material" type="Material" id=3]
-[ext_resource path="res://src/player/animated-characters/Skins/survivorMaleB.png" type="Texture" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "characterMediumMesh"
@@ -20,9 +19,6 @@ surfaces/0 = {
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.356604, 1.14976, -0.20662, 0.71369, 0.477993, 0.516271 ), AABB( -0.331757, 1.57958, -0.181353, 0.663996, 0.422044, 0.485578 ), AABB( -0.319425, 1.96773, -0.206229, 0.639332, 0.589907, 0.485022 ), AABB( -0.347832, 1.96773, -0.206229, 0.696146, 0.589907, 0.485022 ), AABB( -0.139826, 2.51119, -0.16121, 0.280134, 0.151261, 0.318875 ), AABB( -0.43883, 2.60887, -0.533908, 0.878152, 1.1565, 1.04814 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0.047516, 1.96902, -0.194066, 0.300798, 0.585486, 0.440668 ), AABB( 0.303438, 2.18642, -0.139517, 0.536078, 0.301718, 0.297648 ), AABB( 0.812029, 2.17291, -0.092579, 0.517761, 0.250603, 0.227141 ), AABB( 1.12234, 2.17663, -0.096809, 0.27997, 0.215106, 0.259289 ), AABB( 1.34043, 2.18491, -0.096809, 0.245211, 0.145472, 0.270174 ), AABB( 1.54201, 2.14661, -0.087201, 0.185809, 0.153799, 0.250942 ), AABB( 1.54201, 2.11944, -0.087201, 0.267521, 0.180972, 0.250942 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 1.34043, 2.19683, 0.146511, 0.215352, 0.0775099, 0.077988 ), AABB( 1.37115, 2.16305, 0.200467, 0.178768, 0.0897532, 0.141051 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.347832, 1.96902, -0.194066, 0.300798, 0.585486, 0.440668 ), AABB( -0.839034, 2.18642, -0.139517, 0.536078, 0.301718, 0.297648 ), AABB( -1.32931, 2.17291, -0.092579, 0.517761, 0.250603, 0.227141 ), AABB( -1.40183, 2.17663, -0.096809, 0.27997, 0.215106, 0.259289 ), AABB( -1.58516, 2.18491, -0.096809, 0.245211, 0.145472, 0.270174 ), AABB( -1.72734, 2.14661, -0.087201, 0.185808, 0.153799, 0.250942 ), AABB( -1.80905, 2.11944, -0.087201, 0.26752, 0.180972, 0.250942 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -1.5553, 2.19683, 0.146511, 0.215351, 0.0775099, 0.077988 ), AABB( -1.54943, 2.16305, 0.200467, 0.178767, 0.0897532, 0.141051 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.05897, 0.700093, -0.219173, 0.481, 0.892282, 0.500816 ), AABB( 0.104198, 0.258298, -0.253954, 0.317832, 0.584203, 0.364258 ), AABB( 0.195167, 0.00068401, -0.261129, 0.304787, 0.26232, 0.370822 ), AABB( 0.221892, 0.00068401, 0.061319, 0.282504, 0.192591, 0.230241 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.421548, 0.700093, -0.219173, 0.481, 0.892272, 0.500816 ), AABB( -0.421548, 0.258298, -0.253954, 0.317833, 0.584203, 0.364258 ), AABB( -0.499471, 0.00068401, -0.261129, 0.304786, 0.26232, 0.370822 ), AABB( -0.503913, 0.00068401, 0.061319, 0.282503, 0.192591, 0.230241 ) ],
 "vertex_count": 1029
 }
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_texture = ExtResource( 4 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "default"
@@ -983,9 +979,8 @@ bones/58/rest = Transform( -0.009928, 9.6e-05, -0.001194, -0.001197, -0.000396, 
 bones/58/enabled = true
 bones/58/bound_children = [  ]
 
-[node name="characterMedium" type="MeshInstance" parent="Persona/Skeleton"]
+[node name="character" type="MeshInstance" parent="Persona/Skeleton"]
 mesh = SubResource( 1 )
-material/0 = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Persona"]
 anims/default = SubResource( 2 )
@@ -993,12 +988,12 @@ anims/idle = SubResource( 4 )
 
 [node name="SpringArm" type="SpringArm" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875559, 0 )
-visible = false
 spring_length = 5.0
 margin = 0.4
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="SpringArm"]
+current = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00272369, 0.569268, 0 )
@@ -1009,4 +1004,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95213, 0.141464 )
 
 [node name="Camera" type="Camera" parent="Head"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-current = true
