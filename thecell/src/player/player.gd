@@ -3,57 +3,50 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
-export var speed := 4.0
+export var velocity : Vector3 = Vector3.ZERO
 export var jump_strenght := 15.0
 export var gravity := 50.0
+export var camera_sensitivity := 0.5
 
-var direction = Vector3.DOWN
-
-var _velocity := Vector3.ZERO
-var _snap_vector := Vector3.DOWN
-
-onready var _spring_arm: SpringArm = $SpringArm
-onready var _model: Spatial = $Persona
+const MIN_CAMERA_ANGLE =- 60
+const MAX_CAMERA_ANGLE = 70
+onready var head : Spatial = $Head
 
 func _ready():
-	pass # Replace with function body.
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _physics_process(delta):
-	var move_direction := Vector3.ZERO
-	move_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	move_direction.z = Input.get_action_strength("back") - Input.get_action_strength("forward")
-	move_direction = move_direction.rotated(Vector3.UP, _spring_arm.rotation.y).normalized()
-	
-	_velocity.x = move_direction.x * speed
-	_velocity.z = move_direction.z * speed
-	_velocity.y -= gravity * delta
-	
-	var just_landed := is_on_floor() and _snap_vector == Vector3.ZERO
-	var is_jumping := is_on_floor() and Input.is_action_just_pressed("jump")
-	
-	if is_jumping:
-		_velocity.y = jump_strenght
-		_snap_vector = Vector3.ZERO
-	elif just_landed:
-		_snap_vector = Vector3.DOWN
-	
-	_velocity = move_and_slide_with_snap(_velocity, _snap_vector, Vector3.UP, true)
-	
-	if _velocity.length() > 0.2:
-		var look_direction = Vector2(_velocity.z, _velocity.x)
-		_model.rotation.y = look_direction.angle()
+	var movement = _get_movement_direction()
+	velocity = movement * 2
+	velocity = move_and_slide(velocity)
+
+
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		_handle_camera_rotation(event)
 		
 		
-	
-	
-func _process(_delta: float) -> void:
-	_spring_arm.translation = translation
-	
-	direction.y = 0
-	global_transform.basis = smooth_look_at(global_transform, global_transform.origin - direction, _delta)
-
-	
+		
+func _handle_camera_rotation(event):
+	rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
+	head.rotate_x(deg2rad(event.relative.y * camera_sensitivity))
+	head.rotation.x = clamp(head.rotation.x, deg2rad(MIN_CAMERA_ANGLE), deg2rad(MAX_CAMERA_ANGLE))
 
 
-func smooth_look_at(t : Transform, dir, delta):
-	 return t.basis.slerp(t.looking_at(dir, Vector3.UP).basis, delta)
+
+func _get_movement_direction():
+	var direction = Vector3.DOWN * 2
+	
+	if Input.is_action_pressed("forward"):
+		direction += transform.basis.z
+	if Input.is_action_pressed("back"):
+		direction -= transform.basis.z
+	if Input.is_action_pressed("left"):
+		direction += transform.basis.x
+	if Input.is_action_pressed("right"):
+		direction -= transform.basis.x
+		
+	return direction
+	
