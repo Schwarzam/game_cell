@@ -3,15 +3,17 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
-export var speed := 7.0
-export var jump_strenght := 20.0
+export var speed := 4.0
+export var jump_strenght := 15.0
 export var gravity := 50.0
+
+var direction = Vector3.DOWN
 
 var _velocity := Vector3.ZERO
 var _snap_vector := Vector3.DOWN
 
 onready var _spring_arm: SpringArm = $SpringArm
-onready var _model: Spatial = $CharBase
+onready var _model: Spatial = $Persona
 
 func _ready():
 	pass # Replace with function body.
@@ -40,8 +42,18 @@ func _physics_process(delta):
 	if _velocity.length() > 0.2:
 		var look_direction = Vector2(_velocity.z, _velocity.x)
 		_model.rotation.y = look_direction.angle()
+		
+		
 	
 	
 func _process(_delta: float) -> void:
 	_spring_arm.translation = translation
 	
+	direction.y = 0
+	global_transform.basis = smooth_look_at(global_transform, global_transform.origin - direction, _delta)
+
+	
+
+
+func smooth_look_at(t : Transform, dir, delta):
+	 return t.basis.slerp(t.looking_at(dir, Vector3.UP).basis, delta)
