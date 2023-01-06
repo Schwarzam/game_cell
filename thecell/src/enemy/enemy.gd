@@ -16,6 +16,7 @@ onready var nav = get_tree().get_root().get_node("Game/Map/Navigation")
 
 func _ready():
 	$Persona/AnimationPlayer.play("idle")
+	$Persona/AnimationPlayer.playback_speed = 1.5
 
 func _physics_process(delta):
 	if path.size() > 0:
@@ -55,8 +56,10 @@ func _on_Timer_timeout():
 	else:
 		$Persona/AnimationPlayer.play("idle")
 
+
 func _on_attack_animation_finished():
 	attacking = false
+
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Players"):

@@ -673,8 +673,8 @@ tracks/45/enabled = true
 tracks/45/keys = PoolRealArray( 0, 1, 0, -6.97328e-07, 3.61353e-07, 8.18846e-06, 0, 0, 1, 1, 0.999966, 0.999966, 8.33333, 1, 0, -6.97328e-07, 3.61353e-07, 8.18846e-06, 0, 0, 1, 1, 0.999966, 0.999966 )
 
 [sub_resource type="CapsuleShape" id=5]
-radius = 0.217128
-height = 0.771127
+radius = 0.285943
+height = 0.67099
 
 [sub_resource type="CylinderShape" id=6]
 height = 5.32807
@@ -1006,7 +1006,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00272
 shape = SubResource( 5 )
 
 [node name="Head" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95213, 0.141464 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95213, 0.0408089 )
 
 [node name="Camera" type="Camera" parent="Head"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )

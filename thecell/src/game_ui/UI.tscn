@@ -3,8 +3,8 @@
 [ext_resource path="res://src/game_ui/ColorRect.gd" type="Script" id=1]
 
 [node name="ColorRect" type="ColorRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 25.0
+margin_bottom = 21.0
 color = Color( 0.309804, 0.207843, 0.207843, 1 )
 script = ExtResource( 1 )
 
