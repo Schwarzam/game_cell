@@ -9,8 +9,11 @@ var velocity = Vector3.DOWN
 var threshold = .1
 # Called when the node enters the scene tree for the first time.
 
-onready var target = get_tree().get_root().get_node("Game/Player")
+onready var target = null
 onready var nav = get_tree().get_root().get_node("Game/Map/Navigation")
+
+func _ready():
+	$Persona/AnimationPlayer.play("idle")
 
 func _physics_process(delta):
 	if path.size() > 0:
@@ -27,15 +30,24 @@ func move_to_target():
 		var direction = (path[cur_path_idx] - global_transform.origin)
 		velocity = direction.normalized()
 		move_and_slide(velocity, Vector3.UP)
+		$Persona/AnimationPlayer.play("walking")
+	
+	var look_direction = Vector2(velocity.z, velocity.x)
+	$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
+	
+
+func _set_target(targ):
+	target = targ
+
 		
 func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
-	
 	cur_path_idx = 0
 
 
 func _on_Timer_timeout():
-	print("tei")
 	if target:
 		get_target_path(target.global_transform.origin)
-	
+	else:
+		$Persona/AnimationPlayer.play("idle")
+
