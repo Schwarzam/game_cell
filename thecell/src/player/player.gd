@@ -44,17 +44,14 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3.UP)
 
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
 		_handle_camera_rotation(event)
-		
-		
 		
 func _handle_camera_rotation(event):
 	rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
 	head.rotate_x(deg2rad(event.relative.y * camera_sensitivity))
 	head.rotation.x = clamp(head.rotation.x, deg2rad(MIN_CAMERA_ANGLE), deg2rad(MAX_CAMERA_ANGLE))
-
 
 
 func _get_movement_direction():

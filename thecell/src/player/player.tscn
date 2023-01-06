@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/player/SpringArm.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.gd" type="Script" id=2]
 [ext_resource path="res://src/player/animated-characters/Model/skin.material" type="Material" id=3]
+[ext_resource path="res://src/player/Shotgun.gd" type="Script" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "characterMediumMesh"
@@ -1012,10 +1013,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95213, 0.0408089 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 current = true
 
+[node name="RayCast" type="RayCast" parent="Head/Camera"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, 100 )
+collision_mask = 2
+
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.922237, 0 )
 shape = SubResource( 6 )
+
+[node name="Weapon" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -247.0
+margin_top = -105.0
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
