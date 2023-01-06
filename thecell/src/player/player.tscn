@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/player/SpringArm.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.gd" type="Script" id=2]
 [ext_resource path="res://src/player/animated-characters/Model/skin.material" type="Material" id=3]
 [ext_resource path="res://src/player/Shotgun.gd" type="Script" id=4]
 [ext_resource path="res://src/player/animated-characters/crosshair.png" type="Texture" id=5]
+[ext_resource path="res://src/player/weaponpack/Models/uzi.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://src/player/ViewPortCamera.gd" type="Script" id=7]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "characterMediumMesh"
@@ -1012,6 +1014,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95213, 0.0408089 )
 
 [node name="Camera" type="Camera" parent="Head"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+cull_mask = 1048573
 current = true
 
 [node name="WeaponRC" type="RayCast" parent="Head/Camera"]
@@ -1022,6 +1025,15 @@ collision_mask = 2
 
 [node name="InteractionRC" type="RayCast" parent="Head/Camera"]
 
+[node name="Spatial" type="Spatial" parent="Head/Camera"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.126, -0.141, -0.218 )
+
+[node name="Uzi" type="MeshInstance" parent="Head/Camera/Spatial"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+layers = 2
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../..")
+
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
@@ -1030,6 +1042,20 @@ shape = SubResource( 6 )
 
 [node name="Weapon" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1280, 720 )
+transparent_bg = true
+handle_input_locally = false
+
+[node name="ViewPortCamera" type="Camera" parent="ViewportContainer/Viewport"]
+cull_mask = 2
+script = ExtResource( 7 )
+camera_path = NodePath("../../../Head/Camera")
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
