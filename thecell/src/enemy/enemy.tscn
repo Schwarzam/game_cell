@@ -5,8 +5,8 @@
 [ext_resource path="res://src/enemy/enemy.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=3]
-radius = 0.330256
-height = 0.529002
+radius = 0.194664
+height = 0.83959
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "characterMediumMesh"
@@ -1031,7 +1031,7 @@ collision_mask = 3
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.999959, 3.97469e-10, 0.00909304, 0.00909304, -4.37096e-08, -0.999959, 0, 1, -4.37114e-08, 0, 0.241154, 0 )
+transform = Transform( 0.999959, 3.97469e-10, 0.00909304, 0.00909304, -4.37096e-08, -0.999959, 0, 1, -4.37114e-08, 0, 0.241154, 0.0733142 )
 shape = SubResource( 3 )
 
 [node name="Persona" type="Spatial" parent="."]

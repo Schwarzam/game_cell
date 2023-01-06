@@ -12,7 +12,7 @@ var can_fire = true
 var reloading = false
 
 onready var ammo_label : Label = $"../UI/Label"
-onready var raycast : RayCast = $"../Head/Camera/RayCast"
+onready var raycast : RayCast = $"../Head/Camera/WeaponRC"
 
 func _ready():
 	pass # Replace with function body.

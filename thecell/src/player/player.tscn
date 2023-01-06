@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/player/SpringArm.gd" type="Script" id=1]
 [ext_resource path="res://src/player/player.gd" type="Script" id=2]
 [ext_resource path="res://src/player/animated-characters/Model/skin.material" type="Material" id=3]
 [ext_resource path="res://src/player/Shotgun.gd" type="Script" id=4]
+[ext_resource path="res://src/player/animated-characters/crosshair.png" type="Texture" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "characterMediumMesh"
@@ -1013,11 +1014,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95213, 0.0408089 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 current = true
 
-[node name="RayCast" type="RayCast" parent="Head/Camera"]
+[node name="WeaponRC" type="RayCast" parent="Head/Camera"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
 collision_mask = 2
+
+[node name="InteractionRC" type="RayCast" parent="Head/Camera"]
 
 [node name="Area" type="Area" parent="."]
 
@@ -1039,5 +1042,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -247.0
 margin_top = -105.0
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = -65.0
+margin_right = 64.0
+margin_bottom = 65.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource( 5 )
+stretch_mode = 4
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
