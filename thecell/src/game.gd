@@ -48,8 +48,16 @@ func _read_P2P_Packet() -> void:
 		var READABLE: Dictionary = bytes2var(PACKET_CODE)
 		# Print the packet to output
 		print("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
-		
-		
+		update_player(PACKET_SENDER, READABLE)
+
+func update_player(id, data : Dictionary):
+	var node = get_node("Entities/" + str(id))
+	
+	if data.has("ps"):
+		node.global_transform.origin = data["ps"]
+	if data.has("rt"):
+		node.global_rotation.y = data["rt"].x
+		node.head.rotation.x = data["rt"].y
 
 
 
