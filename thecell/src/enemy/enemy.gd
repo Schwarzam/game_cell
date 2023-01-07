@@ -33,6 +33,8 @@ func move_to_target():
 		var direction = (path[cur_path_idx] - global_transform.origin)
 		velocity = direction.normalized()
 		
+		print(velocity)
+		
 		if not attacking:
 			move_and_slide(velocity, Vector3.UP)
 			$Persona/AnimationPlayer.play("walking")

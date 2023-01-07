@@ -546,7 +546,13 @@ func _on_Back_pressed() -> void:
 
 func _on_Play_pressed():
 	$Output.append_bbcode("[STEAM] Starting game...\n")
-	var TEST_DATA: Dictionary = {"cmd":"PLAY", "player_id":global.STEAM_ID}
-	_send_P2P_Packet(0, TEST_DATA)
+	var SET_JOINABLE: bool = Steam.setLobbyJoinable(global.LOBBY_ID, false)
+	
+	$Output.append_bbcode("3...\n")
+	yield(get_tree().create_timer(1), "timeout")
+	$Output.append_bbcode("2...\n")
+	yield(get_tree().create_timer(1), "timeout")
+	$Output.append_bbcode("1...\n")
+	yield(get_tree().create_timer(1), "timeout")
 	
 	get_tree().change_scene_to(load("res://src/game.tscn"))

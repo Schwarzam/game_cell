@@ -60,38 +60,13 @@ func instance_node(node: Object, parent: Object) -> Object:
 	parent.add_child(node_instance)
 	return node_instance
 
-func instance_node_at_location(node: Object, parent: Object, location: Vector2) -> Object:
+func instance_node_at_location(node: Object, parent: Object, location: Vector3) -> Object:
 	var node_instance = instance_node(node, parent)
-	node_instance.global_position = location
+	node_instance.global_transform.origin = location
 	return node_instance
 
-# Read a Steam P2P packet
-func _read_P2P_Packet() -> void:
-	var PACKET_SIZE: int = Steam.getAvailableP2PPacketSize(0)
-	# There is a packet
-	if PACKET_SIZE > 0:
-		print("[STEAM] There is a packet available.")
-		# Get the packet
-		var PACKET: Dictionary = Steam.readP2PPacket(PACKET_SIZE, 0)
-		# If it is empty, set a warning
-		if PACKET.empty():
-			print("[WARNING] Read an empty packet with non-zero size!")
-		# Get the remote user's ID
-		var PACKET_SENDER: String = str(PACKET['steam_id_remote'])
-		var PACKET_CODE: PoolByteArray = PACKET['data']
-		# Make the packet data readable
-		var READABLE: Dictionary = bytes2var(PACKET_CODE)
-		# Print the packet to output
-		print("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
-		# Append logic here to deal with packet data
-		if READABLE['message'] == "start":
-			print("[STEAM] Starting P2P game...\n")
-
-
 # Send a Steam P2P packet
-func _send_P2P_Packet(target: int, packet_data: Dictionary) -> void:
-	# Set the send_type and channel
-	var SEND_TYPE: int = Steam.P2P_SEND_RELIABLE
+func _send_P2P_Packet(target: int, packet_data: Dictionary, SEND_TYPE: int = Steam.P2P_SEND_RELIABLE) -> void:
 	var CHANNEL: int = 0
 	# Create a data array to send the data through
 	var PACKET_DATA: PoolByteArray = []

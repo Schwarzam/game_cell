@@ -75,7 +75,6 @@ func _toggle_Welcome_Message(is_shown: bool) -> void:
 	else:
 		$Message.hide()
 
-
 # Exit the application
 func _on_Exit_pressed():
 	get_tree().quit()

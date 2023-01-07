@@ -41,9 +41,7 @@ func check_collision():
 			print("Kill")
 
 func fire():
-	print("fire")
 	can_fire = false
-	
 	check_collision()
 	current_ammo -= 1
 	yield(get_tree().create_timer(fire_rate), "timeout")
