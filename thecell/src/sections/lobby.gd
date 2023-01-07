@@ -187,10 +187,11 @@ func _read_P2P_Packet() -> void:
 		var READABLE: Dictionary = bytes2var(PACKET_CODE)
 		# Print the packet to output
 		$Output.append_bbcode("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
-		# Append logic here to deal with packet data
-		if READABLE['message'] == "start":
-			$Output.append_bbcode("[STEAM] Starting P2P game...\n")
-
+		
+		if READABLE.has("CMD"):
+			if READABLE['CMD'] == "START":
+				get_tree().change_scene_to(load("res://src/game.tscn"))
+			
 
 # Send a Steam P2P packet
 func _send_P2P_Packet(target: int, packet_data: Dictionary) -> void:
@@ -439,6 +440,12 @@ func _on_Send_Chat_pressed() -> void:
 		# Clear the chat input
 		$Chat.clear()
 
+func send_on_chat(MESSAGE):
+	var IS_SENT: bool = Steam.sendLobbyChatMsg(global.LOBBY_ID, MESSAGE)
+	# Was it sent successfully?
+	if not IS_SENT:
+		$Output.append_bbcode("[ERROR] Chat message '"+str(MESSAGE)+"' failed to send.\n")
+
 
 # When a lobby message is received
 # Using / delimiter for host commands like kick
@@ -548,11 +555,12 @@ func _on_Play_pressed():
 	$Output.append_bbcode("[STEAM] Starting game...\n")
 	var SET_JOINABLE: bool = Steam.setLobbyJoinable(global.LOBBY_ID, false)
 	
-	$Output.append_bbcode("3...\n")
+	send_on_chat("3...\n")
 	yield(get_tree().create_timer(1), "timeout")
-	$Output.append_bbcode("2...\n")
+	send_on_chat("2...\n")
 	yield(get_tree().create_timer(1), "timeout")
-	$Output.append_bbcode("1...\n")
+	send_on_chat("1...\n")
 	yield(get_tree().create_timer(1), "timeout")
 	
+	_send_P2P_Packet(0, {"CMD": "START"})
 	get_tree().change_scene_to(load("res://src/game.tscn"))

@@ -48,9 +48,8 @@ func _read_P2P_Packet() -> void:
 		var READABLE: Dictionary = bytes2var(PACKET_CODE)
 		# Print the packet to output
 		print("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
-		# Append logic here to deal with packet data
-		if READABLE['message'] == "start":
-			print("[STEAM] Starting P2P game...\n")
+		
+		
 
 
 

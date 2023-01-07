@@ -16,6 +16,8 @@ var skin = "survivorMaleB"
 var MASTER = false ## If this correspond to MY player
 
 func _ready():
+	$SpringArm.queue_free()
+	
 	var texture = load("res://src/player/animated-characters/Skins/" + skin + ".png")
 	$Persona/Skeleton/character.material_override = SpatialMaterial.new()
 	$Persona/Skeleton/character.material_override.albedo_texture = texture
