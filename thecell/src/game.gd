@@ -2,4 +2,5 @@ extends Spatial
 
 
 func _ready():
-	pass
+	global._send_P2P_Packet(0, {"test": "teste"})
+	

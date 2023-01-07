@@ -32,15 +32,14 @@ func _start_Example(which: String) -> void:
 		"authentication": $Title.set_text("Steamworks Authentication")
 
 	# Instance the example
-	var EXAMPLE: Object = load("res://src/examples/"+str(which)+".tscn").instance()
+	var EXAMPLE: Object = load("res://src/sections/"+str(which)+".tscn").instance()
 	# Load it
 	$Example.add_child(EXAMPLE)
 
 	# Connect the back button
 	var THIS_SIGNAL: int = EXAMPLE.connect("back_to_main", self, "_show_Main")
 	print("Connecting back_to_main to function _show_Main successfully: "+str(THIS_SIGNAL))
-
-
+	
 #################################################
 # COMPONENT TOGGLING
 #################################################

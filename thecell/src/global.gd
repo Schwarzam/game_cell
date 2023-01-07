@@ -8,10 +8,26 @@ var IS_ONLINE: bool = false
 var STEAM_ID: int = 0
 var STEAM_USERNAME: String
 
+# Set up some lobby variables
+var LOBBY_ID: int = 0
+var LOBBY_MEMBERS: Array = []
+var DATA
+var LOBBY_VOTE_KICK: bool = false
+var LOBBY_MAX_MEMBERS: int = 10
+enum LOBBY_AVAILABILITY {PRIVATE, FRIENDS, PUBLIC, INVISIBLE}
+
+var host = false
+
 func _ready() -> void:
 	# Start Steamworks
 	_initialize_Steam()
 
+func reset_lobby():
+	LOBBY_ID = 0
+	LOBBY_MEMBERS = []
+	DATA = null
+	LOBBY_VOTE_KICK = false
+	LOBBY_MAX_MEMBERS = 10
 
 # Initializing Steamworks
 func _initialize_Steam() -> void:
@@ -27,6 +43,7 @@ func _initialize_Steam() -> void:
 	STEAM_ID = Steam.getSteamID()
 	IS_OWNED = Steam.isSubscribed()
 	STEAM_USERNAME = Steam.getPersonaName()
+	print("App Id: ", Steam.getAppID())
 
 	# Check if account owns the game
 	if IS_OWNED == false:
@@ -37,7 +54,6 @@ func _initialize_Steam() -> void:
 # Process all Steamworks callbacks
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
-	
 
 func instance_node(node: Object, parent: Object) -> Object:
 	var node_instance = node.instance()
@@ -48,6 +64,52 @@ func instance_node_at_location(node: Object, parent: Object, location: Vector2) 
 	var node_instance = instance_node(node, parent)
 	node_instance.global_position = location
 	return node_instance
-	
 
-	
+# Read a Steam P2P packet
+func _read_P2P_Packet() -> void:
+	var PACKET_SIZE: int = Steam.getAvailableP2PPacketSize(0)
+	# There is a packet
+	if PACKET_SIZE > 0:
+		print("[STEAM] There is a packet available.")
+		# Get the packet
+		var PACKET: Dictionary = Steam.readP2PPacket(PACKET_SIZE, 0)
+		# If it is empty, set a warning
+		if PACKET.empty():
+			print("[WARNING] Read an empty packet with non-zero size!")
+		# Get the remote user's ID
+		var PACKET_SENDER: String = str(PACKET['steam_id_remote'])
+		var PACKET_CODE: PoolByteArray = PACKET['data']
+		# Make the packet data readable
+		var READABLE: Dictionary = bytes2var(PACKET_CODE)
+		# Print the packet to output
+		print("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
+		# Append logic here to deal with packet data
+		if READABLE['message'] == "start":
+			print("[STEAM] Starting P2P game...\n")
+
+
+# Send a Steam P2P packet
+func _send_P2P_Packet(target: int, packet_data: Dictionary) -> void:
+	# Set the send_type and channel
+	var SEND_TYPE: int = Steam.P2P_SEND_RELIABLE
+	var CHANNEL: int = 0
+	# Create a data array to send the data through
+	var PACKET_DATA: PoolByteArray = []
+	PACKET_DATA.append_array(var2bytes(packet_data))
+	# If sending a packet to everyone
+	var SEND_RESPONSE: bool
+	if target == 0:
+		# If there is more than one user, send packets
+		if global.LOBBY_MEMBERS.size() > 1:
+			# Loop through all members that aren't you
+			for MEMBER in global.LOBBY_MEMBERS:
+				if MEMBER['steam_id'] != global.STEAM_ID:
+					SEND_RESPONSE = Steam.sendP2PPacket(MEMBER['steam_id'], PACKET_DATA, SEND_TYPE, CHANNEL)
+	# Else send the packet to a particular user
+	else:
+		# Send this packet
+		SEND_RESPONSE = Steam.sendP2PPacket(target, PACKET_DATA, SEND_TYPE, CHANNEL)
+	# The packets send response is...?
+	print("[STEAM] P2P packet sent successfully? "+str(SEND_RESPONSE)+"\n")
+
+
