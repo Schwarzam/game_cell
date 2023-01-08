@@ -62,7 +62,8 @@ func _physics_process(delta):
 		
 
 func _process(delta):
-	life_label.set_text(str(life))
+	if MASTER:
+		life_label.set_text(str(life))
 
 func _input(event):
 	if MASTER:
