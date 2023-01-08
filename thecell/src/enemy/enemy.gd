@@ -1,69 +1,85 @@
 extends KinematicBody
 
 
-export var speed = 5
+export var speed = 1
 
 var path = []
 var cur_path_idx = 0
 var velocity = Vector3.DOWN
 var threshold = .1
+
+var damage_timer = Timer.new() 
 # Called when the node enters the scene tree for the first time.
 
 var attacking = false
 
 onready var target = null
-onready var nav = get_tree().get_root().get_node("Game/Map/Navigation")
+onready var agent : NavigationAgent = $NavAgent
+
+onready var tween : Tween = $Tween
+
 
 func _ready():
+	damage_timer.connect("timeout", self, "damage_agent") 
+	add_child(damage_timer)
+	
+	
 	$Persona/AnimationPlayer.play("idle")
-	$Persona/AnimationPlayer.playback_speed = 1.5
+	$Persona/AnimationPlayer.playback_speed = 1.7
+	#agent.set_navigation(nav_map)
 
 func _physics_process(delta):
-	if path.size() > 0:
-		move_to_target()
-		
-func move_to_target():
-	if cur_path_idx >= path.size():
-		return
-	
-	if global_transform.origin.distance_to(path[cur_path_idx]) < threshold:
-		cur_path_idx += 1
-	
-	else:
-		var direction = (path[cur_path_idx] - global_transform.origin)
-		velocity = direction.normalized()
-		
-		print(velocity)
-		
+	if target:
 		if not attacking:
 			move_and_slide(velocity, Vector3.UP)
-			$Persona/AnimationPlayer.play("walking")
-	
-	var look_direction = Vector2(velocity.z, velocity.x)
-	$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
-	
+			
+			var look_direction = Vector2(velocity.z, velocity.x)
+			$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
+		
+			if $Persona/AnimationPlayer.assigned_animation != "walking":
+				$Persona/AnimationPlayer.play("walking")
+		
+		if agent.distance_to_target() < 1 and not attacking:
+			attack()
+			
 
 func _set_target(targ):
 	target = targ
-
-		
-func get_target_path(target_pos):
-	path = nav.get_simple_path(global_transform.origin, target_pos)
-	cur_path_idx = 0
+	agent.set_target_location(target.transform.origin)
 
 
 func _on_Timer_timeout():
 	if target:
-		get_target_path(target.global_transform.origin)
+		agent.set_target_location(target.transform.origin)
+		velocity = (agent.get_next_location() - transform.origin).normalized() * speed
+		
 	else:
 		$Persona/AnimationPlayer.play("idle")
 
 
+func attack_damage_timer(time):
+	damage_timer.wait_time = time
+	damage_timer.one_shot = true
+	damage_timer.start()
+	
+func damage_agent():
+	if target.transform.origin.distance_to(transform.origin) < 1.3:
+		if target.MASTER:
+			print("TOMOU")
+
 func _on_attack_animation_finished():
+	print("FINISHED")
 	attacking = false
 
 
-func _on_Area_body_entered(body):
-	if body.is_in_group("Players"):
-		attacking = true
-		$Persona/AnimationPlayer.play("punch")
+func attack():
+	attacking = true
+	$Persona/AnimationPlayer.play("attack")
+	attack_damage_timer(0.7)
+
+func set_position(new_value):
+	tween.interpolate_property(self, "global_transform:origin", global_transform.origin, new_value, 0.1)
+	tween.start()
+
+func _on_Network_tick_rate_timeout():
+	global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_ag": agent.name})

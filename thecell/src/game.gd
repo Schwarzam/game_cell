@@ -2,7 +2,6 @@ extends Spatial
 
 var player = preload("res://src/player/Player.tscn")
 
-onready var Entities = $Entities
 
 func _ready():
 	if global.LOBBY_ID != 0:
@@ -14,7 +13,9 @@ func _ready():
 			instance_player_at_location(PLAYER['steam_id'], MASTER)
 			
 	else:
-		instance_player_at_location(0, false)
+		#Debug case
+		global.host = true
+		instance_player_at_location(0, true)
 
 func _process(delta):
 	if global.LOBBY_ID > 0:
@@ -24,7 +25,7 @@ func instance_player_at_location(id, MASTER: bool = false, location: Vector3 = V
 	var player_instance = player.instance()
 	player_instance.MASTER = MASTER
 	
-	Entities.add_child(player_instance)
+	$Map.spawn(player_instance)
 	
 	player_instance.global_transform.origin = location
 	player_instance.name = str(id)
@@ -51,13 +52,15 @@ func _read_P2P_Packet() -> void:
 		update_player(PACKET_SENDER, READABLE)
 
 func update_player(id, data : Dictionary):
-	var node = get_node("Entities/" + str(id))
+	var node = $Map.get_player_node(id)
 	
 	if data.has("ps"):
-		node.global_transform.origin = data["ps"]
+		node.set_position(data["ps"])
 	if data.has("rt"):
 		node.global_rotation.y = data["rt"].x
 		node.head.rotation.x = data["rt"].y
+	if data.has("vl"):
+		node.velocity = data["vl"]
 
 
 

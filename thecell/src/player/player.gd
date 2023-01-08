@@ -10,10 +10,14 @@ export var camera_sensitivity := 0.5
 
 const MIN_CAMERA_ANGLE =- 60
 const MAX_CAMERA_ANGLE = 70
+
 onready var head : Spatial = $Head
+onready var tween : Tween = $Tween
 
 var skin = "survivorMaleB"
 var MASTER = false ## If this correspond to MY player
+
+
 
 func _ready():
 	$SpringArm.queue_free()
@@ -21,7 +25,8 @@ func _ready():
 	var texture = load("res://src/player/animated-characters/Skins/" + skin + ".png")
 	$Persona/Skeleton/character.material_override = SpatialMaterial.new()
 	$Persona/Skeleton/character.material_override.albedo_texture = texture
-	
+	if not global.host:
+		$Area.queue_free()
 	if MASTER:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
@@ -52,6 +57,16 @@ func _physics_process(delta):
 		
 		#velocity = move_and_slide_with_snap(velocity, snap_vector, Vector3.UP, true)
 		velocity = move_and_slide(velocity, Vector3.UP)
+	else:
+		if not tween.is_active():
+			move_and_slide(velocity * speed)
+	
+	if velocity == Vector3.ZERO and $Persona/AnimationPlayer.current_animation != "idle":
+		$Persona/AnimationPlayer.play("idle")
+		print(velocity)
+	elif velocity != Vector3.ZERO:
+		$Persona/AnimationPlayer.play("run")
+		
 
 
 func _input(event):
@@ -84,11 +99,10 @@ func _on_Area_body_entered(body):
 	if body.is_in_group("Enemies"):
 		body._set_target(self)
 
+func set_position(new_value):
+	tween.interpolate_property(self, "global_transform:origin", global_transform.origin, new_value, 0.1)
+	tween.start()
 
 func _on_Network_tick_rate_timeout():
 	if MASTER:
-		print({"ps": global_transform.origin, "rt": Vector2(global_rotation.y, head.rotation.x)})
-		global._send_P2P_Packet(0, {"ps": global_transform.origin, "rt": Vector2(global_rotation.y, head.rotation.x)}, Steam.P2P_SEND_UNRELIABLE)
-	
-	
-		
+		global._send_P2P_Packet(0, {"ps": global_transform.origin, "rt": Vector2(global_rotation.y, head.rotation.x), "vl": velocity}, Steam.P2P_SEND_UNRELIABLE)

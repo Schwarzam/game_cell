@@ -85,6 +85,6 @@ func _send_P2P_Packet(target: int, packet_data: Dictionary, SEND_TYPE: int = Ste
 		# Send this packet
 		SEND_RESPONSE = Steam.sendP2PPacket(target, PACKET_DATA, SEND_TYPE, CHANNEL)
 	# The packets send response is...?
-	print("[STEAM] P2P packet sent successfully? "+str(SEND_RESPONSE)+"\n")
+	#print("[STEAM] P2P packet sent successfully? "+str(SEND_RESPONSE)+"\n")
 
 
