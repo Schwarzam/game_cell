@@ -1349,6 +1349,7 @@ autostart = true
 
 [node name="Network_tick_rate" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
 
 [node name="Tween" type="Tween" parent="."]
 
