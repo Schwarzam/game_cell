@@ -2,8 +2,8 @@ extends Node
 
 class_name Weapon
 
-export var fire_rate = 0.5
-export var clip_size = 5
+export var fire_rate = 0.1
+export var clip_size = 12
 export var reload_rate = 1
 
 var current_ammo = clip_size

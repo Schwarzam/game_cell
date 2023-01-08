@@ -14,6 +14,8 @@ const MAX_CAMERA_ANGLE = 70
 onready var head : Spatial = $Head
 onready var tween : Tween = $Tween
 
+onready var life_label : Label = $UI/Life
+
 var skin = "survivorMaleB"
 var MASTER = false ## If this correspond to MY player
 
@@ -35,6 +37,8 @@ func _ready():
 		$Head/Camera.queue_free()
 		$ViewportContainer.queue_free()
 		$UI.queue_free()
+	
+	$Head/Gun/GunMesh.mesh = load("res://src/player/weaponpack/Models/pistolSilencer.obj")
 
 
 func _physics_process(delta):
@@ -50,13 +54,15 @@ func _physics_process(delta):
 		if not tween.is_active():
 			move_and_slide(velocity * speed)
 	
-	if velocity == Vector3.ZERO and $Persona/AnimationPlayer.current_animation != "idle":
+	if velocity.is_equal_approx(Vector3.ZERO) and $Persona/AnimationPlayer.assigned_animation != "idle":
 		$Persona/AnimationPlayer.play("idle")
-		print(velocity)
-	elif velocity != Vector3.ZERO:
+		
+	elif not velocity.is_equal_approx(Vector3.ZERO):
 		$Persona/AnimationPlayer.play("run")
 		
 
+func _process(delta):
+	life_label.set_text(str(life))
 
 func _input(event):
 	if MASTER:
@@ -83,8 +89,8 @@ func _get_movement_direction():
 		
 	return direction
 
-func take_damage():
-	pass
+func take_damage(damage):
+	life -= damage
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Enemies"):

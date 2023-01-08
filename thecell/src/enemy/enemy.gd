@@ -81,7 +81,8 @@ func attack_damage_timer(time):
 func damage_agent():
 	if target.transform.origin.distance_to(transform.origin) < 1.3:
 		if target.MASTER:
-			target.take_damage()
+			global._send_P2P_Packet(0, {"damage": 20, "tg": target.name})
+			target.take_damage(20)
 			print("TOMOU")
 
 func _on_attack_animation_finished():

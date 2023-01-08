@@ -1349,18 +1349,18 @@ current = true
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
-collision_mask = 2
+collision_mask = 6
 
 [node name="InteractionRC" type="RayCast" parent="Head/Camera"]
 
-[node name="Spatial" type="Spatial" parent="Head/Camera"]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.126, -0.141, -0.218 )
+[node name="Gun" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.126, -0.30375, 0.218 )
 
-[node name="Uzi" type="MeshInstance" parent="Head/Camera/Spatial"]
+[node name="GunMesh" type="MeshInstance" parent="Head/Gun"]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 layers = 2
 mesh = ExtResource( 6 )
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
 
 [node name="Area" type="Area" parent="."]
 
@@ -1382,6 +1382,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="ViewPortCamera" type="Camera" parent="ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 cull_mask = 2
 script = ExtResource( 7 )
 camera_path = NodePath("../../../Head/Camera")
@@ -1411,6 +1412,13 @@ size_flags_horizontal = 5
 size_flags_vertical = 5
 texture = ExtResource( 5 )
 stretch_mode = 4
+
+[node name="Life" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -89.0
+margin_right = 140.0
+align = 2
 
 [node name="Network_tick_rate" type="Timer" parent="."]
 wait_time = 0.03

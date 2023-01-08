@@ -2,16 +2,15 @@ extends Camera
 
 
 export var camera_path : NodePath
-
 var camera : Camera
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = get_node(camera_path)
+	
 
 func _process(delta):
 	global_transform = camera.global_transform
+	global_transform.origin.y -= 0.16
+	pass
+	#global_transform.origin.y
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
