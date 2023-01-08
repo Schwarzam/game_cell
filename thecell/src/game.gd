@@ -60,6 +60,9 @@ func update_player(id, data : Dictionary):
 	else:
 		#update players
 		var node = $Map.get_entity_node(id)
+		if not node:
+			print("No node found")
+			return
 		if data.has("ps"):
 			node.set_position(data["ps"])
 		if data.has("rt"):
