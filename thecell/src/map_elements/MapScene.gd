@@ -11,4 +11,5 @@ func spawn(node):
 
 
 func get_entity_node(id):
-	Entities.get_node(str(id))
+	return Entities.get_node(str(id))
+	
