@@ -36,7 +36,7 @@ func _read_P2P_Packet() -> void:
 	var PACKET_SIZE: int = Steam.getAvailableP2PPacketSize(0)
 	# There is a packet
 	if PACKET_SIZE > 0:
-		print("[STEAM] There is a packet available.")
+		#print("[STEAM] There is a packet available.")
 		# Get the packet
 		var PACKET: Dictionary = Steam.readP2PPacket(PACKET_SIZE, 0)
 		# If it is empty, set a warning
@@ -48,7 +48,7 @@ func _read_P2P_Packet() -> void:
 		# Make the packet data readable
 		var READABLE: Dictionary = bytes2var(PACKET_CODE)
 		# Print the packet to output
-		print("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
+		#print("[STEAM] Packet from "+str(PACKET_SENDER)+": "+str(READABLE)+"\n")
 		update_player(PACKET_SENDER, READABLE)
 
 func update_player(id, data : Dictionary):

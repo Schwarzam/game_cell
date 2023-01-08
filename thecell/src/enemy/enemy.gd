@@ -43,8 +43,8 @@ func _physics_process(delta):
 		var look_direction = Vector2(velocity.z, velocity.x)
 		$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
 
-		if target and agent.distance_to_target() < 1 and not attacking:
-			attack()		
+		if agent.distance_to_target() < 1 and not attacking:
+			attack()	
 
 
 func _set_target(targ):
