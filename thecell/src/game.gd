@@ -56,7 +56,7 @@ func update_player(id, data : Dictionary):
 		var node = $Map.get_entity_node(data["z_n"])
 		node.set_position(data["z_ps"])
 		node.velocity = data["z_vl"]
-		node.agent = $Map.get_entity_node(data["z_ag"])
+		node.target = $Map.get_entity_node(data["z_tg"])
 	else:
 		#update players
 		var node = $Map.get_entity_node(id)

@@ -66,6 +66,7 @@ func attack_damage_timer(time):
 func damage_agent():
 	if target.transform.origin.distance_to(transform.origin) < 1.3:
 		if target.MASTER:
+			target.take_damage()
 			print("TOMOU")
 
 func _on_attack_animation_finished():
@@ -84,4 +85,4 @@ func set_position(new_value):
 
 func _on_Network_tick_rate_timeout():
 	if global.host:
-		global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_ag": agent.name})
+		global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_tg": target.name})

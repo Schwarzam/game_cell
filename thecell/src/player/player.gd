@@ -17,7 +17,7 @@ onready var tween : Tween = $Tween
 var skin = "survivorMaleB"
 var MASTER = false ## If this correspond to MY player
 
-
+var life = 100
 
 func _ready():
 	$SpringArm.queue_free()
@@ -93,7 +93,9 @@ func _get_movement_direction():
 		direction -= transform.basis.x
 		
 	return direction
-	
+
+func take_damage():
+	pass
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Enemies"):
