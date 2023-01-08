@@ -35,6 +35,10 @@ window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/batch_collisions/plugin.cfg" )
+
 [input]
 
 chat_send={
