@@ -10,5 +10,5 @@ func spawn(node):
 	Entities.add_child(node)
 
 
-func get_player_node(id):
+func get_entity_node(id):
 	Entities.get_node(str(id))

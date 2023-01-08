@@ -30,18 +30,19 @@ func _ready():
 
 func _physics_process(delta):
 	if target:
-		if not attacking:
-			move_and_slide(velocity, Vector3.UP)
-			
-			var look_direction = Vector2(velocity.z, velocity.x)
-			$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
-		
-			if $Persona/AnimationPlayer.assigned_animation != "walking":
-				$Persona/AnimationPlayer.play("walking")
-		
-		if agent.distance_to_target() < 1 and not attacking:
-			attack()
-			
+		if global.host or tween.is_active():
+			if not attacking:
+				move_and_slide(velocity, Vector3.UP)
+				
+				if $Persona/AnimationPlayer.assigned_animation != "walking":
+					$Persona/AnimationPlayer.play("walking")
+	
+		var look_direction = Vector2(velocity.z, velocity.x)
+		$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
+
+		if target and agent.distance_to_target() < 1 and not attacking:
+			attack()		
+
 
 func _set_target(targ):
 	target = targ
@@ -50,9 +51,9 @@ func _set_target(targ):
 
 func _on_Timer_timeout():
 	if target:
-		agent.set_target_location(target.transform.origin)
-		velocity = (agent.get_next_location() - transform.origin).normalized() * speed
-		
+		if global.host:
+			agent.set_target_location(target.transform.origin)
+			velocity = (agent.get_next_location() - transform.origin).normalized() * speed
 	else:
 		$Persona/AnimationPlayer.play("idle")
 
@@ -82,4 +83,5 @@ func set_position(new_value):
 	tween.start()
 
 func _on_Network_tick_rate_timeout():
-	global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_ag": agent.name})
+	if global.host:
+		global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_ag": agent.name})

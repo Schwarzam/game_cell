@@ -52,15 +52,24 @@ func _read_P2P_Packet() -> void:
 		update_player(PACKET_SENDER, READABLE)
 
 func update_player(id, data : Dictionary):
-	var node = $Map.get_player_node(id)
+	if data.has("z_n"):
+		var node = $Map.get_entity_node(data["z_n"])
+		node.set_position(data["z_ps"])
+		node.velocity = data["z_vl"]
+		node.agent = $Map.get_entity_node(data["z_ag"])
+	else:
+		#update players
+		var node = $Map.get_entity_node(id)
+		if data.has("ps"):
+			node.set_position(data["ps"])
+		if data.has("rt"):
+			node.global_rotation.y = data["rt"].x
+			node.head.rotation.x = data["rt"].y
+		if data.has("vl"):
+			node.velocity = data["vl"]
 	
-	if data.has("ps"):
-		node.set_position(data["ps"])
-	if data.has("rt"):
-		node.global_rotation.y = data["rt"].x
-		node.head.rotation.x = data["rt"].y
-	if data.has("vl"):
-		node.velocity = data["vl"]
+	
+		
 
 
 
