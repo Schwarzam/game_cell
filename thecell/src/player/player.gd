@@ -27,8 +27,7 @@ func _ready():
 	var texture = load("res://src/player/animated-characters/Skins/" + skin + ".png")
 	$Persona/Skeleton/character.material_override = SpatialMaterial.new()
 	$Persona/Skeleton/character.material_override.albedo_texture = texture
-	if not global.host:
-		$Area.queue_free()
+	
 	if MASTER:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
