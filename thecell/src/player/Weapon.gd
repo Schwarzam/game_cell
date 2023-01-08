@@ -36,7 +36,9 @@ func check_collision():
 		
 		if collider.is_in_group("Enemies"):
 			
-			collider.queue_free()
+			#collider.queue_free()
+			global._send_P2P_Packet(0, {"damage": 30, "tg": collider.name})
+			collider.take_damage(30)
 			
 			print("Kill")
 

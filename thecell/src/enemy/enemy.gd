@@ -12,23 +12,26 @@ var damage_timer = Timer.new()
 # Called when the node enters the scene tree for the first time.
 
 var attacking = false
+var life = 100
 
 onready var target = null
 onready var agent : NavigationAgent = $NavAgent
 
 onready var tween : Tween = $Tween
 
+var dead = false
 
 func _ready():
 	damage_timer.connect("timeout", self, "damage_agent") 
 	add_child(damage_timer)
-	
 	
 	$Persona/AnimationPlayer.play("idle")
 	$Persona/AnimationPlayer.playback_speed = 1.7
 	#agent.set_navigation(nav_map)
 
 func _physics_process(delta):
+	if dead:
+		return
 	if target:
 		if global.host or tween.is_active():
 			if not attacking:
@@ -50,6 +53,8 @@ func _set_target(targ):
 
 
 func _on_Timer_timeout():
+	if dead:
+		return
 	if target:
 		if global.host:
 			agent.set_target_location(target.transform.origin)
@@ -57,6 +62,16 @@ func _on_Timer_timeout():
 	else:
 		$Persona/AnimationPlayer.play("idle")
 
+
+func take_damage(damage):
+	life -= damage
+	if life < 0:
+		die()
+
+func die():
+	dead = true
+	$Persona/AnimationPlayer.play("die")
+	$CollisionShape.disabled = true
 
 func attack_damage_timer(time):
 	damage_timer.wait_time = time
@@ -84,5 +99,7 @@ func set_position(new_value):
 	tween.start()
 
 func _on_Network_tick_rate_timeout():
-	if global.host:
+	if global.host and target:
 		global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_tg": target.name})
+	elif global.host and not target:
+		global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_tg": null})

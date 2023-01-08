@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Running.dae-be8e83be4989574a3c7298689f5f6a03.scn"
+path="res://.import/Zombie Dying.dae-10c5fb66bb76574ef765583c7785a4ac.scn"
 
 [deps]
 
-source_file="res://src/player/Running.dae"
-dest_files=[ "res://.import/Running.dae-be8e83be4989574a3c7298689f5f6a03.scn" ]
+source_file="res://src/enemy/Zombie Dying.dae"
+dest_files=[ "res://.import/Zombie Dying.dae-10c5fb66bb76574ef765583c7785a4ac.scn" ]
 
 [params]
 

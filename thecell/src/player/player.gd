@@ -45,17 +45,6 @@ func _physics_process(delta):
 		velocity.z = movement.z * speed
 		
 		velocity.y -= gravity * delta
-		
-		#var just_landed := is_on_floor() and snap_vector == Vector3.ZERO
-		#var is_jumping := is_on_floor() and Input.is_action_just_pressed("jump")
-		
-		#if is_jumping:
-		#	velocity.y = jump_strenght
-		#	snap_vector = Vector3.ZERO
-		#elif just_landed:
-		#	snap_vector = Vector3.DOWN
-		
-		#velocity = move_and_slide_with_snap(velocity, snap_vector, Vector3.UP, true)
 		velocity = move_and_slide(velocity, Vector3.UP)
 	else:
 		if not tween.is_active():

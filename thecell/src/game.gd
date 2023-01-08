@@ -60,6 +60,9 @@ func update_player(id, data : Dictionary):
 			node.velocity = data["z_vl"]
 		if data.has("z_tg"):
 			node.target = $Map.get_entity_node(data["z_tg"])
+	elif data.has("damage") and data.has("tg"):
+		var node = $Map.get_entity_node(data["tg"])
+		node.take_damage(int(data["damage"]))
 	else:
 		#update players
 		var node = $Map.get_entity_node(id)
