@@ -44,7 +44,9 @@ func _physics_process(delta):
 	
 		var look_direction = Vector2(velocity.z, velocity.x)
 		$Persona.rotation.y =  lerp($Persona.rotation.y, look_direction.angle(), 0.5)
-
+		
+		
+		print(name, " ", agent.distance_to_target() )
 		if agent.distance_to_target() < 1 and not attacking:
 			attack()	
 
@@ -57,10 +59,12 @@ func _set_target(targ):
 func _on_Timer_timeout():
 	if dead:
 		return
-	if target:
-		if global.host:
+	if global.host:
+		agent.set_target_location(target.transform.origin)
+		velocity = (agent.get_next_location() - transform.origin).normalized() * speed
+	elif target:
+		if target.name == global.STEAM_ID:
 			agent.set_target_location(target.transform.origin)
-			velocity = (agent.get_next_location() - transform.origin).normalized() * speed
 	else:
 		$Persona/AnimationPlayer.play("idle")
 
