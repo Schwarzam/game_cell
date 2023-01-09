@@ -106,7 +106,7 @@ func set_position(new_value):
 	tween.start()
 
 func _on_Network_tick_rate_timeout():
-	if last_transform_origin != global_transform.origin:
+	if $Persona/AnimationPlayer.assigned_animation == "idle":
 		return
 		
 	if global.host and target:
