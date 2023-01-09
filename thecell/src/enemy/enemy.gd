@@ -14,6 +14,8 @@ var damage_timer = Timer.new()
 var attacking = false
 var life = 100
 
+var last_transform_origin = null
+
 onready var target = null
 onready var agent : NavigationAgent = $NavAgent
 
@@ -100,6 +102,9 @@ func set_position(new_value):
 	tween.start()
 
 func _on_Network_tick_rate_timeout():
+	if last_transform_origin != global_transform.origin:
+		return
+		
 	if global.host and target:
 		global._send_P2P_Packet(0, {"z_n": name, "z_ps": global_transform.origin, "z_vl": velocity, "z_tg": target.name})
 	elif global.host and not target:

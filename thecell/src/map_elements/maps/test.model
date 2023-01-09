@@ -352,7 +352,6 @@
 [name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 8.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 12.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 15.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
-[name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 10.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 14.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 11.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 16.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
@@ -814,3 +813,4 @@
 [name:;collection:Western;type:porch_floorCenter;position:(-2.0000, 1.0000, 2.0000);rotation:(0.0000, 0.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(-3.0000, 1.0000, 3.0000);rotation:(0.0000, 0.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
 [name:;collection:Western;type:porch_floorCenter;position:(-3.0000, 1.0000, 2.0000);rotation:(0.0000, 0.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]
+[name:;collection:Western;type:porch_floorCenter;position:(2.0000, 0.0000, 10.0000);rotation:(0.0000, 180.0000, 180.0000);scale:(1.0000, 1.0000, 1.0000);group:;locked:False;hidden:False;materials:wood;]

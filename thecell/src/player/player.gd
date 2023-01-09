@@ -37,7 +37,7 @@ func _ready():
 		$ViewportContainer.queue_free()
 		$UI.queue_free()
 	
-	$Head/Gun/GunMesh.mesh = load("res://src/player/weaponpack/Models/pistolSilencer.obj")
+	$Head/Gun/GunMesh.mesh = load("res://src/player/weaponpack/Models/sniper.obj")
 
 
 func _physics_process(delta):
