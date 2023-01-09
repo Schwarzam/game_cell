@@ -59,7 +59,7 @@ func _set_target(targ):
 func _on_Timer_timeout():
 	if dead:
 		return
-	if global.host:
+	if global.host and target:
 		agent.set_target_location(target.transform.origin)
 		velocity = (agent.get_next_location() - transform.origin).normalized() * speed
 	elif target:
