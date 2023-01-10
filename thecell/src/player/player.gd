@@ -23,6 +23,7 @@ var life = 100
 
 func _ready():
 	$SpringArm.queue_free()
+	$Area/CollisionShape.shape.radius = 7
 	
 	var texture = load("res://src/player/animated-characters/Skins/" + skin + ".png")
 	$Persona/Skeleton/character.material_override = SpatialMaterial.new()

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bolt Mag Pack.wav-afc0a605c893ee5c44a9cc524067a464.sample"
+
+[deps]
+
+source_file="res://src/player/Weapons/GunSounds/& More/Mag Pack/WAV/Bolt Mag Pack.wav"
+dest_files=[ "res://.import/Bolt Mag Pack.wav-afc0a605c893ee5c44a9cc524067a464.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -63,6 +63,9 @@ func update_player(id, data : Dictionary):
 	elif data.has("damage") and data.has("tg"):
 		var node = $Map.get_entity_node(data["tg"])
 		node.take_damage(int(data["damage"]))
+	elif data.has("shot"):
+		var node = $Map.get_entity_node(data["tg"])
+		node.get_node("Head/Gun").shoot()
 	else:
 		#update players
 		var node = $Map.get_entity_node(id)

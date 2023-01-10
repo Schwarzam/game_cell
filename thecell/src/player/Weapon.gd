@@ -46,10 +46,10 @@ func check_collision():
 func fire():
 	global._send_P2P_Packet(0, {"shot": weapon_name}, Steam.P2P_SEND_UNRELIABLE_NO_DELAY)
 	can_fire = false
+	get_parent().get_node("Head/Gun").shoot()
 	check_collision()
 	current_ammo -= 1
 	yield(get_tree().create_timer(fire_rate), "timeout")
-	
 	can_fire = true
 
 func reload():

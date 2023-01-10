@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/AR PolyMag Pack.wav-06ab104bf59a4174715ac58acc29a794.sample"
+
+[deps]
+
+source_file="res://src/player/Weapons/GunSounds/& More/Mag Pack/WAV/AR PolyMag Pack.wav"
+dest_files=[ "res://.import/AR PolyMag Pack.wav-06ab104bf59a4174715ac58acc29a794.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
