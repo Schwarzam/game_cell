@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/flamethrowerHandle.obj-7c47c576f342e68eb88597f7db443e83.mesh"
+
+[deps]
+
+files=[ "res://.import/flamethrowerHandle.obj-7c47c576f342e68eb88597f7db443e83.mesh" ]
+
+source_file="res://src/player/Weapons/Models/flamethrowerHandle.obj"
+dest_files=[ "res://.import/flamethrowerHandle.obj-7c47c576f342e68eb88597f7db443e83.mesh", "res://.import/flamethrowerHandle.obj-7c47c576f342e68eb88597f7db443e83.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

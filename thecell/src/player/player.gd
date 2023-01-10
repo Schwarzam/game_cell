@@ -8,8 +8,8 @@ export var jump_strenght := 11.0
 export var gravity := 50.0
 export var camera_sensitivity := 0.5
 
-const MIN_CAMERA_ANGLE =- 60
-const MAX_CAMERA_ANGLE = 70
+const MIN_CAMERA_ANGLE =- 70
+const MAX_CAMERA_ANGLE = 40
 
 onready var head : Spatial = $Head
 onready var tween : Tween = $Tween
@@ -37,8 +37,6 @@ func _ready():
 		$ViewportContainer.queue_free()
 		$UI.queue_free()
 	
-	$Head/Gun/GunMesh.mesh = load("res://src/player/weaponpack/Models/sniper.obj")
-
 
 func _physics_process(delta):
 	if MASTER:

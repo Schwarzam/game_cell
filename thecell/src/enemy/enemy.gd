@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if dead:
 		return
 	if target:
-		if global.host or tween.is_active():
+		if global.host or not tween.is_active():
 			if not attacking:
 				move_and_slide(velocity, Vector3.UP)
 				
@@ -61,8 +61,7 @@ func _on_Timer_timeout():
 		agent.set_target_location(target.transform.origin)
 		velocity = (agent.get_next_location() - transform.origin).normalized() * speed
 	elif target:
-		if target.name == str(global.STEAM_ID):
-			agent.set_target_location(target.transform.origin)
+		agent.set_target_location(target.transform.origin)
 	else:
 		$Persona/AnimationPlayer.play("idle")
 

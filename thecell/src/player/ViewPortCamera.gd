@@ -10,7 +10,7 @@ func _ready():
 
 func _process(delta):
 	global_transform = camera.global_transform
-	global_transform.origin.y -= 0.16
+	#global_transform.origin.y -= 0.16
 	pass
 	#global_transform.origin.y
 	

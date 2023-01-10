@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/knifeRound_smooth.obj-7728268aa99ad422d57a1ae3a4621bbc.mesh"
+
+[deps]
+
+files=[ "res://.import/knifeRound_smooth.obj-7728268aa99ad422d57a1ae3a4621bbc.mesh" ]
+
+source_file="res://src/player/Weapons/Models/knifeRound_smooth.obj"
+dest_files=[ "res://.import/knifeRound_smooth.obj-7728268aa99ad422d57a1ae3a4621bbc.mesh", "res://.import/knifeRound_smooth.obj-7728268aa99ad422d57a1ae3a4621bbc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
