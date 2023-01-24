@@ -21,7 +21,7 @@ func _process(delta):
 	if global.LOBBY_ID > 0:
 		_read_P2P_Packet()
 
-func instance_player_at_location(id, MASTER: bool = false, location: Vector3 = Vector3(-4, 2, -4)):
+func instance_player_at_location(id, MASTER: bool = false, location: Vector3 = Vector3(2, 4, -4)):
 	var player_instance = player.instance()
 	player_instance.MASTER = MASTER
 	
